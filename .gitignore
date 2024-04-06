@@ -1,0 +1,9 @@
+/Library/
+/Temp
+/obj/
+/.vsconfig
+*.csproj
+/Logs/
+*.sln
+/UserSettings/EditorUserSettings.asset
+/UserSettings/Search.settings
