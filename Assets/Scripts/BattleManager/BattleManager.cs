@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BattleManager : SingleMono<BattleManager>
+{
+    private enum BattleStage 
+    {
+        // 没有战斗
+        NoBattle = 0,
+        // 等待玩家选择指令
+        PlayerTurning = 1,
+
+        // 正在执行玩家指令动画
+        PlayerPerforming = 2,
+
+        // 怪兽正在行动
+        MonsterTuring = 3,
+
+        // 正在结算战斗结果
+        BattleOver = 4,
+    }
+
+    private Hero _currentHero;
+
+    private Monster _currentMonster;
+
+    private BattleStage _currentBattleStage;
+
+    private int _leftHeroTurns;
+
+    public override void Init()
+    {
+        _currentBattleStage = BattleStage.NoBattle;
+    }
+
+    public void StartABattle() 
+    {
+        _currentHero = new Hero(); // TODO: 添加数据
+        _currentHero.GenerateGameObject();
+
+        _currentMonster = new Monster(); // TODO: 添加数据
+        _currentMonster.GenerateGameObject();
+
+        _currentBattleStage = BattleStage.PlayerTurning;
+        _leftHeroTurns = _currentHero.Turns;
+    }
+
+    public void EndBattle() 
+    {
+        _currentBattleStage = BattleStage.BattleOver;
+    }
+
+    public override void Tick(int delta)
+    {
+        StageTick(delta);
+    }
+
+    private void StageTick(int delta) 
+    {
+        switch (_currentBattleStage) 
+        {
+            case BattleStage.NoBattle:
+                return;
+            case BattleStage.PlayerTurning:
+                DoPlayerTurning(delta);
+                return;
+            case BattleStage.PlayerPerforming:
+                DoPlayerPerforming(delta);
+                return;
+            case BattleStage.MonsterTuring:
+                DoMonsterTuring(delta);
+                return;
+        }
+    }
+
+    private void DoPlayerTurning(int delta)
+    {
+        // 检测玩家的点击输入，确定执行的操作
+
+        _currentBattleStage = BattleStage.PlayerPerforming;
+    }
+
+    private void DoPlayerPerforming(int delta)
+    {
+        // 执行对应操作
+
+        if (_currentMonster.Hp <= 0) 
+        {
+            // 怪物死亡
+
+            _currentBattleStage = BattleStage.BattleOver;
+            return;
+        }
+
+        _leftHeroTurns--;
+
+        if (_leftHeroTurns <= 0)
+        {
+            _currentBattleStage = BattleStage.MonsterTuring;
+        }
+        else 
+        {
+            _currentBattleStage = BattleStage.PlayerTurning;
+        }
+    }
+
+    private void DoMonsterTuring(int delta)
+    {
+        // 怪物根据AI执行对应动作并更新意图
+
+        if (_currentHero.Hp <= 0) 
+        {
+            // 玩家死亡
+            _currentBattleStage = BattleStage.BattleOver;
+            return;
+        }
+
+        _currentBattleStage = BattleStage.PlayerTurning;
+        _leftHeroTurns = _currentHero.Turns;
+    }
+}
