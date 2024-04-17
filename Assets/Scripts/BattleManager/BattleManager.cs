@@ -30,9 +30,12 @@ public class BattleManager : SingleMono<BattleManager>
 
     private int _leftHeroTurns;
 
+    private Intension _playerIntension;
+
     public override void Init()
     {
         _currentBattleStage = BattleStage.NoBattle;
+        StartABattle();
     }
 
     public void StartABattle() 
@@ -78,12 +81,58 @@ public class BattleManager : SingleMono<BattleManager>
     private void DoPlayerTurning(int delta)
     {
         // 检测玩家的点击输入，确定执行的操作
+        if (!CheckPlayerSelection()) 
+        {
+            return;
+        }
 
         _currentBattleStage = BattleStage.PlayerPerforming;
     }
 
+    private bool CheckPlayerSelection()
+    {
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            // 获取鼠标位置并转换为世界坐标
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            // 进行射线投射
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+            // 检查射线是否碰到了碰撞体
+            if (hit.collider != null)
+            {
+                _playerIntension = new Intension()
+                {
+                    AttackOrDefence = _currentMonster.IsFromThisGO(hit.collider.gameObject) ? 1 : 0
+                };
+                switch (hit.collider.tag) 
+                {
+                    case "leftHand":
+                        _playerIntension.location = EquipmentType.LeftHand;
+                        return true;
+                    case "rightHand":
+                        _playerIntension.location = EquipmentType.RightHand;
+                        return true;
+                    case "leftFoot":
+                        _playerIntension.location = EquipmentType.LeftFoot;
+                        return true;
+                    case "rightFoot":
+                        _playerIntension.location = EquipmentType.RightFoot;
+                        return true;
+                    case "breast":
+                        _playerIntension.location = EquipmentType.Breast;
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private void DoPlayerPerforming(int delta)
     {
+        Debug.Log($"玩家当前意图{_playerIntension.AttackOrDefence} {_playerIntension.location}");
+
         // 执行对应操作
 
         if (_currentMonster.Hp <= 0) 

@@ -22,4 +22,12 @@ public class Monster : Unit
 
     // 怪物正在防御的位置
     public EquipmentType defendingLocation;
+
+    public override void GenerateGameObject()
+    {
+        Hp = 100;
+        Root = GameObject.Instantiate(Resources.Load<GameObject>("Monster"));
+        Root.transform.position = new Vector3(5f, 0f, 0f);
+        Root.transform.localScale = new Vector3(-1, 1, 1);
+    }
 }

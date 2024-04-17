@@ -13,6 +13,8 @@ public abstract class Unit
     public Equipment Breast;
     public Equipment Weapon;
 
+    protected GameObject Root;
+
     // 生成对应的显示层
     public virtual void GenerateGameObject()
     {
@@ -31,5 +33,24 @@ public abstract class Unit
         // 播放受击动画
 
         // 计算血量减少，对应护甲耐久减少
+    }
+
+    // 判断一个gameObject是否从属与这个unit
+    public bool IsFromThisGO(GameObject gameObject) 
+    {
+        if (Root != null) 
+        {
+            var cur = gameObject.transform;
+            while (cur.parent != null) 
+            {
+                cur = cur.parent;
+                if (cur.gameObject == Root) 
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
