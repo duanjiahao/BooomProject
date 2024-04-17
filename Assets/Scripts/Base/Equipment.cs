@@ -1,31 +1,31 @@
-// ‘•??Œ^
+ï»¿// è£…å¤‡ç±»å‹
 public enum EquipmentType 
 {
-    LeftHand = 1,   // ¶ä]
-    RightHand = 2,  // ‰Eä]
-    LeftFoot = 3,   // ¶‹r
-    RightFoot = 4,  // ‰E‹r
-    Breast = 5,     // ‹¹b
-    Weapon = 6,     // •Ší
+    LeftHand = 1,   // å·¦è‡‚
+    RightHand = 2,  // å³è‡‚
+    LeftFoot = 3,   // å·¦è„š
+    RightFoot = 4,  // å³è„š
+    Breast = 5,     // èƒ¸ç”²
+    Weapon = 6,     // æ­¦å™¨
 }
 public class Equipment
 {
-    // ‘•??Œ^
+    // è£…å¤‡ç±»å‹
     public EquipmentType type;
 
-    // –hŒä‘•?“I??•S•ª”ä
+    // é˜²å¾¡è£…å¤‡çš„å‡ä¼¤ç™¾åˆ†æ¯”
     public float DefencePercent;
 
-    // ‘•?“I‘Ï‹v
+    // è£…å¤‡çš„è€ä¹…
     public float Hp;
 
-    // •Ší“IU?Ÿ”
+    // æ­¦å™¨çš„æ”»å‡»æ¬¡æ•°
     public int Turns;
 
-    // •Ší“IÅ¬?ŠQ
+    // æ­¦å™¨çš„æœ€å°ä¼¤å®³
     public float MinDamage;
 
-    // •Ší“IÅ‘å?ŠQ
+    // æ­¦å™¨çš„æœ€å¤§ä¼¤å®³
     public float MaxDamage;
 
 
