@@ -80,6 +80,7 @@ public class BattleManager : SingleMono<BattleManager>
 
     private void DoPlayerTurning(int delta)
     {
+        _currentHero.StopDefending();
         // 检测玩家的点击输入，确定执行的操作
         if (!CheckPlayerSelection()) 
         {
@@ -131,9 +132,17 @@ public class BattleManager : SingleMono<BattleManager>
 
     private void DoPlayerPerforming(int delta)
     {
-        Debug.Log($"玩家当前意图{_playerIntension.AttackOrDefence} {_playerIntension.location}");
+        Debug.Log($"玩家当前意图 {_playerIntension.AttackOrDefence} {_playerIntension.location}");
 
         // 执行对应操作
+        if (_playerIntension.AttackOrDefence == 1)
+        {
+            _currentHero.Attack(_currentMonster, _playerIntension.location);
+        }
+        else 
+        {
+            _currentHero.Defend(_playerIntension.location);
+        }
 
         if (_currentMonster.Hp <= 0) 
         {
@@ -157,7 +166,10 @@ public class BattleManager : SingleMono<BattleManager>
 
     private void DoMonsterTuring(int delta)
     {
+        _currentMonster.StopDefending();
+
         // 怪物根据AI执行对应动作并更新意图
+        DecideMonsterAction();
 
         if (_currentHero.Hp <= 0) 
         {
@@ -168,5 +180,37 @@ public class BattleManager : SingleMono<BattleManager>
 
         _currentBattleStage = BattleStage.PlayerTurning;
         _leftHeroTurns = _currentHero.Turns;
+    }
+
+    private void DecideMonsterAction() 
+    {
+        var intension = _currentMonster.CurrentIntension;
+        if (intension.AttackOrDefence == 1)
+        {
+            _currentMonster.Attack(_currentHero, intension.location);
+        }
+        else 
+        {
+            _currentMonster.Defend(intension.location);
+        }
+
+        // 更新意图
+        if (_currentMonster.HasUnequipedLocation(out var location))
+        {
+            _currentMonster.CurrentIntension = new Intension()
+            {
+                AttackOrDefence = 0,
+                location = location,
+            };
+        }
+        else 
+        {
+            // 随机攻击一个部位
+            _currentMonster.CurrentIntension = new Intension()
+            {
+                AttackOrDefence = 1,
+                location = (EquipmentType)UnityEngine.Random.Range(1, 5),
+            };
+        }
     }
 }

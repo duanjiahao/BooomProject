@@ -1,6 +1,7 @@
 ﻿// 装备类型
 public enum EquipmentType 
 {
+    NULL = 0,       // -1
     LeftHand = 1,   // 左臂
     RightHand = 2,  // 右臂
     LeftFoot = 3,   // 左脚
