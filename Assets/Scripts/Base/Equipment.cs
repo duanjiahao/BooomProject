@@ -19,6 +19,9 @@ public class Equipment
     // 装备的耐久
     public float Hp;
 
+    //装备耐久上限
+    public float MaxHp;
+
     // 武器的攻击次数
     public int Turns;
 
