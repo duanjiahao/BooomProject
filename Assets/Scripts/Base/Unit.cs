@@ -21,20 +21,23 @@ public abstract class Unit
 
     protected GameObject Root;
 
+    //2024.4.19 23:42白明
+    protected GameObject RootUI;
+
     // 生成对应的显示层
     public virtual void GenerateGameObject()
     {
 
     }
 
-    public void Defend(EquipmentType location) 
+    public void Defend(EquipmentType location)
     {
         isDefending = true;
         defendingLocation = location;
     }
 
     //  每次行动前解除防御
-    public void StopDefending() 
+    public void StopDefending()
     {
         isDefending = false;
         defendingLocation = EquipmentType.NULL;
@@ -55,12 +58,12 @@ public abstract class Unit
         var damage = Random.Range(attacker.Weapon?.MinDamage ?? 1, attacker.Weapon?.MaxDamage ?? 1);
 
         // 假如正好防住了
-        if (isDefending && defendingLocation == location) 
+        if (isDefending && defendingLocation == location)
         {
-            if (attacker.Weapon != null) 
+            if (attacker.Weapon != null)
             {
                 attacker.Weapon.Hp -= damage;
-                if (attacker.Weapon.Hp <= 0) 
+                if (attacker.Weapon.Hp <= 0)
                 {
                     attacker.SetUnitEquipment(null, EquipmentType.Weapon);
                 }
@@ -84,7 +87,7 @@ public abstract class Unit
                 Hp += equiptment.Hp;
             }
         }
-        else 
+        else
         {
             Hp -= realDamage;
         }
@@ -93,15 +96,15 @@ public abstract class Unit
     }
 
     // 判断一个gameObject是否从属与这个unit
-    public bool IsFromThisGO(GameObject gameObject) 
+    public bool IsFromThisGO(GameObject gameObject)
     {
-        if (Root != null) 
+        if (Root != null)
         {
             var cur = gameObject.transform;
-            while (cur.parent != null) 
+            while (cur.parent != null)
             {
                 cur = cur.parent;
-                if (cur.gameObject == Root) 
+                if (cur.gameObject == Root)
                 {
                     return true;
                 }
@@ -111,9 +114,9 @@ public abstract class Unit
         return false;
     }
 
-    public Equipment GetEquipmentByLocation(EquipmentType location) 
+    public Equipment GetEquipmentByLocation(EquipmentType location)
     {
-        switch (location) 
+        switch (location)
         {
             case EquipmentType.LeftHand:
                 return LeftHand;
@@ -132,9 +135,9 @@ public abstract class Unit
         return null;
     }
 
-    public void SetUnitEquipment(Equipment equipment, EquipmentType location) 
+    public void SetUnitEquipment(Equipment equipment, EquipmentType location)
     {
-        if (equipment != null && equipment.type != location) 
+        if (equipment != null && equipment.type != location)
         {
             Debug.LogError($"错误，设置的装备不是对应的槽位 {equipment.type} -> {location}");
             return;
@@ -163,9 +166,9 @@ public abstract class Unit
         }
     }
 
-    public bool HasUnequipedLocation(out EquipmentType location) 
+    public bool HasUnequipedLocation(out EquipmentType location)
     {
-        if (this.LeftHand == null) 
+        if (this.LeftHand == null)
         {
             location = EquipmentType.LeftHand;
             return true;

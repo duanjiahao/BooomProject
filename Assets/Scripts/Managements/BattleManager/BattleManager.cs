@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class BattleManager : SingleMono<BattleManager>
 {
-    private enum BattleStage 
+    private enum BattleStage
     {
         // 没有战斗
         NoBattle = 0,
@@ -23,12 +23,6 @@ public class BattleManager : SingleMono<BattleManager>
         BattleOver = 4,
     }
 
-    public UnityEvent<float> RefreshHeroHp;
-
-    public UnityEvent<int> RefreshHeroTurns;
-
-    public UnityEvent<float> RefreshMonsterHp;
-
     private Hero _currentHero;
 
     private Monster _currentMonster;
@@ -39,13 +33,18 @@ public class BattleManager : SingleMono<BattleManager>
 
     private Intension _playerIntension;
 
+    //private void Update()
+    //{
+    //    
+    //}
+
     public override void Init()
     {
         _currentBattleStage = BattleStage.NoBattle;
         StartABattle();
     }
 
-    public void StartABattle() 
+    public void StartABattle()
     {
         _currentHero = new Hero(); // TODO: 添加数据
         _currentHero.GenerateGameObject();
@@ -55,25 +54,22 @@ public class BattleManager : SingleMono<BattleManager>
 
         _currentBattleStage = BattleStage.PlayerTurning;
         _leftHeroTurns = _currentHero.Turns;
-
-        RefreshHeroHp?.Invoke(_currentHero.Hp);
-        RefreshMonsterHp?.Invoke(_currentMonster.Hp);
-        RefreshHeroTurns?.Invoke(_leftHeroTurns);
     }
 
-    public void EndBattle() 
+    public void EndBattle()
     {
         _currentBattleStage = BattleStage.BattleOver;
     }
 
     public override void Tick(int delta)
     {
+        _currentHero.leftTurn = _leftHeroTurns;//实时更新玩家剩余行动点数
         StageTick(delta);
     }
 
-    private void StageTick(int delta) 
+    private void StageTick(int delta)
     {
-        switch (_currentBattleStage) 
+        switch (_currentBattleStage)
         {
             case BattleStage.NoBattle:
                 return;
@@ -93,7 +89,7 @@ public class BattleManager : SingleMono<BattleManager>
     {
         _currentHero.StopDefending();
         // 检测玩家的点击输入，确定执行的操作
-        if (!CheckPlayerSelection()) 
+        if (!CheckPlayerSelection())
         {
             return;
         }
@@ -103,7 +99,7 @@ public class BattleManager : SingleMono<BattleManager>
 
     private bool CheckPlayerSelection()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
             // 获取鼠标位置并转换为世界坐标
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -118,7 +114,7 @@ public class BattleManager : SingleMono<BattleManager>
                 {
                     AttackOrDefence = _currentMonster.IsFromThisGO(hit.collider.gameObject) ? 1 : 0
                 };
-                switch (hit.collider.tag) 
+                switch (hit.collider.tag)
                 {
                     case "leftHand":
                         _playerIntension.location = EquipmentType.LeftHand;
@@ -150,14 +146,13 @@ public class BattleManager : SingleMono<BattleManager>
         {
             _currentHero.Attack(_currentMonster, _playerIntension.location);
         }
-        else 
+        else
         {
             _currentHero.Defend(_playerIntension.location);
         }
 
-        RefreshMonsterHp?.Invoke(Mathf.Max(_currentMonster.Hp, 0));
 
-        if (_currentMonster.Hp <= 0) 
+        if (_currentMonster.Hp <= 0)
         {
             // 怪物死亡
 
@@ -166,13 +161,12 @@ public class BattleManager : SingleMono<BattleManager>
         }
 
         _leftHeroTurns--;
-        RefreshHeroTurns?.Invoke(_leftHeroTurns);
 
         if (_leftHeroTurns <= 0)
         {
             _currentBattleStage = BattleStage.MonsterTuring;
         }
-        else 
+        else
         {
             _currentBattleStage = BattleStage.PlayerTurning;
         }
@@ -185,7 +179,7 @@ public class BattleManager : SingleMono<BattleManager>
         // 怪物根据AI执行对应动作并更新意图
         DecideMonsterAction();
 
-        if (_currentHero.Hp <= 0) 
+        if (_currentHero.Hp <= 0)
         {
             // 玩家死亡
             _currentBattleStage = BattleStage.BattleOver;
@@ -196,18 +190,18 @@ public class BattleManager : SingleMono<BattleManager>
         _leftHeroTurns = _currentHero.Turns;
     }
 
-    private void DecideMonsterAction() 
+    private void DecideMonsterAction()
     {
         var intension = _currentMonster.CurrentIntension;
         if (intension.AttackOrDefence == 1)
         {
             _currentMonster.Attack(_currentHero, intension.location);
         }
-        else 
+        else
         {
             _currentMonster.Defend(intension.location);
         }
-        RefreshHeroHp?.Invoke(Mathf.Max(_currentHero.Hp));
+        //RefreshHeroHp?.Invoke(Mathf.Max(_currentHero.Hp));
 
         // 更新意图
         if (_currentMonster.HasUnequipedLocation(out var location))
@@ -218,7 +212,7 @@ public class BattleManager : SingleMono<BattleManager>
                 location = location,
             };
         }
-        else 
+        else
         {
             // 随机攻击一个部位
             _currentMonster.CurrentIntension = new Intension()
@@ -229,12 +223,12 @@ public class BattleManager : SingleMono<BattleManager>
         }
     }
 
-    public Unit GetCurrentHero() 
+    public Unit GetCurrentHero()
     {
         return _currentHero;
     }
 
-    public Unit GetCurrentMonster() 
+    public Unit GetCurrentMonster()
     {
         return _currentMonster;
     }
