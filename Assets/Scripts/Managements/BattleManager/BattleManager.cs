@@ -23,12 +23,6 @@ public class BattleManager : SingleMono<BattleManager>
         BattleOver = 4,
     }
 
-    public UnityEvent<float> RefreshHeroHp;
-
-    public UnityEvent<int> RefreshHeroTurns;
-
-    public UnityEvent<float> RefreshMonsterHp;
-
     private Hero _currentHero;
 
     private Monster _currentMonster;
@@ -55,10 +49,6 @@ public class BattleManager : SingleMono<BattleManager>
 
         _currentBattleStage = BattleStage.PlayerTurning;
         _leftHeroTurns = _currentHero.Turns;
-
-        RefreshHeroHp?.Invoke(_currentHero.Hp);
-        RefreshMonsterHp?.Invoke(_currentMonster.Hp);
-        RefreshHeroTurns?.Invoke(_leftHeroTurns);
     }
 
     public void EndBattle() 
@@ -155,8 +145,6 @@ public class BattleManager : SingleMono<BattleManager>
             _currentHero.Defend(_playerIntension.location);
         }
 
-        RefreshMonsterHp?.Invoke(Mathf.Max(_currentMonster.Hp, 0));
-
         if (_currentMonster.Hp <= 0) 
         {
             // 怪物死亡
@@ -166,7 +154,6 @@ public class BattleManager : SingleMono<BattleManager>
         }
 
         _leftHeroTurns--;
-        RefreshHeroTurns?.Invoke(_leftHeroTurns);
 
         if (_leftHeroTurns <= 0)
         {
@@ -207,7 +194,6 @@ public class BattleManager : SingleMono<BattleManager>
         {
             _currentMonster.Defend(intension.location);
         }
-        RefreshHeroHp?.Invoke(Mathf.Max(_currentHero.Hp));
 
         // 更新意图
         if (_currentMonster.HasUnequipedLocation(out var location))
@@ -237,5 +223,10 @@ public class BattleManager : SingleMono<BattleManager>
     public Unit GetCurrentMonster() 
     {
         return _currentMonster;
+    }
+
+    public int GetCurrentTurns() 
+    {
+        return _leftHeroTurns;
     }
 }

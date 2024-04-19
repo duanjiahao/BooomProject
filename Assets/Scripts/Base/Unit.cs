@@ -6,6 +6,8 @@ public abstract class Unit
 {
     public float Hp;
 
+    public float MaxHp;
+
     public Equipment LeftHand;
     public Equipment rightHand;
     public Equipment leftFoot;
@@ -73,11 +75,12 @@ public abstract class Unit
         var equiptment = GetEquipmentByLocation(location);
         var def = equiptment?.DefencePercent ?? 0;
 
-        var realDamage = damage * Mathf.Clamp01(1 - def / 100f);
+        var armDamage = damage * Mathf.Clamp01(1 - def / 100f);
+        var hpDamage = damage - armDamage;
 
         if (equiptment != null)
         {
-            equiptment.Hp -= realDamage;
+            equiptment.Hp -= armDamage;
             if (equiptment.Hp <= 0)
             {
                 SetUnitEquipment(null, location);
@@ -86,8 +89,10 @@ public abstract class Unit
         }
         else 
         {
-            Hp -= realDamage;
+            Hp -= armDamage;
         }
+
+        Hp -= hpDamage;
 
         Debug.Log($"当前Unit：{this.GetType().Name} 当前血量：{this.Hp} 受损装备:{location} 装备剩余耐久:{equiptment?.Hp ?? 0}");
     }
