@@ -14,6 +14,7 @@ public class Hero : Unit
     public override void GenerateGameObject()
     {
         Hp = 100;
+        MaxHp = 100;
         Root = GameObject.Instantiate(Resources.Load<GameObject>("Hero"));
         Root.transform.position = new Vector3(-5f, 0f, 0f);
         Root.transform.localScale = Vector3.one;

@@ -20,6 +20,7 @@ public class Monster : Unit
     public override void GenerateGameObject()
     {
         Hp = 100;
+        MaxHp = 100;
         Root = GameObject.Instantiate(Resources.Load<GameObject>("Monster"));
         Root.transform.position = new Vector3(5f, 0f, 0f);
         Root.transform.localScale = new Vector3(-1, 1, 1);
