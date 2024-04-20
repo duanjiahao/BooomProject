@@ -10,3 +10,5 @@
 /.vs
 /UserSettings/Layouts/default-2022.dwlt
 /.gitignore
+*.dwlt
+/UserSettings/Search.index
