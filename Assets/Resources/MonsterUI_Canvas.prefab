@@ -348,6 +348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3016c1631c2663141b8d7f4329a695a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroSO: {fileID: 11400000, guid: c9b11a368baa4584595e109db7143eff, type: 2}
+  currentHealth:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 7a1194c8d2ededd46b9be860eb3cedd7, type: 2}
 --- !u!1 &7733528276931162616
 GameObject:
   m_ObjectHideFlags: 0

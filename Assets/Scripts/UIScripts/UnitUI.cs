@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class UnitUI : MonoBehaviour
 {
-    public Unit _currentUnit;
-
     //血量UI
     protected Image Health_Image;//血条的图片，锚点为（0，0.5）
     protected Text MaxHealth_Text;//最大血量的文本
     protected Text Health_Text;//血量的文本
-    protected float maxHealth = 100;//最大血量
-    protected float currentHealth = 100;//当前血量
+
+    [SerializeField]
+    protected UnitAttributeSO heroSO;
+    [SerializeField]
+    protected FloatReference currentHealth;//当前血量
     //public float CurrentHealth//当前血量的属性
     //{
     //    get 
@@ -36,10 +37,8 @@ public class UnitUI : MonoBehaviour
 
     private void Update()
     {
-        currentHealth = _currentUnit.Hp;
-        Health_Image.rectTransform.localScale = new Vector3(currentHealth / maxHealth, 1, 1);
-        Health_Text.text = currentHealth.ToString("0");
-        currentHealth = currentHealth <= 0 ? 0 : currentHealth;
+        Health_Image.rectTransform.localScale = new Vector3(currentHealth / heroSO.MaxHp, 1, 1);
+        Health_Text.text = currentHealth.Value.ToString("0");
     }
 
     ///// <summary>

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9edb37fccf1df47b7c866962136986, type: 3}
+  m_Name: Monster Attribute
+  m_EditorClassIdentifier: 
+  Hp: {fileID: 11400000, guid: 7a1194c8d2ededd46b9be860eb3cedd7, type: 2}
+  MaxHp:
+    UseConstant: 1
+    ConstantValue: 100
+    Variable: {fileID: 0}
+  LeftHand: {fileID: 11400000, guid: 58c9c32b9d3512647b3f2eb431af60f5, type: 2}
+  RightHand: {fileID: 11400000, guid: 34764d8ebbdee634ca42c24c0b30c050, type: 2}
+  LeftFoot: {fileID: 11400000, guid: 29855d92d54ac454298f6bb4012d84f0, type: 2}
+  RightFoot: {fileID: 11400000, guid: 5088cdb7fcfd03d47b53185fa2b70d1b, type: 2}
+  Breast: {fileID: 11400000, guid: 6798cabb3e73abe40bbaa8697b32aa18, type: 2}
+  Weapon: {fileID: 11400000, guid: 9fef926c1c570524da583edd3af35c32, type: 2}

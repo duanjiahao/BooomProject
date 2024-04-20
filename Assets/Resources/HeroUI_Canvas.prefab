@@ -195,6 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75d4092b71417645b4fc2e8d0c83645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroSO: {fileID: 11400000, guid: 269cfdab92fba264c83a0befdefe7b2a, type: 2}
+  currentHealth:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: d2f6b20c1c5e7dc49820589401c29fce, type: 2}
 --- !u!1 &4665266053068426356
 GameObject:
   m_ObjectHideFlags: 0

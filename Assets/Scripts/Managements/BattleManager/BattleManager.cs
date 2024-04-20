@@ -88,6 +88,7 @@ public class BattleManager : SingleMono<BattleManager>
     private void DoPlayerTurning(int delta)
     {
         _currentHero.StopDefending();
+        _currentHero.StopBreaking();
         // 检测玩家的点击输入，确定执行的操作
         if (!CheckPlayerSelection())
         {
@@ -151,12 +152,7 @@ public class BattleManager : SingleMono<BattleManager>
             _currentHero.Defend(_playerIntension.location);
         }
 
-<<<<<<< HEAD
-
         if (_currentMonster.Hp <= 0)
-=======
-        if (_currentMonster.Hp <= 0) 
->>>>>>> e2d14ba7ece21286bdcbf250fa96951857488d69
         {
             // 怪物死亡
 
@@ -179,6 +175,7 @@ public class BattleManager : SingleMono<BattleManager>
     private void DoMonsterTuring(int delta)
     {
         _currentMonster.StopDefending();
+        _currentMonster.StopBreaking();
 
         // 怪物根据AI执行对应动作并更新意图
         DecideMonsterAction();
@@ -205,10 +202,6 @@ public class BattleManager : SingleMono<BattleManager>
         {
             _currentMonster.Defend(intension.location);
         }
-<<<<<<< HEAD
-        //RefreshHeroHp?.Invoke(Mathf.Max(_currentHero.Hp));
-=======
->>>>>>> e2d14ba7ece21286bdcbf250fa96951857488d69
 
         // 更新意图
         if (_currentMonster.HasUnequipedLocation(out var location))

@@ -4,13 +4,31 @@ using UnityEngine;
 
 public abstract class Unit
 {
-    public float Hp;
+    protected UnitAttributeSO UnitAttribute;
 
-    public float MaxHp;
+    public float Hp 
+    {
+        get 
+        {
+            return UnitAttribute.Hp.Value;
+        }
+        set 
+        {
+            UnitAttribute.Hp.Value = Mathf.Max(value, 0f);
+        }
+    }
+
+    public float MaxHp 
+    {
+        get
+        {
+            return UnitAttribute.MaxHp;
+        }
+    }
 
     public Equipment LeftHand;
-    public Equipment rightHand;
-    public Equipment leftFoot;
+    public Equipment RightHand;
+    public Equipment LeftFoot;
     public Equipment RightFoot;
     public Equipment Breast;
     public Equipment Weapon;
@@ -21,6 +39,9 @@ public abstract class Unit
     // 正在防御的位置
     public EquipmentType defendingLocation;
 
+    // 是否破甲
+    public bool isBreaking;
+
     protected GameObject Root;
 
     //2024.4.19 23:42白明
@@ -29,7 +50,17 @@ public abstract class Unit
     // 生成对应的显示层
     public virtual void GenerateGameObject()
     {
+        UnitAttribute = GameObject.Instantiate(Root.GetComponent<UnitDataHolder>().UnitData);
 
+        // 直接设置动态数值的初始值
+        UnitAttribute.Hp.Value = UnitAttribute.MaxHp;
+
+        LeftHand = new Equipment(UnitAttribute.LeftHand);
+        RightHand = new Equipment(UnitAttribute.RightHand);
+        LeftFoot = new Equipment(UnitAttribute.LeftFoot);
+        RightFoot = new Equipment(UnitAttribute.RightFoot);
+        Breast = new Equipment(UnitAttribute.Breast);
+        Weapon = new Equipment(UnitAttribute.Weapon);
     }
 
     public void Defend(EquipmentType location)
@@ -44,6 +75,16 @@ public abstract class Unit
         isDefending = false;
         defendingLocation = EquipmentType.NULL;
     }
+    public void SetBreaking()
+    {
+        isBreaking = true;
+    }
+
+    //  每次行动前解除防御
+    public void StopBreaking()
+    {
+        isBreaking = false;
+    }
 
     // 攻击别人
     public virtual void Attack(Unit target, EquipmentType location)
@@ -57,7 +98,7 @@ public abstract class Unit
         // 播放受击动画
 
         // 计算血量减少，对应护甲耐久减少
-        var damage = Random.Range(attacker.Weapon?.MinDamage ?? 1, attacker.Weapon?.MaxDamage ?? 1);
+        var damage = Random.Range(attacker.Weapon?.MinDamage ?? 1f, attacker.Weapon?.MaxDamage ?? 1f) * (isBreaking ? 1.5f : 1f);
 
         // 假如正好防住了
         if (isDefending && defendingLocation == location)
@@ -76,18 +117,25 @@ public abstract class Unit
         }
 
         var equiptment = GetEquipmentByLocation(location);
-        var def = equiptment?.DefencePercent ?? 0;
+        var def = equiptment?.DefencePercent ?? 0f;
 
         var armDamage = damage * Mathf.Clamp01(1 - def / 100f);
         var hpDamage = damage - armDamage;
 
         if (equiptment != null)
         {
+            // 记录一下减去伤害前的HP，因为有可能会超过装备耐久
+            var tempHp = equiptment.Hp;
+
             equiptment.Hp -= armDamage;
             if (equiptment.Hp <= 0)
             {
                 SetUnitEquipment(null, location);
-                Hp += equiptment.Hp;
+
+                // 设置破甲状态
+                SetBreaking();
+
+                Hp -= armDamage - tempHp;
             }
         }
         else
@@ -97,7 +145,7 @@ public abstract class Unit
 
         Hp -= hpDamage;
 
-        Debug.Log($"当前Unit：{this.GetType().Name} 当前血量：{this.Hp} 受损装备:{location} 装备剩余耐久:{equiptment?.Hp ?? 0}");
+        Debug.Log($"当前Unit：{this.GetType().Name} 当前血量：{this.Hp} 受损装备:{location} 装备剩余耐久:{equiptment?.Hp ?? 0f}");
     }
 
     // 判断一个gameObject是否从属与这个unit
@@ -126,9 +174,9 @@ public abstract class Unit
             case EquipmentType.LeftHand:
                 return LeftHand;
             case EquipmentType.RightHand:
-                return rightHand;
+                return RightHand;
             case EquipmentType.LeftFoot:
-                return leftFoot;
+                return LeftFoot;
             case EquipmentType.RightFoot:
                 return RightFoot;
             case EquipmentType.Breast:
@@ -154,10 +202,10 @@ public abstract class Unit
                 this.LeftHand = equipment;
                 break;
             case EquipmentType.RightHand:
-                this.rightHand = equipment;
+                this.RightHand = equipment;
                 break;
             case EquipmentType.LeftFoot:
-                this.leftFoot = equipment;
+                this.LeftFoot = equipment;
                 break;
             case EquipmentType.RightFoot:
                 this.RightFoot = equipment;
@@ -179,13 +227,13 @@ public abstract class Unit
             return true;
         }
 
-        if (this.rightHand == null)
+        if (this.RightHand == null)
         {
             location = EquipmentType.RightHand;
             return true;
         }
 
-        if (this.leftFoot == null)
+        if (this.LeftFoot == null)
         {
             location = EquipmentType.LeftFoot;
             return true;
