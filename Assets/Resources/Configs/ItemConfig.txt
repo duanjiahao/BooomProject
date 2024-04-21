@@ -1,0 +1,40 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[BaseConfig, Assembly-CSharp]], mscorlib",
+  "10001": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "name": "回复剂",
+    "icon": "lifeMedicine",
+    "stack": 99,
+    "effectId": 20002,
+    "price": 92.5,
+    "test1": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "test2": [
+      "测试",
+      "道具"
+    ],
+    "id": 10001
+  },
+  "10002": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "name": "复活药",
+    "icon": "raiseMedicine",
+    "stack": 0,
+    "effectId": 20003,
+    "price": 20.1,
+    "test1": [
+      6,
+      7,
+      8
+    ],
+    "test2": [
+      "结果",
+      "复活"
+    ],
+    "id": 10002
+  }
+}
