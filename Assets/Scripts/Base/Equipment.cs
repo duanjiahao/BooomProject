@@ -11,7 +11,7 @@ public enum EquipmentType
 }
 public class Equipment
 {
-    private EquipmentSO SO;
+    internal EquipmentSO SO;
 
     // 装备类型
     public EquipmentType type => SO.type;

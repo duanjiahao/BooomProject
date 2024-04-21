@@ -20,7 +20,7 @@ MonoBehaviour:
   Hp: {fileID: 11400000, guid: f5682f63e43e2f543a1ff43456bef2cc, type: 2}
   MaxHp:
     UseConstant: 1
-    ConstantValue: 100
+    ConstantValue: 50
     Variable: {fileID: 0}
   Turns:
     UseConstant: 1

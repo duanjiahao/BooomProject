@@ -10,17 +10,6 @@ public class HeroUI : UnitUI
     protected Text MaxActionPoint_Text;//最大行动点数的文本
     protected Text ActionPoint_Text;//行动点数的文本
 
-    //public int CurrentActionPoint//当前行动点数的属性
-    //{
-    //    get
-    //    {
-    //        ActionPointBG_Image.fillAmount = (float)currentActionPoint / maxActionPoint;
-    //        ActionPoint_Text.text = currentActionPoint.ToString();
-    //        currentActionPoint = currentActionPoint <= 0 ? 0 : currentActionPoint;
-    //        return currentActionPoint;
-    //    }
-    //    set { currentActionPoint = value; }
-    //}
     private void OnEnable()
     {
         //行动点数UI赋值
@@ -34,14 +23,13 @@ public class HeroUI : UnitUI
         Health_Text = transform.Find("HealthSlot/Health_Text").GetComponent<Text>();
     }
 
-    private void Update()
+    override internal void Update()
     {
+        //调用父类的update，且自己的
+        base.Update();
         //更新ui
         ActionPointBG_Image.fillAmount = (float)BattleManager.Instance.GetCurrentTurns() / (heroSO.Weapon?.Turns ?? 1);
         ActionPoint_Text.text = BattleManager.Instance.GetCurrentTurns().ToString();
         MaxActionPoint_Text.text = (heroSO.Weapon?.Turns ?? 1).ToString();
-
-        Health_Image.rectTransform.localScale = new Vector3(currentHealth / heroSO.MaxHp, 1, 1);
-        Health_Text.text = currentHealth.Value.ToString("0");
     }
 }

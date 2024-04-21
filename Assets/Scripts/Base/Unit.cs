@@ -44,12 +44,13 @@ public abstract class Unit
 
     protected GameObject Root;
 
-    //2024.4.19 23:42白明
     protected GameObject RootUI;
 
     // 生成对应的显示层
     public virtual void GenerateGameObject()
     {
+
+        //实例化的是SO的实例
         UnitAttribute = GameObject.Instantiate(Root.GetComponent<UnitDataHolder>().UnitData);
 
         // 直接设置动态数值的初始值
