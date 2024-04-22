@@ -41,7 +41,7 @@ public class BattleManager : SingleMono<BattleManager>
     public override void Init()
     {
         _currentBattleStage = BattleStage.NoBattle;
-        //StartABattle();
+        StartABattle();
     }
 
     public void StartABattle()
