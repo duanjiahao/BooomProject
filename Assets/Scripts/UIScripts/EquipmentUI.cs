@@ -5,52 +5,45 @@ using UnityEngine.UI;
 
 public class EquipmentUI : MonoBehaviour
 {
+    public EquipmentSO equipmentSO;
+
     public Text DamageReductionPercentage_Text;//减伤百分比UI
-    public Text equipmentName;
-    public Image EquipmentDurability_Image;
-    public Text EquipmentDurability_Text;
-    public Text MaxEquipmentDurability_Text;
-    public Equipment equipment;
-    public float equipmentMaxHp;
-    public float equipmentHp;
-    //public float EquipmentHp
-    //{
-    //    get
-    //    {
-    //        EquipmentDurability_Image.rectTransform.localScale = new Vector3(equipmentHp / equipmentMaxHp, 1, 1);
-    //        EquipmentDurability_Text.text = equipmentHp.ToString("0");
-    //        equipmentHp = equipmentHp <= 0 ? 0 : equipmentHp;
-    //        return equipmentHp;
-    //    }
-    //    set
-    //    {
-    //        equipmentHp = value;
-    //    }
-    //}
+
+    public Text equipmentName;//装备名称
+    public Image EquipmentDurability_Image;//装备耐久条
+
+    public Text EquipmentDurability_Text;//装备当前耐久文本
+    public float equipmentHp;//装备当前耐久
+
+    public Text MaxEquipmentDurability_Text;//装备最大耐久文本
+    public float equipmentMaxHp;//装备最大耐久
 
     public void Start()
     {
 
-        if (!(equipment.type == EquipmentType.Weapon))
+        if (!(equipmentSO.type == EquipmentType.Weapon))
         {
-            DamageReductionPercentage_Text = transform.Find("EquipmentSlot/DamageReductionPercentage").GetComponent<Text>();
             EquipmentDurability_Image = transform.Find("EquipmentSlot/EquipmentDurability_Image").GetComponent<Image>();
+            DamageReductionPercentage_Text = transform.Find("EquipmentSlot/DamageReductionPercentage").GetComponent<Text>();
             EquipmentDurability_Text = transform.Find("EquipmentSlot/EquipmentDurability_Text").GetComponent<Text>();
             MaxEquipmentDurability_Text = transform.Find("EquipmentSlot/MaxEquipmentDurability_Text").GetComponent<Text>();
 
-            DamageReductionPercentage_Text.text = "减伤：" + equipment.DefencePercent.ToString() + "%";
+            DamageReductionPercentage_Text.text = "减伤：" + equipmentSO.DefencePercent.ToString() + "%";
         }
 
         equipmentName = transform.Find("EquipmentSlot/EquipmentName").GetComponent<Text>();
 
-        equipmentName.text = equipment.type.ToString();
+        equipmentName.text = equipmentSO.type.ToString();
     }
 
     private void Update()
     {
-        equipmentHp = equipment.Hp;
-        equipmentMaxHp = equipment.MaxHp;
-        EquipmentDurability_Image.rectTransform.localScale = new Vector3(equipmentHp / equipmentMaxHp, 1, 1);
+        equipmentHp = equipmentSO.Hp.Value;
         EquipmentDurability_Text.text = equipmentHp.ToString("0");
+
+        equipmentMaxHp = equipmentSO.MaxHp.Value;
+        MaxEquipmentDurability_Text.text = equipmentMaxHp.ToString("0");
+
+        EquipmentDurability_Image.rectTransform.localScale = new Vector3(equipmentHp / equipmentMaxHp, 1, 1);
     }
 }

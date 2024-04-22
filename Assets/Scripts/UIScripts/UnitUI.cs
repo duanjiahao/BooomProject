@@ -14,17 +14,6 @@ public class UnitUI : MonoBehaviour
     protected UnitAttributeSO heroSO;
     [SerializeField]
     protected FloatReference currentHealth;//当前血量
-    //public float CurrentHealth//当前血量的属性
-    //{
-    //    get 
-    //    {
-    //        Health_Image.rectTransform.localScale = new Vector3(currentHealth / maxHealth,1,1);
-    //        Health_Text.text = currentHealth.ToString("0");
-    //        currentHealth = currentHealth <= 0 ? 0 : currentHealth;
-    //        return currentHealth; 
-    //    }
-    //    set { currentHealth = value; }
-    //}
 
     private void OnEnable()
     {
@@ -35,26 +24,10 @@ public class UnitUI : MonoBehaviour
     }
 
 
-    private void Update()
+    internal virtual void Update()
     {
         Health_Image.rectTransform.localScale = new Vector3(currentHealth / heroSO.MaxHp, 1, 1);
         Health_Text.text = currentHealth.Value.ToString("0");
+        MaxHealth_Text.text = heroSO.MaxHp.Value.ToString("0");
     }
-
-    ///// <summary>
-    ///// 暴露给Unit的HP的属性，当HP的值更改的时候，HP的属性应该调用一次刷新hp的ui的方法
-    ///// </summary>
-    ///// <param name="hp"></param>
-    //public void RefleshCurrentHealth(float hp)
-    //{
-    //    CurrentHealth = hp;
-    //}
-    ///// <summary>
-    ///// 暴露给Unit的行动点数的属性，当行动点数的值更改的时候，行动点数的属性应该调用一次刷新行动点数的ui的方法
-    ///// </summary>
-    ///// <param name="hp"></param>
-    //public void RefleshCurrentActionPoint(int point)
-    //{
-    //    currentActionPoint = point;
-    //}
 }
