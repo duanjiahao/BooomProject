@@ -10,7 +10,6 @@ public class Hero : Unit
         get { return Weapon?.Turns ?? 1; }
     }
 
-    public int leftTurn;
     public override void GenerateGameObject()
     {
         Root = GameObject.Instantiate(Resources.Load<GameObject>("Hero"));
