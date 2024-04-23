@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,5 +12,13 @@ public static class CommonUtils
             var child = gameObject.transform.GetChild(i);
             GameObject.Destroy(child.gameObject);
         }
+    }
+
+    // 随机一个结果
+    public static bool Roll(float chance) 
+    {
+        var random = Random.Range(0f, 100f);
+
+        return chance > random;
     }
 }

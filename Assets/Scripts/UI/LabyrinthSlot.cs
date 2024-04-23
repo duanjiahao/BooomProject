@@ -17,7 +17,8 @@ public enum SlotType
     Born = 0,
     Battle = 1,
     Event = 2,
-    Boss = 3,
+    Shop = 3,
+    Boss = 4,
 }
 
 public class LabyrinthSlot : MonoBehaviour
@@ -46,6 +47,8 @@ public class LabyrinthSlot : MonoBehaviour
 
     public SlotDirection Direction { get; private set; }
 
+    public SlotType SlotType { get; private set; }
+
     public void Init(SlotDirection dir, SlotType type) 
     {
         Direction = dir;
@@ -69,6 +72,7 @@ public class LabyrinthSlot : MonoBehaviour
                 break;
         }
 
+        SlotType = type;
         Boss.gameObject.SetActive(false);
         Battle.gameObject.SetActive(false);
         Event.gameObject.SetActive(false);

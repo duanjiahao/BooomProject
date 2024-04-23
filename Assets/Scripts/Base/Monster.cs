@@ -41,7 +41,7 @@ public class Monster : Unit
         CurrentIntension = new Intension()
         {
             AttackOrDefence = 1,
-            location = (EquipmentType)Random.Range(1, 5),
+            location = (EquipmentType)Random.Range(1, 6),
         };
     }
 }

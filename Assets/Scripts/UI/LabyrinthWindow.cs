@@ -78,12 +78,8 @@ public class LabyrinthWindow : MonoBehaviour
         }
 
         // 先生成出生点
-        var bornSlot = GameObject.Instantiate(_slotPrefab, transform);
-        var slotComp = bornSlot.GetComponent<LabyrinthSlot>();
-        slotComp.Init(SlotDirection.None, SlotType.Born);
-        bornSlot.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         var slotPosition = new SlotPosition();
-        _slotDic.Add(slotPosition, slotComp);
+        GenerateSlot(slotPosition, SlotDirection.None, SlotType.Born);
 
         var _lastSlotPosition = slotPosition;
         for (int i = 0; i < X + 1; i++) // 多生成一个BOSS房
@@ -100,7 +96,7 @@ public class LabyrinthWindow : MonoBehaviour
             SlotPosition next;
             do
             {
-                dir = (SlotDirection)UnityEngine.Random.Range(1, 4);
+                dir = (SlotDirection)UnityEngine.Random.Range(1, 5);
                 next = _lastSlotPosition.Next(dir);
 
             } while (_slotDic.ContainsKey(next));
@@ -112,21 +108,50 @@ public class LabyrinthWindow : MonoBehaviour
             }
             else 
             {
-                var randomIndex = UnityEngine.Random.Range(0, randomSet.Count - 1);
+                var randomIndex = UnityEngine.Random.Range(0, randomSet.Count);
                 selectType = randomSet[randomIndex] ? SlotType.Battle : SlotType.Event;
                 randomSet.RemoveAt(randomIndex);
             }
 
-            var newSlot = GameObject.Instantiate(_slotPrefab, transform);
-            var newSlotComp = newSlot.GetComponent<LabyrinthSlot>();
-            newSlotComp.Init(dir, selectType);
-            newSlot.GetComponent<RectTransform>().anchoredPosition = new Vector2(next.X * INTERVAL, next.Y * INTERVAL);
-            _slotDic.Add(next, newSlotComp);
-
+            GenerateSlot(next, dir, selectType);
             _lastSlotPosition = next;
         }
 
+        // 先假定生成的附属房间的概率是50%
+        var chance = 50;
+        
+        // 生成的房间是战斗房，要再继续生成，概率衰减
+        var reduce = 20;
 
+        var generateRoomList = new List<SlotPosition>();
+        foreach (var kv in _slotDic)
+        {
+            if (kv.Value.SlotType != SlotType.Born && kv.Value.SlotType != SlotType.Boss) 
+            {
+                generateRoomList.Add(kv.Key);
+            }
+        }
+
+        foreach (var pos in generateRoomList)
+        {
+            var slotDirs = GetCanGenerateDirs(pos);
+
+            foreach (var dir in slotDirs)
+            {
+                if (CommonUtils.Roll(chance)) 
+                {
+                    var newPos = pos.Next(dir);
+                    var type = (SlotType)UnityEngine.Random.Range(1, 4);
+                    GenerateSlot(newPos, dir, type);
+                    
+                    // 如果随机到了战斗就接着再生成
+                    if (type == SlotType.Battle) 
+                    {
+                        GenrateAdditionalRoomRecursive(newPos, chance, reduce);
+                    }
+                }
+            }
+        }
     }
 
     [ContextMenu("测试生成一遍")]
@@ -144,6 +169,49 @@ public class LabyrinthWindow : MonoBehaviour
                _slotDic.ContainsKey(pos.Next(SlotDirection.Right)) &&
                _slotDic.ContainsKey(pos.Next(SlotDirection.Up)) &&
                _slotDic.ContainsKey(pos.Next(SlotDirection.Down));
+    }
+
+    private void GenrateAdditionalRoomRecursive(SlotPosition pos, float chance, float reduce) 
+    {
+        var slotDirs = GetCanGenerateDirs(pos);
+        foreach (var dir in slotDirs)
+        {
+            if (CommonUtils.Roll(chance))
+            {
+                var newPos = pos.Next(dir);
+                var type = (SlotType)UnityEngine.Random.Range(1, 4);
+                GenerateSlot(newPos, dir, type);
+
+                if (type == SlotType.Battle) 
+                {
+                    GenrateAdditionalRoomRecursive(newPos, chance - reduce, reduce);
+                }
+            }
+        }
+    }
+
+    private List<SlotDirection> GetCanGenerateDirs(SlotPosition pos) 
+    {
+        var slotDirs = new List<SlotDirection>();
+        for (int i = 1; i <= 4; i++)
+        {
+            var dir = (SlotDirection)i;
+            if (!_slotDic.ContainsKey(pos.Next(dir)))
+            {
+                slotDirs.Add(dir);
+            }
+        }
+        return slotDirs;
+    }
+
+    private LabyrinthSlot GenerateSlot(SlotPosition pos, SlotDirection dir, SlotType type) 
+    {
+        var slot = GameObject.Instantiate(_slotPrefab, transform);
+        var slotComp = slot.GetComponent<LabyrinthSlot>();
+        slotComp.Init(dir, type);
+        slot.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.X * INTERVAL, pos.Y * INTERVAL);
+        _slotDic.Add(pos, slotComp);
+        return slotComp;
     }
 
     // Update is called once per frame
