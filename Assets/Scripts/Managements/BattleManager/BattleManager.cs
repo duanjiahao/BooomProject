@@ -41,7 +41,7 @@ public class BattleManager : SingleMono<BattleManager>
     public override void Init()
     {
         _currentBattleStage = BattleStage.NoBattle;
-        StartABattle();
+        //StartABattle();
     }
 
     public void StartABattle()
@@ -63,7 +63,6 @@ public class BattleManager : SingleMono<BattleManager>
 
     public override void Tick(int delta)
     {
-        _currentHero.leftTurn = _leftHeroTurns;//实时更新玩家剩余行动点数
         StageTick(delta);
     }
 
@@ -218,7 +217,7 @@ public class BattleManager : SingleMono<BattleManager>
             _currentMonster.CurrentIntension = new Intension()
             {
                 AttackOrDefence = 1,
-                location = (EquipmentType)UnityEngine.Random.Range(1, 5),
+                location = (EquipmentType)UnityEngine.Random.Range(1, 6),
             };
         }
     }
