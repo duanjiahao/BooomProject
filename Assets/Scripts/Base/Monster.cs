@@ -36,7 +36,7 @@ public class Monster : Unit
         GameObject MonsterBreastUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("MonsterEquipmentDurability_Panel").transform);
         MonsterBreastUI.GetComponent<EquipmentUI>().equipmentSO = Breast.SO;
         //UI实例化
-        RootUI = GameObject.Instantiate(Resources.Load<GameObject>("MonsterUI_Canvas"));
+        RootUI = GameObject.Instantiate(Resources.Load<GameObject>("MonsterUI_Canvas"), GameObject.Find("CombatUI").transform);
 
         CurrentIntension = new Intension()
         {

@@ -32,6 +32,6 @@ public class Hero : Unit
         GameObject HeroBreastUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
         HeroBreastUI.GetComponent<EquipmentUI>().equipmentSO = Breast.SO;
         //UI实例化
-        RootUI = GameObject.Instantiate(Resources.Load<GameObject>("HeroUI_Canvas"));
+        RootUI = GameObject.Instantiate(Resources.Load<GameObject>("HeroUI_Canvas"),GameObject.Find("CombatUI").transform);
     }
 }

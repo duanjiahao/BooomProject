@@ -28,7 +28,7 @@ public class EquipmentUI : MonoBehaviour
             EquipmentDurability_Text = transform.Find("EquipmentSlot/EquipmentDurability_Text").GetComponent<Text>();
             MaxEquipmentDurability_Text = transform.Find("EquipmentSlot/MaxEquipmentDurability_Text").GetComponent<Text>();
 
-            DamageReductionPercentage_Text.text = "减伤：" + equipmentSO.DefencePercent.ToString() + "%";
+            DamageReductionPercentage_Text.text = "减伤：" + equipmentSO.DefencePercent.Value.ToString() + "%";
         }
 
         equipmentName = transform.Find("EquipmentSlot/EquipmentName").GetComponent<Text>();
