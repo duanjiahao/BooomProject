@@ -55,20 +55,20 @@ public class LabyrinthWindow : MonoBehaviour
 
     private void GenerateLabylinth()
     {
-        var X = 8; // TODO: 读表
+        var floorConfig = ConfigManager.Instance.GetConfig<FloorConfigConfig>(1);
+
+        var X = floorConfig.mainRoom;
 
         var BattleCount = 3;
         var EventCount = 1;
 
         // 要求多出base数量的格子，按照7:3（战斗：事件）的比例生成，这里先计算出额外的事件数量
-        var extraEventCount = Mathf.FloorToInt((X - (BattleCount + EventCount)) * 3f / 7f);
+        var extraEventCount = Mathf.FloorToInt((X - (BattleCount + EventCount)) * 3f / 10f);
 
         if (extraEventCount > 0) 
         {
             EventCount += extraEventCount;
         }
-
-        BattleCount = X - EventCount;
 
         // 生成一个集合，其中ture表示是战斗房，flase表示事件房
         List<bool> randomSet = new List<bool>(X);
@@ -117,11 +117,10 @@ public class LabyrinthWindow : MonoBehaviour
             _lastSlotPosition = next;
         }
 
-        // 先假定生成的附属房间的概率是50%
-        var chance = 50;
+        var chance = floorConfig.sideRoomRate * 100f;
         
         // 生成的房间是战斗房，要再继续生成，概率衰减
-        var reduce = 20;
+        var reduce = floorConfig.sideRoomDecrease * 100f;
 
         var generateRoomList = new List<SlotPosition>();
         foreach (var kv in _slotDic)
@@ -132,6 +131,8 @@ public class LabyrinthWindow : MonoBehaviour
             }
         }
 
+        // 只生成一个商店
+        bool hasGeneratedShop = false;
         foreach (var pos in generateRoomList)
         {
             var slotDirs = GetCanGenerateDirs(pos);
@@ -141,13 +142,50 @@ public class LabyrinthWindow : MonoBehaviour
                 if (CommonUtils.Roll(chance)) 
                 {
                     var newPos = pos.Next(dir);
-                    var type = (SlotType)UnityEngine.Random.Range(1, 4);
+                    var type = (SlotType)UnityEngine.Random.Range(1, hasGeneratedShop ? 3 : 4);
                     GenerateSlot(newPos, dir, type);
-                    
+
                     // 如果随机到了战斗就接着再生成
-                    if (type == SlotType.Battle) 
+                    if (type == SlotType.Battle)
                     {
                         GenrateAdditionalRoomRecursive(newPos, chance, reduce);
+                    }
+                    else if (type == SlotType.Shop) 
+                    {
+                        hasGeneratedShop = true;
+                    }
+                }
+            }
+        }
+
+        while (!hasGeneratedShop)
+        {
+            var randomRoom = generateRoomList[UnityEngine.Random.Range(0, generateRoomList.Count)];
+            var slotDirs = GetCanGenerateDirs(randomRoom);
+            if (slotDirs.Count > 0) 
+            {
+                var randomDir = slotDirs[UnityEngine.Random.Range(0, slotDirs.Count)];
+                var newPos = randomRoom.Next(randomDir);
+                GenerateSlot(newPos, randomDir, SlotType.Shop);
+                hasGeneratedShop = true;
+            }
+        }
+
+        // 暂定房间连通概率为50
+        var connectRate = 50f;
+
+        foreach (var kv in _slotDic)
+        {
+            if (kv.Value.SlotType != SlotType.Born && kv.Value.SlotType != SlotType.Boss)
+            {
+                var notConnectedList = GetNotConnectedDirs(kv.Key);
+                foreach (var dir in notConnectedList)
+                {
+                    if (CommonUtils.Roll(connectRate)) 
+                    {
+                        kv.Value.AddConnection(dir);
+                        var nextSlot = kv.Key.Next(dir);
+                        _slotDic[nextSlot].AddConnection(CommonUtils.GetInverseDirection(dir));
                     }
                 }
             }
@@ -199,6 +237,30 @@ public class LabyrinthWindow : MonoBehaviour
             if (!_slotDic.ContainsKey(pos.Next(dir)))
             {
                 slotDirs.Add(dir);
+            }
+        }
+        return slotDirs;
+    }
+
+    private List<SlotDirection> GetNotConnectedDirs(SlotPosition pos) 
+    {
+        var slotDirs = new List<SlotDirection>();
+        for (int i = 1; i <= 4; i++)
+        {
+            var dir = (SlotDirection)i;
+            var nextPos = pos.Next(dir);
+            if (_slotDic.ContainsKey(nextPos))
+            {
+                var nextSlot = _slotDic[nextPos];
+                if (nextSlot.SlotType == SlotType.Born || nextSlot.SlotType == SlotType.Boss) 
+                {
+                    continue;
+                }
+
+                if (!nextSlot.HasConnection(CommonUtils.GetInverseDirection(dir))) 
+                {
+                    slotDirs.Add(dir);
+                }
             }
         }
         return slotDirs;
