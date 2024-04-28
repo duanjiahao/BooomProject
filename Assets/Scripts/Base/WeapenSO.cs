@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "Equipment SO", menuName = "SO/Create Equipment")]
-public class EquipmentSO : ScriptableObject
+[CreateAssetMenu(fileName = "Weapen SO", menuName = "SO/Create Wenpen")]
+public class WeapenSO : ScriptableObject
 {
     // 装备类型
     public EquipmentType type;
 
-    // 防御装备的减伤百分比
-    public FloatReference DefencePercent;
+    //伤害
+    public FloatReference damage;
 
     // 装备的耐久
     public FloatVariable Hp;

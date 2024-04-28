@@ -25,10 +25,10 @@ public class Monster : Unit
         Root.transform.position = new Vector3(5f, 0f, 0f);
         Root.transform.localScale = new Vector3(-1, 1, 1);
 
-        GameObject MonsterleftFootUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("MonsterEquipmentDurability_Panel").transform);
-        MonsterleftFootUI.GetComponent<EquipmentUI>().equipmentSO = LeftFoot.SO;
-        GameObject MonsterRightFootUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("MonsterEquipmentDurability_Panel").transform);
-        MonsterRightFootUI.GetComponent<EquipmentUI>().equipmentSO = RightFoot.SO;
+        GameObject MonstereLegsUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("MonsterEquipmentDurability_Panel").transform);
+        MonstereLegsUI.GetComponent<EquipmentUI>().equipmentSO = Legs.SO;
+        GameObject MonsterHeadUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("MonsterEquipmentDurability_Panel").transform);
+        MonsterHeadUI.GetComponent<EquipmentUI>().equipmentSO = Head.SO;
         GameObject MonsterLeftHandUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("MonsterEquipmentDurability_Panel").transform);
         MonsterLeftHandUI.GetComponent<EquipmentUI>().equipmentSO = LeftHand.SO;
         GameObject MonsterrightHandUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("MonsterEquipmentDurability_Panel").transform);

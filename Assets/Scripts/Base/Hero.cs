@@ -20,10 +20,10 @@ public class Hero : Unit
 
         //GameObject HeroWeaponUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("EquipmentDurability_Panel").transform);
         //HeroWeaponUI.GetComponent<EquipmentUI>().equipment = Weapon;
-        GameObject HeroleftFootUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
-        HeroleftFootUI.GetComponent<EquipmentUI>().equipmentSO = LeftFoot.SO;
-        GameObject HeroRightFootUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
-        HeroRightFootUI.GetComponent<EquipmentUI>().equipmentSO = RightFoot.SO;
+        GameObject HeroHeadUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
+        HeroHeadUI.GetComponent<EquipmentUI>().equipmentSO = Head.SO;
+        GameObject HeroLegsUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
+        HeroLegsUI.GetComponent<EquipmentUI>().equipmentSO = Legs.SO;
         GameObject HeroLeftHandUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
         HeroLeftHandUI.GetComponent<EquipmentUI>().equipmentSO = LeftHand.SO;
         GameObject HerorightHandUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);

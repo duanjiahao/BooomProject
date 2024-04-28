@@ -4,8 +4,8 @@ public enum EquipmentType
     NULL = 0,       // -1
     LeftHand = 1,   // 左臂
     RightHand = 2,  // 右臂
-    LeftFoot = 3,   // 左脚
-    RightFoot = 4,  // 右脚
+    Legs = 3,       // 下肢
+    Head = 4,       // 头
     Breast = 5,     // 胸甲
     Weapon = 6,     // 武器
 }

@@ -28,10 +28,10 @@ public abstract class Unit
 
     public Equipment LeftHand;
     public Equipment RightHand;
-    public Equipment LeftFoot;
-    public Equipment RightFoot;
+    public Equipment Legs;
     public Equipment Breast;
     public Equipment Weapon;
+    public Equipment Head;
 
     // 是否在防御
     public bool isDefending;
@@ -58,10 +58,10 @@ public abstract class Unit
 
         LeftHand = new Equipment(UnitAttribute.LeftHand);
         RightHand = new Equipment(UnitAttribute.RightHand);
-        LeftFoot = new Equipment(UnitAttribute.LeftFoot);
-        RightFoot = new Equipment(UnitAttribute.RightFoot);
+        Legs = new Equipment(UnitAttribute.Legs);
         Breast = new Equipment(UnitAttribute.Breast);
         Weapon = new Equipment(UnitAttribute.Weapon);
+        Head = new Equipment(UnitAttribute.Head);
     }
 
     public void Defend(EquipmentType location)
@@ -176,10 +176,10 @@ public abstract class Unit
                 return LeftHand;
             case EquipmentType.RightHand:
                 return RightHand;
-            case EquipmentType.LeftFoot:
-                return LeftFoot;
-            case EquipmentType.RightFoot:
-                return RightFoot;
+            case EquipmentType.Legs:
+                return Legs;
+            case EquipmentType.Head:
+                return Head;
             case EquipmentType.Breast:
                 return Breast;
             case EquipmentType.Weapon:
@@ -205,11 +205,11 @@ public abstract class Unit
             case EquipmentType.RightHand:
                 this.RightHand = equipment;
                 break;
-            case EquipmentType.LeftFoot:
-                this.LeftFoot = equipment;
+            case EquipmentType.Legs:
+                this.Legs = equipment;
                 break;
-            case EquipmentType.RightFoot:
-                this.RightFoot = equipment;
+            case EquipmentType.Head:
+                this.Head = equipment;
                 break;
             case EquipmentType.Breast:
                 this.Breast = equipment;
@@ -234,15 +234,15 @@ public abstract class Unit
             return true;
         }
 
-        if (this.LeftFoot == null)
+        if (this.Legs == null)
         {
-            location = EquipmentType.LeftFoot;
+            location = EquipmentType.Legs;
             return true;
         }
 
-        if (this.RightFoot == null)
+        if (this.Head == null)
         {
-            location = EquipmentType.RightFoot;
+            location = EquipmentType.Head;
             return true;
         }
 

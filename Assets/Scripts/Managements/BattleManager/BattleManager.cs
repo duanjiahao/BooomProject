@@ -122,11 +122,11 @@ public class BattleManager : SingleMono<BattleManager>
                     case "rightHand":
                         _playerIntension.location = EquipmentType.RightHand;
                         return true;
-                    case "leftFoot":
-                        _playerIntension.location = EquipmentType.LeftFoot;
+                    case "legs":
+                        _playerIntension.location = EquipmentType.Legs;
                         return true;
-                    case "rightFoot":
-                        _playerIntension.location = EquipmentType.RightFoot;
+                    case "head":
+                        _playerIntension.location = EquipmentType.Head;
                         return true;
                     case "breast":
                         _playerIntension.location = EquipmentType.Breast;

@@ -13,9 +13,9 @@ public class UnitAttributeSO : ScriptableObject
 
     public EquipmentSO RightHand;
 
-    public EquipmentSO LeftFoot;
+    public EquipmentSO Head;
 
-    public EquipmentSO RightFoot;
+    public EquipmentSO Legs;
 
     public EquipmentSO Breast;
 

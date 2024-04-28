@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - leftHand
-  - leftFoot
   - rightHand
-  - rightFoot
   - breast
+  - legs
+  - head
   layers:
   - Default
   - TransparentFX
