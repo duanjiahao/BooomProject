@@ -1,0 +1,30 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[BaseConfig, Assembly-CSharp]], mscorlib",
+  "1": {
+    "$type": "FloorConfigConfig, Assembly-CSharp",
+    "floor": 1,
+    "mainRoom": 4,
+    "sideRoomRate": 0.4,
+    "sideRoomDecrease": 0.15,
+    "Boss": 0,
+    "id": 1
+  },
+  "2": {
+    "$type": "FloorConfigConfig, Assembly-CSharp",
+    "floor": 2,
+    "mainRoom": 4,
+    "sideRoomRate": 0.4,
+    "sideRoomDecrease": 0.15,
+    "Boss": 0,
+    "id": 2
+  },
+  "3": {
+    "$type": "FloorConfigConfig, Assembly-CSharp",
+    "floor": 3,
+    "mainRoom": 5,
+    "sideRoomRate": 0.4,
+    "sideRoomDecrease": 0.15,
+    "Boss": 0,
+    "id": 3
+  }
+}

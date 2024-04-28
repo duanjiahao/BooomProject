@@ -49,9 +49,13 @@ public class LabyrinthSlot : MonoBehaviour
 
     public SlotType SlotType { get; private set; }
 
+    public List<SlotDirection> ConnectionInfo { get; private set; }
+
     public void Init(SlotDirection dir, SlotType type) 
     {
         Direction = dir;
+        ConnectionInfo = new List<SlotDirection>();
+        ConnectionInfo.Add(CommonUtils.GetInverseDirection(dir));
         Left.gameObject.SetActive(false);
         Right.gameObject.SetActive(false);
         Up.gameObject.SetActive(false);
@@ -99,5 +103,36 @@ public class LabyrinthSlot : MonoBehaviour
 
         NewSlot.gameObject.SetActive(false);
         ExploredSlot.gameObject.SetActive(true);
+    }
+
+    public void AddConnection(SlotDirection dir) 
+    {
+        if (HasConnection(dir)) 
+        {
+            return;
+        }
+
+        switch (dir)
+        {
+            case SlotDirection.Right:
+                Right.gameObject.SetActive(true);
+                break;
+            case SlotDirection.Left:
+                Left.gameObject.SetActive(true);
+                break;
+            case SlotDirection.Down:
+                Down.gameObject.SetActive(true);
+                break;
+            case SlotDirection.Up:
+                Up.gameObject.SetActive(true);
+                break;
+        }
+
+        ConnectionInfo.Add(dir);
+    }
+
+    public bool HasConnection(SlotDirection dir) 
+    {
+        return ConnectionInfo.Contains(dir);
     }
 }
