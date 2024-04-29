@@ -1,32 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OutsideUIScripts : MonoBehaviour
 {
-    private UnitAttributeSO playerAttributeSO;
+    public Text healthUI;
+    public Text gold_UI;
 
-    public string health_Num;
-    public string gold_Num;
-
-
-    //装备耐久
-    public string equipmentDurability_weapen;
-    public string equipmentDurability_head;
-    public string equipmentDurability_lefthand;
-    public string equipmentDurability_righthand;
-    public string equipmentDurability_breast;
-    public string equipmentDurability_legs;
-
+    //装备耐久UI
+    public Text weapenUI;
+    public Text headUI;
+    public Text lefthandUI;
+    public Text righthandUI;
+    public Text breastUI;
+    public Text legsUI;
 
     private void Start()
     {
         Init();
-        print(health_Num);
     }
 
     public void Init()
     {
-        //health_Num = playerAttributeSO.Hp.ToString("0") + "/" + player.MaxHp.ToString("0");
+        PlayerData ins = PlayerData.Instance;
+
+        healthUI.text = ins.currentHP.ToString() + "/" + ins.maxHP.ToString();
+        gold_UI.text = ins.goldNum.ToString();
+
+        weapenUI.text = ins.weapenSO.Hp.Value.ToString() + "/" + ins.weapenSO.MaxHp.Value.ToString();
+        headUI.text = ins.headSO.Hp.Value.ToString() + "/" + ins.headSO.MaxHp.Value.ToString();
+        lefthandUI.text = ins.leftHandSO.Hp.Value.ToString() + "/" + ins.leftHandSO.MaxHp.Value.ToString();
+        righthandUI.text = ins.rightHandSO.Hp.Value.ToString() + "/" + ins.rightHandSO.MaxHp.Value.ToString();
+        breastUI.text = ins.breastSO.Hp.Value.ToString() + "/" + ins.breastSO.MaxHp.Value.ToString();
+        legsUI.text = ins.legsSO.Hp.Value.ToString() + "/" + ins.legsSO.MaxHp.Value.ToString();
     }
 }

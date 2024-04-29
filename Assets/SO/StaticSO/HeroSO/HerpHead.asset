@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df3a7ad2e981fcb4e8301f297766e7ea, type: 3}
-  m_Name: HeroRightFoot
+  m_Name: HerpHead
   m_EditorClassIdentifier: 
   type: 4
   DefencePercent:
     UseConstant: 1
-    ConstantValue: 50
+    ConstantValue: 40
     Variable: {fileID: 0}
-  Hp: {fileID: 11400000, guid: 9cabf06bbdc3dbe429a8d533be2586ba, type: 2}
+  Hp: {fileID: 11400000, guid: 6dc177c9007bd504b833f0379ef2dae1, type: 2}
   MaxHp:
     UseConstant: 1
     ConstantValue: 100
@@ -31,6 +31,10 @@ MonoBehaviour:
     ConstantValue: 0
     Variable: {fileID: 0}
   MaxDamage:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  value:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}

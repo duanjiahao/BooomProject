@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df3a7ad2e981fcb4e8301f297766e7ea, type: 3}
-  m_Name: HeroLeftFoot
+  m_Name: HeroLegs
   m_EditorClassIdentifier: 
   type: 3
   DefencePercent:
     UseConstant: 1
-    ConstantValue: 50
+    ConstantValue: 40
     Variable: {fileID: 0}
-  Hp: {fileID: 11400000, guid: b0f8176a70259304d982e6ed8912f289, type: 2}
+  Hp: {fileID: 11400000, guid: a237076ac3cb3544ab15d98448588084, type: 2}
   MaxHp:
     UseConstant: 1
     ConstantValue: 100
@@ -33,4 +33,8 @@ MonoBehaviour:
   MaxDamage:
     UseConstant: 1
     ConstantValue: 0
+    Variable: {fileID: 0}
+  value:
+    UseConstant: 1
+    ConstantValue: 15
     Variable: {fileID: 0}

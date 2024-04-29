@@ -19,7 +19,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   LeftHand: {fileID: 11400000, guid: 94da7124eb2693e459381b1b78569146, type: 2}
   RightHand: {fileID: 11400000, guid: b246755d9284a7b4f8dfcde022fb30a6, type: 2}
-  LeftFoot: {fileID: 11400000, guid: b9b32f72b63294f46b2197d91e81a260, type: 2}
-  RightFoot: {fileID: 11400000, guid: 08cb184bac996ee4290c6a1eeb4de070, type: 2}
+  Head: {fileID: 11400000, guid: 51b8b28f5f7d33f42ba728628548aca8, type: 2}
+  Legs: {fileID: 11400000, guid: cc129134f9f002b468c77faa4f55107c, type: 2}
   Breast: {fileID: 11400000, guid: 43a01b454d042604f9f8b623e2442e7b, type: 2}
   Weapon: {fileID: 11400000, guid: 5ecf310f98d57ee47b0e76576d1f18de, type: 2}

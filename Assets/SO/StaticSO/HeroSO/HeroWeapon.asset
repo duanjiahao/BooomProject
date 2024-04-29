@@ -20,7 +20,7 @@ MonoBehaviour:
   Hp: {fileID: 11400000, guid: 2d09a3348cdedb54db878d60157a157f, type: 2}
   MaxHp:
     UseConstant: 1
-    ConstantValue: 0
+    ConstantValue: 100
     Variable: {fileID: 0}
   Turns:
     UseConstant: 1
@@ -33,4 +33,8 @@ MonoBehaviour:
   MaxDamage:
     UseConstant: 1
     ConstantValue: 20
+    Variable: {fileID: 0}
+  value:
+    UseConstant: 1
+    ConstantValue: 0
     Variable: {fileID: 0}

@@ -4,7 +4,7 @@ public class SingleMono<T> : MonoBehaviour where T : SingleMono<T>
 {
     public static T Instance { get; private set; }
 
-    private void Awake()
+    public virtual void Awake()
     {
         Instance = this as T;
         GameObject.DontDestroyOnLoad(gameObject);

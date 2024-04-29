@@ -10,31 +10,31 @@ public class DescriptionPanel : MonoBehaviour
     public Button use_Btn;
     public ItemSO item;
 
-    private void OnEnable()
-    {
-        SynchronizeData(item);
+    //private void OnEnable()
+    //{
+    //    SynchronizeData(item);
 
-        if (!item.isGlobalUse)
-        {
-            use_Btn.gameObject.SetActive(false);
+    //    if (!item.isGlobalUse)
+    //    {
+    //        use_Btn.gameObject.SetActive(false);
 
-            //区域变化
-            description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0f, 0f);
-            description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0f, 0f);
-            description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0f, 0f);
-            description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0f, 0f);
-        }
-        else
-        {
-            use_Btn.gameObject.SetActive(true);
+    //        //区域变化
+    //        description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0f, 0f);
+    //        description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0f, 0f);
+    //        description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0f, 0f);
+    //        description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0f, 0f);
+    //    }
+    //    else
+    //    {
+    //        use_Btn.gameObject.SetActive(true);
 
-            //区域变化
-            description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0f, 0f);
-            description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0f, 0f);
-            description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0f, 0f);
-            description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0f, 0f);
-        }
-    }
+    //        //区域变化
+    //        description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0f, 0f);
+    //        description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0f, 0f);
+    //        description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0f, 0f);
+    //        description.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0f, 0f);
+    //    }
+    //}
 
     /// <summary>
     /// 同步数据
@@ -42,6 +42,6 @@ public class DescriptionPanel : MonoBehaviour
     /// <param name="item"></param>
     private void SynchronizeData(ItemSO item)
     {
-        description.text = item.description;
+        //description.text = item.description;
     }
 }
