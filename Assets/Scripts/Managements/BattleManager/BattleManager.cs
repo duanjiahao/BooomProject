@@ -47,10 +47,10 @@ public class BattleManager : SingleMono<BattleManager>
     public void StartABattle()
     {
         _currentHero = new Hero(); // TODO: 添加数据
-        _currentHero.GenerateGameObject();
+        _currentHero.GenerateGameObject(0);
 
         _currentMonster = new Monster(); // TODO: 添加数据
-        _currentMonster.GenerateGameObject();
+        _currentMonster.GenerateGameObject(0);
 
         _currentBattleStage = BattleStage.PlayerTurning;
         _leftHeroTurns = _currentHero.Turns;
@@ -117,19 +117,19 @@ public class BattleManager : SingleMono<BattleManager>
                 switch (hit.collider.tag)
                 {
                     case "leftHand":
-                        _playerIntension.location = EquipmentType.LeftHand;
+                        _playerIntension.location = EquipmentLocation.LeftHand;
                         return true;
                     case "rightHand":
-                        _playerIntension.location = EquipmentType.RightHand;
+                        _playerIntension.location = EquipmentLocation.RightHand;
                         return true;
                     case "legs":
-                        _playerIntension.location = EquipmentType.Legs;
+                        _playerIntension.location = EquipmentLocation.Leg;
                         return true;
                     case "head":
-                        _playerIntension.location = EquipmentType.Head;
+                        _playerIntension.location = EquipmentLocation.Head;
                         return true;
                     case "breast":
-                        _playerIntension.location = EquipmentType.Breast;
+                        _playerIntension.location = EquipmentLocation.Breast;
                         return true;
                 }
             }
@@ -217,7 +217,7 @@ public class BattleManager : SingleMono<BattleManager>
             _currentMonster.CurrentIntension = new Intension()
             {
                 AttackOrDefence = 1,
-                location = (EquipmentType)UnityEngine.Random.Range(1, 6),
+                location = (EquipmentLocation)UnityEngine.Random.Range(0, 5),
             };
         }
     }
