@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EquipmentRarity
+{
+    Rare1 = 1,
+    Rare2 = 2,
+    Rare3 = 3,
+    Rare4 = 4,
+}
+
 public abstract class Unit
 {
     public float Hp { get; protected set; }
@@ -26,6 +34,11 @@ public abstract class Unit
     // 生成对应的显示层
     public virtual void GenerateGameObject(int id)
     {
+    }
+
+    public virtual void Dispose() 
+    {
+        GameObject.Destroy(Root);
     }
 
     public void Defend(EquipmentLocation location)

@@ -33,32 +33,26 @@ public class BattleManager : SingleMono<BattleManager>
 
     private Intension _playerIntension;
 
-    //private void Update()
-    //{
-    //    
-    //}
-
     public override void Init()
     {
         _currentBattleStage = BattleStage.NoBattle;
-        //StartABattle();
     }
 
-    public void StartABattle()
+    public void StartABattle(bool isBoos)
     {
-        _currentHero = new Hero(); // TODO: 添加数据
+        _currentHero = new Hero();
         _currentHero.GenerateGameObject(0);
 
-        _currentMonster = new Monster(); // TODO: 添加数据
-        _currentMonster.GenerateGameObject(0);
+        var monsterConfigList = ConfigManager.Instance.GetConfigListWithFilter<EnemyConfig>((config)=> 
+        {
+            return config.enemyFloor == 1;
+        });
+
+        _currentMonster = new Monster();
+        _currentMonster.GenerateGameObject(monsterConfigList[UnityEngine.Random.Range(0, monsterConfigList.Count)].id);
 
         _currentBattleStage = BattleStage.PlayerTurning;
         _leftHeroTurns = _currentHero.Turns;
-    }
-
-    public void EndBattle()
-    {
-        _currentBattleStage = BattleStage.BattleOver;
     }
 
     public override void Tick(int delta)
@@ -81,7 +75,23 @@ public class BattleManager : SingleMono<BattleManager>
             case BattleStage.MonsterTuring:
                 DoMonsterTuring(delta);
                 return;
+            case BattleStage.BattleOver:
+                DoEndBattle(delta);
+                return;
         }
+    }
+
+    private void DoEndBattle(int delta)
+    {
+        // 结算
+
+        _currentHero.Dispose();
+        _currentHero = null;
+
+        _currentMonster.Dispose();
+        _currentMonster = null;
+
+        _currentBattleStage = BattleStage.NoBattle;
     }
 
     private void DoPlayerTurning(int delta)

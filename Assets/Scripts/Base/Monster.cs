@@ -14,6 +14,7 @@ public class Intension
 
 public class Monster : Unit
 {
+    public virtual BaseConfig config { get; protected set; }
     // 怪物当前的意图
     public Intension CurrentIntension { get; set; }
 
@@ -21,6 +22,57 @@ public class Monster : Unit
     {
         Root = GameObject.Instantiate(Resources.Load<GameObject>("Monster"));
         base.GenerateGameObject(id);
+
+        config = ConfigManager.Instance.GetConfig<EnemyConfig>(id);
+
+        var enemyConfig = config as EnemyConfig;
+
+        MaxHp = Hp = enemyConfig.enemyHP;
+
+        List<int> weights = new List<int>();
+        weights.Add(enemyConfig.Weight1);
+        weights.Add(enemyConfig.Weight2);
+        weights.Add(enemyConfig.Weight3);
+        weights.Add(enemyConfig.Weight4);
+
+        equipmentSystem = new EquipmentSystem();
+        var rarityList = CommonUtils.RollRange(weights, 6, false);
+        for (int i = 0; i < (int)EquipmentLocation.Count; i++)
+        {
+            var type = (EquipmentLocation)i;
+            if (type == EquipmentLocation.Weapon)
+            {
+                var weaponConfigList = ConfigManager.Instance.GetConfigListWithFilter<WeaponConfig>((config) =>
+                {
+                    return config.weapomRarity == rarityList[i] + 1;
+                });
+
+                if (weaponConfigList == null || weaponConfigList.Count == 0)
+                {
+                    equipmentSystem.SetEquipment(EquipmentLocation.Weapon, null, null);
+                }
+                else
+                {
+                    equipmentSystem.SetEquipment(EquipmentLocation.Weapon, null, new Weapon(weaponConfigList[Random.Range(0, weaponConfigList.Count)].id));
+                }
+            }
+            else 
+            {
+                var armorConfigList = ConfigManager.Instance.GetConfigListWithFilter<ArmorConfig>((config) =>
+                {
+                    return config.armorRarity == rarityList[i] + 1 && CommonUtils.CheckEquipmentTypeCorrespond(type, (EquipmentType)config.armorType);
+                });
+
+                if (armorConfigList == null || armorConfigList.Count == 0)
+                {
+                    equipmentSystem.SetEquipment(type, null, null);
+                }
+                else
+                {
+                    equipmentSystem.SetEquipment(type, new Equipment(armorConfigList[Random.Range(0, armorConfigList.Count)].id), null);
+                }
+            }
+        }
 
         Root.transform.position = new Vector3(5f, 0f, 0f);
         Root.transform.localScale = new Vector3(-1, 1, 1);

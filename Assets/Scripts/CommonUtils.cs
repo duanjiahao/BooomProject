@@ -40,4 +40,49 @@ public static class CommonUtils
                 return dir;
         }
     }
+
+    public static List<int> RollRange(List<int> weights, int rollTime = 1, bool remove = true)
+    {
+        List<int> result = new List<int>();
+
+        float amount = 0;
+        foreach (var weight in weights)
+        {
+            amount += weight;
+        }
+
+        for (int i = 0; i < rollTime; i++)
+        {
+            var roll = Random.Range(0, amount);
+
+            for (int j = 0; j < weights.Count; j++)
+            {
+                if (remove && result.Contains(j)) continue;
+
+                var weight = weights[j];
+                if (weight >= roll)
+                {
+                    result.Add(j);
+
+                    if (remove) 
+                    {
+                        amount -= weight;
+                    }
+                    break;
+                }
+
+                roll -= weight;
+            }
+        }
+
+        return result;
+    }
+
+    public static bool CheckEquipmentTypeCorrespond(EquipmentLocation location, EquipmentType equipmentType)
+    {
+        return (equipmentType == EquipmentType.Head && location == EquipmentLocation.Head) ||
+               (equipmentType == EquipmentType.Hand && (location == EquipmentLocation.LeftHand || location == EquipmentLocation.RightHand)) ||
+               (equipmentType == EquipmentType.Breast && location == EquipmentLocation.Breast) ||
+               (equipmentType == EquipmentType.Leg && location == EquipmentLocation.Leg);
+    }
 }

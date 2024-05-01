@@ -12,6 +12,7 @@ public enum EquipmentLocation
     Breast = 3,
     Leg = 4,
     Weapon = 5,
+    Count = 6,
 }
 
 public enum PlayerAttributeType 
@@ -107,6 +108,11 @@ public class EquipmentSystem
 
     public List<Equipment> equipmentList;            //根据Location存放装备，方便操作 
 
+    public EquipmentSystem() 
+    {
+        equipmentList = new List<Equipment>(5) { null, null, null, null, null };
+    }
+
     public EquipmentSystem(int head, int leftHand, int rightHand, int breast, int leg, int weapon) 
     {
         equipmentList = new List<Equipment>(5) { null, null, null, null, null };
@@ -163,7 +169,7 @@ public class EquipmentSystem
             case EquipmentLocation.RightHand:
             case EquipmentLocation.Breast:
             case EquipmentLocation.Leg:
-                if (!CheckEquipmentTypeCorrespond(location, equipment))
+                if (equipment != null && !CheckEquipmentTypeCorrespond(location, equipment))
                 {
                     Debug.LogError($"错误设置装备 {equipment.equipmentType} -> {location}");
                     return;
@@ -175,10 +181,7 @@ public class EquipmentSystem
 
     private bool CheckEquipmentTypeCorrespond(EquipmentLocation location, Equipment equipment)
     {
-        return (equipment.equipmentType == EquipmentType.Head && location == EquipmentLocation.Head) ||
-               (equipment.equipmentType == EquipmentType.Hand && (location == EquipmentLocation.LeftHand || location == EquipmentLocation.RightHand)) ||
-               (equipment.equipmentType == EquipmentType.Breast && location == EquipmentLocation.Breast) ||
-               (equipment.equipmentType == EquipmentType.Leg && location == EquipmentLocation.Leg);
+        return CommonUtils.CheckEquipmentTypeCorrespond(location, equipment.equipmentType);
     }
 }
 
