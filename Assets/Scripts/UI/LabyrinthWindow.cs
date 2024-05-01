@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public struct SlotPosition : IEquatable<SlotPosition>
 {
@@ -30,6 +31,38 @@ public struct SlotPosition : IEquatable<SlotPosition>
         return this;
     }
 
+    public SlotDirection Dir(SlotPosition pos)
+    {
+        if (this.X == pos.X && this.Y == pos.Y + 1) 
+        {
+            return SlotDirection.Down;
+        }
+
+        if (this.X == pos.X && this.Y == pos.Y - 1)
+        {
+            return SlotDirection.Up;
+        }
+
+        if (this.X == pos.X + 1 && this.Y == pos.Y)
+        {
+            return SlotDirection.Left;
+        }
+
+        if (this.X == pos.X - 1 && this.Y == pos.Y)
+        {
+            return SlotDirection.Right;
+        }
+
+        return SlotDirection.None;
+    }
+
+    public bool IsNeighbour(SlotPosition other)
+    {
+        var dis = this.X + this.Y;
+        var otherDis = other.X + other.Y;
+        return Mathf.Abs(dis - otherDis) == 1;
+    }
+
     public bool Equals(SlotPosition other)
     {
         return this.X == other.X && this.Y == other.Y;
@@ -38,17 +71,29 @@ public struct SlotPosition : IEquatable<SlotPosition>
 
 public class LabyrinthWindow : MonoBehaviour
 {
+    public Transform _playerRoot;
+
+    public Transform _slotRoot;
+
     private GameObject _slotPrefab;
 
     private Dictionary<SlotPosition, LabyrinthSlot> _slotDic;
 
-    private const float INTERVAL = 165f; 
+    private const float INTERVAL = 165f;
+
+    private SlotPosition _currentPosition;
+
+    private bool _moving;
+
+    private GameObject _playerGO;
 
     // Start is called before the first frame update
     void Start()
     {
         _slotDic = new Dictionary<SlotPosition, LabyrinthSlot>();
         _slotPrefab = Resources.Load<GameObject>("UI/LabyrinthSlot");
+        _playerGO = Instantiate(Resources.Load<GameObject>("UI/smallPlayer"), _playerRoot);
+        _playerGO.GetComponent<RectTransform>().anchoredPosition = new Vector2(_currentPosition.X * INTERVAL, _currentPosition.Y * INTERVAL);
 
         GenerateLabylinth();
     }
@@ -268,12 +313,53 @@ public class LabyrinthWindow : MonoBehaviour
 
     private LabyrinthSlot GenerateSlot(SlotPosition pos, SlotDirection dir, SlotType type) 
     {
-        var slot = GameObject.Instantiate(_slotPrefab, transform);
+        var slot = GameObject.Instantiate(_slotPrefab, _slotRoot);
         var slotComp = slot.GetComponent<LabyrinthSlot>();
+        slotComp.Btn.onClick.AddListener(()=> 
+        {
+            OnSlotClicked(pos);
+        });
         slotComp.Init(dir, type);
+
+        if (dir != SlotDirection.None) 
+        {
+            var lastPos = pos.Next(CommonUtils.GetInverseDirection(dir));
+            _slotDic[lastPos].AddConnection(dir);
+        }
+
         slot.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.X * INTERVAL, pos.Y * INTERVAL);
         _slotDic.Add(pos, slotComp);
         return slotComp;
+    }
+
+    private void OnSlotClicked(SlotPosition pos)
+    {
+        if (_moving) 
+        {
+            return;
+        }
+
+        if (_currentPosition.IsNeighbour(pos)) 
+        {
+            var currentSlot = _slotDic[_currentPosition];
+
+            if (currentSlot.HasConnection(_currentPosition.Dir(pos))) 
+            {
+                MoveTo(pos);
+            }
+        }
+    }
+
+    private void MoveTo(SlotPosition pos)
+    {
+        _moving = true;
+
+        var targetPos = new Vector2(-pos.X * INTERVAL, -pos.Y * INTERVAL);
+        _slotRoot.GetComponent<RectTransform>().DOAnchorPos(targetPos, 0.5f).OnComplete(()=> 
+        {
+            _currentPosition = pos;
+            _moving = false;
+        });
     }
 
     // Update is called once per frame

@@ -43,6 +43,8 @@ public class LabyrinthSlot : MonoBehaviour
 
     public Image NewSlot;
 
+    public Button Btn;
+
     public bool Explored { get; private set; }
 
     public SlotDirection Direction { get; private set; }

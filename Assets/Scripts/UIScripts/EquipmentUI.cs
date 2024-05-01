@@ -21,19 +21,19 @@ public class EquipmentUI : MonoBehaviour
     public void Start()
     {
 
-        if (!(equipmentSO.type == EquipmentType.Weapon))
-        {
-            EquipmentDurability_Image = transform.Find("EquipmentSlot/EquipmentDurability_Image").GetComponent<Image>();
-            DamageReductionPercentage_Text = transform.Find("EquipmentSlot/DamageReductionPercentage").GetComponent<Text>();
-            EquipmentDurability_Text = transform.Find("EquipmentSlot/EquipmentDurability_Text").GetComponent<Text>();
-            MaxEquipmentDurability_Text = transform.Find("EquipmentSlot/MaxEquipmentDurability_Text").GetComponent<Text>();
+        //if (!(equipmentSO.type == EquipmentType.Weapon))
+        //{
+        //    EquipmentDurability_Image = transform.Find("EquipmentSlot/EquipmentDurability_Image").GetComponent<Image>();
+        //    DamageReductionPercentage_Text = transform.Find("EquipmentSlot/DamageReductionPercentage").GetComponent<Text>();
+        //    EquipmentDurability_Text = transform.Find("EquipmentSlot/EquipmentDurability_Text").GetComponent<Text>();
+        //    MaxEquipmentDurability_Text = transform.Find("EquipmentSlot/MaxEquipmentDurability_Text").GetComponent<Text>();
 
-            DamageReductionPercentage_Text.text = "减伤：" + equipmentSO.DefencePercent.Value.ToString() + "%";
-        }
+        //    DamageReductionPercentage_Text.text = "减伤：" + equipmentSO.DefencePercent.Value.ToString() + "%";
+        //}
 
-        equipmentName = transform.Find("EquipmentSlot/EquipmentName").GetComponent<Text>();
+        //equipmentName = transform.Find("EquipmentSlot/EquipmentName").GetComponent<Text>();
 
-        equipmentName.text = equipmentSO.type.ToString();
+        //equipmentName.text = equipmentSO.type.ToString();
     }
 
     private void Update()
