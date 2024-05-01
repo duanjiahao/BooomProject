@@ -1,0 +1,60 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[BaseConfig, Assembly-CSharp]], mscorlib",
+  "30001": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "破旧的剑",
+    "weapomIcon": null,
+    "weapomRarity": 1,
+    "weapomType": 1,
+    "actionPoint": 3,
+    "weapomDesc": "锈迹斑斑的铁剑",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      8,
+      10
+    ],
+    "weapomDurable": 80,
+    "weapomAbility": [
+      13
+    ],
+    "id": 30001
+  },
+  "30002": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "破旧的重锤",
+    "weapomIcon": null,
+    "weapomRarity": 1,
+    "weapomType": 2,
+    "actionPoint": 2,
+    "weapomDesc": "难以挥动的重锤",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      12,
+      15
+    ],
+    "weapomDurable": 80,
+    "weapomAbility": [
+      9
+    ],
+    "id": 30002
+  },
+  "30003": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "破旧的匕首",
+    "weapomIcon": null,
+    "weapomRarity": 1,
+    "weapomType": 3,
+    "actionPoint": 4,
+    "weapomDesc": "看上去已经不锋利的匕首",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      5,
+      8
+    ],
+    "weapomDurable": 80,
+    "weapomAbility": [
+      1
+    ],
+    "id": 30003
+  }
+}

@@ -1,5 +1,6 @@
 public class EventConfig : BaseConfig
 {
+    public int[] eventLevel;
     public string eventName;
     public string eventImgPath;
     public string eventDesc;

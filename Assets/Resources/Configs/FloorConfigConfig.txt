@@ -6,7 +6,7 @@
     "mainRoom": 4,
     "sideRoomRate": 0.4,
     "sideRoomDecrease": 0.15,
-    "Boss": 0,
+    "Boss": 80001,
     "id": 1
   },
   "2": {

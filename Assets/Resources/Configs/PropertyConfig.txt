@@ -1,0 +1,19 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[BaseConfig, Assembly-CSharp]], mscorlib",
+  "1": {
+    "$type": "PropertyConfig, Assembly-CSharp",
+    "level": 1,
+    "strength": 10,
+    "ductility": 0.01,
+    "luck": 1,
+    "hp": 60,
+    "gold": 10,
+    "playerHead": 20001,
+    "playerBody": 20002,
+    "playerLeft": 20003,
+    "playerRight": 20003,
+    "playerLeg": 20004,
+    "playerweapon": 30001,
+    "id": 1
+  }
+}

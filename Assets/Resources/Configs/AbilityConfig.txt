@@ -1,0 +1,163 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[BaseConfig, Assembly-CSharp]], mscorlib",
+  "1": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 1,
+    "abilityDes": "提升暴击率",
+    "abilityValue": [
+      0.04,
+      0.08
+    ],
+    "id": 1
+  },
+  "2": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 2,
+    "abilityDes": "提升暴击率",
+    "abilityValue": [
+      0.1,
+      0.15
+    ],
+    "id": 2
+  },
+  "3": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 3,
+    "abilityDes": "提升暴击率",
+    "abilityValue": [
+      0.17,
+      0.23
+    ],
+    "id": 3
+  },
+  "4": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 4,
+    "abilityDes": "提升暴击率",
+    "abilityValue": [
+      0.25,
+      0.32
+    ],
+    "id": 4
+  },
+  "5": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 1,
+    "abilityDes": "提升闪避率",
+    "abilityValue": [
+      0.05,
+      0.09
+    ],
+    "id": 5
+  },
+  "6": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 2,
+    "abilityDes": "提升闪避率",
+    "abilityValue": [
+      0.1,
+      0.14
+    ],
+    "id": 6
+  },
+  "7": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 3,
+    "abilityDes": "提升闪避率",
+    "abilityValue": [
+      0.15,
+      0.19
+    ],
+    "id": 7
+  },
+  "8": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 4,
+    "abilityDes": "提升闪避率",
+    "abilityValue": [
+      0.2,
+      0.25
+    ],
+    "id": 8
+  },
+  "9": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 1,
+    "abilityDes": "对耐久造成伤害增加倍率",
+    "abilityValue": [
+      0.11,
+      0.2
+    ],
+    "id": 9
+  },
+  "10": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 2,
+    "abilityDes": "对耐久造成伤害增加倍率",
+    "abilityValue": [
+      0.21,
+      0.3
+    ],
+    "id": 10
+  },
+  "11": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 3,
+    "abilityDes": "对耐久造成伤害增加倍率",
+    "abilityValue": [
+      0.31,
+      0.4
+    ],
+    "id": 11
+  },
+  "12": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 4,
+    "abilityDes": "对耐久造成伤害增加倍率",
+    "abilityValue": [
+      0.41,
+      0.5
+    ],
+    "id": 12
+  },
+  "13": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 1,
+    "abilityDes": "降低耐久减少量",
+    "abilityValue": [
+      0.11,
+      0.2
+    ],
+    "id": 13
+  },
+  "14": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 2,
+    "abilityDes": "降低耐久减少量",
+    "abilityValue": [
+      0.21,
+      0.3
+    ],
+    "id": 14
+  },
+  "15": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 3,
+    "abilityDes": "降低耐久减少量",
+    "abilityValue": [
+      0.31,
+      0.4
+    ],
+    "id": 15
+  },
+  "16": {
+    "$type": "AbilityConfig, Assembly-CSharp",
+    "abilityLevel": 4,
+    "abilityDes": "降低耐久减少量",
+    "abilityValue": [
+      0.41,
+      0.5
+    ],
+    "id": 16
+  }
+}

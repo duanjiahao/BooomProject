@@ -1,48 +1,25 @@
-﻿// 装备类型
+﻿// 装备类型 (与策划的Armor表的armorType字段定义对应)
 public enum EquipmentType 
 {
-    NULL = 0,       // -1
-    LeftHand = 1,   // 左臂
-    RightHand = 2,  // 右臂
-    Legs = 3,       // 下肢
-    Head = 4,       // 头
-    Breast = 5,     // 胸甲
-    Weapon = 6,     // 武器
+    NULL = 0,       
+    Head = 1,   // 头甲
+    Breast = 2, // 胸甲
+    Hand = 3,   // 手甲（不分左右手）
+    Leg = 4,    // 腿甲
+    Count = 5,  // 装备计数，用来做随机、遍历等操作
 }
+
 public class Equipment
 {
-    internal EquipmentSO SO;
+    public ArmorConfig config;
 
-    // 装备类型
-    public EquipmentType type => SO.type;
+    public EquipmentType equipmentType;
+    public float Hp { get; set; } // 装备耐久
 
-    // 防御装备的减伤百分比
-    public float DefencePercent => SO.DefencePercent;
-
-    //装备耐久上限
-    public float MaxHp => SO.MaxHp;
-
-    // 武器的攻击次数
-    public int Turns => SO.Turns;
-
-    // 武器的最小伤害
-    public float MinDamage => SO.MinDamage;
-
-    // 武器的最大伤害
-    public float MaxDamage => SO.MaxDamage;
-
-    public float Hp
+    public Equipment(int id) 
     {
-        get { return SO.Hp.Value; }
-        set 
-        { 
-            SO.Hp.Value = UnityEngine.Mathf.Max(value, 0f); 
-        }
-    }
-
-    public Equipment(EquipmentSO SO) 
-    {
-        this.SO = SO;
-        SO.Hp.Value = SO.MaxHp.Value;
+        config = ConfigManager.Instance.GetConfig<ArmorConfig>(id);
+        equipmentType = (EquipmentType)config.armorType;
+        Hp = config.armorDurable;
     }
 }

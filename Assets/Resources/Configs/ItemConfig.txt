@@ -2,39 +2,29 @@
   "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[BaseConfig, Assembly-CSharp]], mscorlib",
   "10001": {
     "$type": "ItemConfig, Assembly-CSharp",
-    "name": "回复剂",
-    "icon": "lifeMedicine",
-    "stack": 99,
-    "effectId": 20002,
-    "price": 92.5,
-    "test1": [
-      1,
-      2,
-      3,
-      4
-    ],
-    "test2": [
-      "测试",
-      "道具"
-    ],
+    "itemName": "金币",
+    "itemIcon": null,
+    "itemDesc": "多多益善不是吗！",
+    "itemPrice": 1,
+    "itemAbilityValue": 0.0,
     "id": 10001
   },
   "10002": {
     "$type": "ItemConfig, Assembly-CSharp",
-    "name": "复活药",
-    "icon": "raiseMedicine",
-    "stack": 0,
-    "effectId": 20003,
-    "price": 20.1,
-    "test1": [
-      6,
-      7,
-      8
-    ],
-    "test2": [
-      "结果",
-      "复活"
-    ],
+    "itemName": "回复药",
+    "itemIcon": null,
+    "itemDesc": "能够恢复生命值",
+    "itemPrice": 10,
+    "itemAbilityValue": 10.0,
     "id": 10002
+  },
+  "10003": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "修理工具",
+    "itemIcon": null,
+    "itemDesc": "能够恢复耐久",
+    "itemPrice": 10,
+    "itemAbilityValue": 15.0,
+    "id": 10003
   }
 }
