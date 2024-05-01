@@ -4,40 +4,17 @@ using UnityEngine;
 
 public abstract class Unit
 {
-    protected UnitAttributeSO UnitAttribute;
+    public float Hp { get; protected set; }
 
-    public float Hp 
-    {
-        get 
-        {
-            return UnitAttribute.Hp.Value;
-        }
-        set 
-        {
-            UnitAttribute.Hp.Value = Mathf.Max(value, 0f);
-        }
-    }
+    public float MaxHp { get; protected set; }
 
-    public float MaxHp 
-    {
-        get
-        {
-            return UnitAttribute.MaxHp;
-        }
-    }
-
-    public Equipment LeftHand;
-    public Equipment RightHand;
-    public Equipment Legs;
-    public Equipment Breast;
-    public Equipment Weapon;
-    public Equipment Head;
+    public EquipmentSystem equipmentSystem;
 
     // 是否在防御
     public bool isDefending;
 
     // 正在防御的位置
-    public EquipmentType defendingLocation;
+    public EquipmentLocation defendingLocation;
 
     // 是否破甲
     public bool isBreaking;
@@ -47,24 +24,11 @@ public abstract class Unit
     protected GameObject RootUI;
 
     // 生成对应的显示层
-    public virtual void GenerateGameObject()
+    public virtual void GenerateGameObject(int id)
     {
-
-        //实例化的是SO的实例
-        UnitAttribute = GameObject.Instantiate(Root.GetComponent<UnitDataHolder>().UnitData);
-
-        // 直接设置动态数值的初始值
-        UnitAttribute.Hp.Value = UnitAttribute.MaxHp;
-
-        LeftHand = new Equipment(UnitAttribute.LeftHand);
-        RightHand = new Equipment(UnitAttribute.RightHand);
-        Legs = new Equipment(UnitAttribute.Legs);
-        Breast = new Equipment(UnitAttribute.Breast);
-        Weapon = new Equipment(UnitAttribute.Weapon);
-        Head = new Equipment(UnitAttribute.Head);
     }
 
-    public void Defend(EquipmentType location)
+    public void Defend(EquipmentLocation location)
     {
         isDefending = true;
         defendingLocation = location;
@@ -74,7 +38,7 @@ public abstract class Unit
     public void StopDefending()
     {
         isDefending = false;
-        defendingLocation = EquipmentType.NULL;
+        defendingLocation = EquipmentLocation.NULL;
     }
     public void SetBreaking()
     {
@@ -88,28 +52,28 @@ public abstract class Unit
     }
 
     // 攻击别人
-    public virtual void Attack(Unit target, EquipmentType location)
+    public virtual void Attack(Unit target, EquipmentLocation location)
     {
         target.BeAttacked(this, location);
     }
 
     //被别人攻击
-    public virtual void BeAttacked(Unit attacker, EquipmentType location)
+    public virtual void BeAttacked(Unit attacker, EquipmentLocation location)
     {
         // 播放受击动画
 
         // 计算血量减少，对应护甲耐久减少
-        var damage = Random.Range(attacker.Weapon?.MinDamage ?? 1f, attacker.Weapon?.MaxDamage ?? 1f) * (isBreaking ? 1.5f : 1f);
+        var damage = Random.Range(attacker.equipmentSystem.Weapon?.config.weapomAttack[0] ?? 1f, attacker.equipmentSystem.Weapon?.config.weapomAttack[1] ?? 1f) * (isBreaking ? 1.5f : 1f);
 
         // 假如正好防住了
         if (isDefending && defendingLocation == location)
         {
-            if (attacker.Weapon != null)
+            if (attacker.equipmentSystem.Weapon != null)
             {
-                attacker.Weapon.Hp -= damage;
-                if (attacker.Weapon.Hp <= 0)
+                attacker.equipmentSystem.Weapon.Hp -= damage;
+                if (attacker.equipmentSystem.Weapon.Hp <= 0)
                 {
-                    attacker.SetUnitEquipment(null, EquipmentType.Weapon);
+                    attacker.SetUnitEquipment(EquipmentLocation.Weapon, null, null);
                 }
 
                 Debug.Log($"unit的攻击被防住了！武器耐久减少:{damage}");
@@ -118,9 +82,9 @@ public abstract class Unit
         }
 
         var equiptment = GetEquipmentByLocation(location);
-        var def = equiptment?.DefencePercent ?? 0f;
+        var def = equiptment?.config.armorValue ?? 0f;
 
-        var armDamage = damage * Mathf.Clamp01(1 - def / 100f);
+        var armDamage = damage * Mathf.Clamp01(1 - def);
         var hpDamage = damage - armDamage;
 
         if (equiptment != null)
@@ -131,7 +95,7 @@ public abstract class Unit
             equiptment.Hp -= armDamage;
             if (equiptment.Hp <= 0)
             {
-                SetUnitEquipment(null, location);
+                SetUnitEquipment(location, null, null);
 
                 // 设置破甲状态
                 SetBreaking();
@@ -168,91 +132,54 @@ public abstract class Unit
         return false;
     }
 
-    public Equipment GetEquipmentByLocation(EquipmentType location)
+    public Equipment GetEquipmentByLocation(EquipmentLocation location)
     {
-        switch (location)
-        {
-            case EquipmentType.LeftHand:
-                return LeftHand;
-            case EquipmentType.RightHand:
-                return RightHand;
-            case EquipmentType.Legs:
-                return Legs;
-            case EquipmentType.Head:
-                return Head;
-            case EquipmentType.Breast:
-                return Breast;
-            case EquipmentType.Weapon:
-                return Weapon;
-        }
-
-        return null;
+        return equipmentSystem.GetEquipmentByLocation(location);
     }
 
-    public void SetUnitEquipment(Equipment equipment, EquipmentType location)
+    public Weapon GetWeapon() 
     {
-        if (equipment != null && equipment.type != location)
-        {
-            Debug.LogError($"错误，设置的装备不是对应的槽位 {equipment.type} -> {location}");
-            return;
-        }
-
-        switch (location)
-        {
-            case EquipmentType.LeftHand:
-                this.LeftHand = equipment;
-                break;
-            case EquipmentType.RightHand:
-                this.RightHand = equipment;
-                break;
-            case EquipmentType.Legs:
-                this.Legs = equipment;
-                break;
-            case EquipmentType.Head:
-                this.Head = equipment;
-                break;
-            case EquipmentType.Breast:
-                this.Breast = equipment;
-                break;
-            case EquipmentType.Weapon:
-                this.Weapon = equipment;
-                break;
-        }
+        return equipmentSystem.Weapon;
     }
 
-    public bool HasUnequipedLocation(out EquipmentType location)
+    public void SetUnitEquipment(EquipmentLocation location, Equipment equipment, Weapon weapon)
     {
-        if (this.LeftHand == null)
+        equipmentSystem.SetEquipment(location, equipment, weapon);
+    }
+
+    public bool HasUnequipedLocation(out EquipmentLocation location)
+    {
+        if (this.equipmentSystem.LeftHand == null)
         {
-            location = EquipmentType.LeftHand;
+            location = EquipmentLocation.LeftHand;
             return true;
         }
 
-        if (this.RightHand == null)
+        if (this.equipmentSystem.RightHand == null)
         {
-            location = EquipmentType.RightHand;
+            location = EquipmentLocation.RightHand;
             return true;
         }
 
-        if (this.Legs == null)
+        if (this.equipmentSystem.Leg == null)
         {
-            location = EquipmentType.Legs;
+            location = EquipmentLocation.Leg;
             return true;
         }
 
-        if (this.Head == null)
+        if (this.equipmentSystem.Head == null)
         {
-            location = EquipmentType.Head;
+            location = EquipmentLocation.Head;
             return true;
         }
 
-        if (this.Breast == null)
+        if (this.equipmentSystem.Breast == null)
         {
-            location = EquipmentType.Breast;
+            location = EquipmentLocation.Breast;
             return true;
         }
 
-        location = EquipmentType.NULL;
+        location = EquipmentLocation.NULL;
         return false;
     }
 }

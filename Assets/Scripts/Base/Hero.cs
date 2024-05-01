@@ -7,30 +7,36 @@ public class Hero : Unit
     // 玩家的行动次数
     public int Turns
     {
-        get { return Weapon?.Turns ?? 1; }
+        get { return equipmentSystem.Weapon?.config.actionPoint ?? 1; }
     }
 
-    public override void GenerateGameObject()
+    public override void GenerateGameObject(int id)
     {
         Root = GameObject.Instantiate(Resources.Load<GameObject>("Hero"));
-        base.GenerateGameObject();
+        base.GenerateGameObject(id);
 
         Root.transform.position = new Vector3(-5f, 0f, 0f);
         Root.transform.localScale = Vector3.one;
 
+        MaxHp = PlayerData.Instance.MaxHP;
+
+        Hp = PlayerData.Instance.CurrentHP;
+
+        equipmentSystem = new EquipmentSystem(PlayerData.Instance.equipmentSystem);
+
         //GameObject HeroWeaponUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("EquipmentDurability_Panel").transform);
         //HeroWeaponUI.GetComponent<EquipmentUI>().equipment = Weapon;
-        GameObject HeroHeadUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
-        HeroHeadUI.GetComponent<EquipmentUI>().equipmentSO = Head.SO;
-        GameObject HeroLegsUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
-        HeroLegsUI.GetComponent<EquipmentUI>().equipmentSO = Legs.SO;
-        GameObject HeroLeftHandUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
-        HeroLeftHandUI.GetComponent<EquipmentUI>().equipmentSO = LeftHand.SO;
-        GameObject HerorightHandUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
-        HerorightHandUI.GetComponent<EquipmentUI>().equipmentSO = RightHand.SO;
-        GameObject HeroBreastUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
-        HeroBreastUI.GetComponent<EquipmentUI>().equipmentSO = Breast.SO;
-        //UI实例化
-        RootUI = GameObject.Instantiate(Resources.Load<GameObject>("HeroUI_Canvas"),GameObject.Find("CombatUI").transform);
+        //GameObject HeroHeadUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
+        //HeroHeadUI.GetComponent<EquipmentUI>().equipmentSO = Head.SO;
+        //GameObject HeroLegsUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
+        //HeroLegsUI.GetComponent<EquipmentUI>().equipmentSO = Legs.SO;
+        //GameObject HeroLeftHandUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
+        //HeroLeftHandUI.GetComponent<EquipmentUI>().equipmentSO = LeftHand.SO;
+        //GameObject HerorightHandUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
+        //HerorightHandUI.GetComponent<EquipmentUI>().equipmentSO = RightHand.SO;
+        //GameObject HeroBreastUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("HeroEquipmentDurability_Panel").transform);
+        //HeroBreastUI.GetComponent<EquipmentUI>().equipmentSO = Breast.SO;
+        ////UI实例化
+        //RootUI = GameObject.Instantiate(Resources.Load<GameObject>("HeroUI_Canvas"),GameObject.Find("CombatUI").transform);
     }
 }

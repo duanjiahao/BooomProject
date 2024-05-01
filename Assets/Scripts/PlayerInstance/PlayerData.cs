@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerEquipmentLocation 
+public enum EquipmentLocation 
 {
+    NULL = -1,
     Head = 0,
     LeftHand = 1,
     RightHand = 2,
@@ -23,6 +24,164 @@ public enum PlayerAttributeType
     Luck,
 }
 
+public class EquipmentSystem
+{
+    private Weapon _weapon;
+
+    public Weapon Weapon { get { return _weapon; } private set { if (value.config == null) return; _weapon = value; } }       //武器数据
+    public Equipment Head                            //头部装备数据
+    {
+        get
+        {
+            return equipmentList[(int)EquipmentLocation.Head];
+        }
+        private set
+        {
+            if (value.config == null) 
+            {
+                return;
+            }
+            equipmentList[(int)EquipmentLocation.Head] = value;
+        }
+    }
+    public Equipment LeftHand                        //左手装备数据
+    {
+        get
+        {
+            return equipmentList[(int)EquipmentLocation.LeftHand];
+        }
+        private set
+        {
+            if (value.config == null)
+            {
+                return;
+            }
+            equipmentList[(int)EquipmentLocation.LeftHand] = value;
+        }
+    }
+    public Equipment RightHand                       //右手装备数据
+    {
+        get
+        {
+            return equipmentList[(int)EquipmentLocation.RightHand];
+        }
+        private set
+        {
+            if (value.config == null)
+            {
+                return;
+            }
+            equipmentList[(int)EquipmentLocation.RightHand] = value;
+        }
+    }
+    public Equipment Breast                          //胸部装备数据
+    {
+        get
+        {
+            return equipmentList[(int)EquipmentLocation.Breast];
+        }
+        private set
+        {
+            if (value.config == null)
+            {
+                return;
+            }
+            equipmentList[(int)EquipmentLocation.Breast] = value;
+        }
+    }
+    public Equipment Leg                            //下肢装备数据
+    {
+        get
+        {
+            return equipmentList[(int)EquipmentLocation.Leg];
+        }
+        private set
+        {
+            if (value.config == null)
+            {
+                return;
+            }
+            equipmentList[(int)EquipmentLocation.Leg] = value;
+        }
+    }
+
+    public List<Equipment> equipmentList;            //根据Location存放装备，方便操作 
+
+    public EquipmentSystem(int head, int leftHand, int rightHand, int breast, int leg, int weapon) 
+    {
+        equipmentList = new List<Equipment>(5) { null, null, null, null, null };
+
+        Head = new Equipment(head);
+
+        LeftHand = new Equipment(leftHand);
+
+        RightHand = new Equipment(rightHand);
+
+        Breast = new Equipment(breast);
+
+        Leg = new Equipment(leg);
+
+        Weapon = new Weapon(weapon);
+    }
+
+    public EquipmentSystem(EquipmentSystem system) 
+    {
+        equipmentList = new List<Equipment>(5) { null, null, null, null, null };
+
+        Head = system.Head;
+
+        LeftHand = system.LeftHand;
+
+        RightHand = system.RightHand;
+
+        Breast = system.Breast;
+
+        Leg = system.Leg;
+
+        Weapon = system.Weapon;
+    }
+
+    public Equipment GetEquipmentByLocation(EquipmentLocation location) 
+    {
+        return equipmentList[(int)location];
+    }
+
+    public Weapon GetWeapon() 
+    {
+        return Weapon;
+    }
+
+    public void SetEquipment(EquipmentLocation location, Equipment equipment, Weapon weapon) 
+    {
+        switch (location)
+        {
+            case EquipmentLocation.Weapon:
+                Weapon = weapon;
+                break;
+            case EquipmentLocation.Head:
+            case EquipmentLocation.LeftHand:
+            case EquipmentLocation.RightHand:
+            case EquipmentLocation.Breast:
+            case EquipmentLocation.Leg:
+                if (!CheckEquipmentTypeCorrespond(location, equipment))
+                {
+                    Debug.LogError($"错误设置装备 {equipment.equipmentType} -> {location}");
+                    return;
+                }
+                equipmentList[(int)location] = equipment;
+                break;
+        }
+    }
+
+    private bool CheckEquipmentTypeCorrespond(EquipmentLocation location, Equipment equipment)
+    {
+        return (equipment.equipmentType == EquipmentType.Head && location == EquipmentLocation.Head) ||
+               (equipment.equipmentType == EquipmentType.Hand && (location == EquipmentLocation.LeftHand || location == EquipmentLocation.RightHand)) ||
+               (equipment.equipmentType == EquipmentType.Breast && location == EquipmentLocation.Breast) ||
+               (equipment.equipmentType == EquipmentType.Leg && location == EquipmentLocation.Leg);
+    }
+}
+
 public class PlayerData : SingleMono<PlayerData>
 {
     public float MaxHP { get; private set; }         //最大血量
@@ -36,64 +195,7 @@ public class PlayerData : SingleMono<PlayerData>
 
     public int Luck { get; private set; }           //运气
 
-    public Weapon Weapon { get; private set; }       //武器数据
-    public Equipment Head                            //头部装备数据
-    { 
-        get 
-        {
-            return equipmentList[(int)PlayerEquipmentLocation.Head];
-        } 
-        private set 
-        {
-            equipmentList[(int)PlayerEquipmentLocation.Head] = value;
-        } 
-    }     
-    public Equipment LeftHand                        //左手装备数据
-    {
-        get
-        {
-            return equipmentList[(int)PlayerEquipmentLocation.LeftHand];
-        }
-        private set
-        {
-            equipmentList[(int)PlayerEquipmentLocation.LeftHand] = value;
-        }
-    } 
-    public Equipment RightHand                       //右手装备数据
-    {
-        get
-        {
-            return equipmentList[(int)PlayerEquipmentLocation.RightHand];
-        }
-        private set
-        {
-            equipmentList[(int)PlayerEquipmentLocation.RightHand] = value;
-        }
-    }
-    public Equipment Breast                          //胸部装备数据
-    {
-        get
-        {
-            return equipmentList[(int)PlayerEquipmentLocation.Breast];
-        }
-        private set
-        {
-            equipmentList[(int)PlayerEquipmentLocation.Breast] = value;
-        }
-    }   
-    public Equipment Leg                            //下肢装备数据
-    {
-        get
-        {
-            return equipmentList[(int)PlayerEquipmentLocation.Leg];
-        }
-        private set
-        {
-            equipmentList[(int)PlayerEquipmentLocation.Leg] = value;
-        }
-    }       
-
-    public List<Equipment> equipmentList;            //根据Location存放装备，方便操作 
+    public EquipmentSystem equipmentSystem;
 
     public override void Init()
     {
@@ -108,28 +210,13 @@ public class PlayerData : SingleMono<PlayerData>
         Ductility = initProperty.ductility;
 
         Luck = initProperty.luck;
+
+        equipmentSystem = new EquipmentSystem(initProperty.playerHead, initProperty.playerLeft, initProperty.playerRight, initProperty.playerBody, initProperty.playerLeg, initProperty.playerweapon);
     }
 
-    public void ChangePlayerEquipment(PlayerEquipmentLocation location, Equipment equipment, Weapon weapon) 
+    public void ChangePlayerEquipment(EquipmentLocation location, Equipment equipment, Weapon weapon) 
     {
-        switch (location)
-        {
-            case PlayerEquipmentLocation.Weapon:
-                Weapon = weapon;
-                break;
-            case PlayerEquipmentLocation.Head:
-            case PlayerEquipmentLocation.LeftHand:
-            case PlayerEquipmentLocation.RightHand:
-            case PlayerEquipmentLocation.Breast:
-            case PlayerEquipmentLocation.Leg:
-                if (!CheckEquipmentTypeCorrespond(location, equipment)) 
-                {
-                    Debug.LogError($"错误设置装备 {equipment.equipmentType} -> {location}");
-                    return;
-                }
-                equipmentList[(int)location] = equipment;
-                break;
-        }
+        equipmentSystem.SetEquipment(location, equipment, weapon);
 
         Notification.Instance.Notify(Notification.PlayerDataEquipmentChanged, location);
     }
@@ -159,13 +246,5 @@ public class PlayerData : SingleMono<PlayerData>
         }
 
         Notification.Instance.Notify(Notification.PlayerDataAttributeChanged, playerAttributeType);
-    }
-
-    private bool CheckEquipmentTypeCorrespond(PlayerEquipmentLocation location, Equipment equipment) 
-    {
-        return (equipment.equipmentType == EquipmentType.Head && location == PlayerEquipmentLocation.Head) ||
-               (equipment.equipmentType == EquipmentType.Hand && (location == PlayerEquipmentLocation.LeftHand || location == PlayerEquipmentLocation.RightHand)) ||
-               (equipment.equipmentType == EquipmentType.Breast && location == PlayerEquipmentLocation.Breast) ||
-               (equipment.equipmentType == EquipmentType.Leg && location == PlayerEquipmentLocation.Leg);
     }
 }
