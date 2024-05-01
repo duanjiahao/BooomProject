@@ -12,6 +12,7 @@ public class Items_Panel : MonoBehaviour
     public ToggleGroup toggleGroup;
     public Transform Slots;
     private Toggle[] toggles; // 引用Toggle组件
+    public Item[] items;
     private bool isIn;
 
     private void Start()
