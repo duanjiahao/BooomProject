@@ -16,6 +16,7 @@ public class Weapon
     public WeaponType weaponType;
 
     public float Hp { get; set; }
+    public float maxHp { get; set; }
 
     public Weapon(int id) 
     {

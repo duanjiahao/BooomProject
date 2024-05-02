@@ -1,4 +1,6 @@
 ﻿// 装备类型 (与策划的Armor表的armorType字段定义对应)
+using UnityEngine.UIElements;
+
 public enum EquipmentType 
 {
     NULL = 0,       
@@ -15,6 +17,7 @@ public class Equipment
 
     public EquipmentType equipmentType;
     public float Hp { get; set; } // 装备耐久
+    public float maxHp { get; set; }//装备最大耐久
 
     public Equipment(int id) 
     {
