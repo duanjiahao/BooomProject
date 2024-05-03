@@ -396,6 +396,7 @@ public class LabyrinthWindow : MonoBehaviour
 
     private void DoEvent()
     {
+        UIManager.Instance.BeginEventUI();
     }
 
     private void DoBattle()

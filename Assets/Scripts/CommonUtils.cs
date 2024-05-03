@@ -2,6 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EffectType
+{
+    JumpNextEvent = 1,
+    GetItem = 2,
+    HeadRecDamage = 3,
+    BreastRecDamage = 4,
+    LeftHandRecDamage = 5,
+    RightHandRecDamage = 6,
+    LegRecDamage = 7,
+    AllRecDamage = 8,
+    WeaponHpDown = 9,
+    HpDown = 10,
+    HeadHpDown = 11,
+    BreastHpDown = 12,
+    LeftHandHpDown = 13,
+    RightHandHpDown = 14,
+    LegHpDown = 15,
+    AllHpDown = 16,
+    MaxHpDown = 17,
+    StrengthDown = 18,
+    GoldChange = 22,
+}
+
 public static class CommonUtils
 {
     public static void DestroyAllChildren(this GameObject gameObject) 

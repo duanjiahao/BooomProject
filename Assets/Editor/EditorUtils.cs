@@ -144,6 +144,7 @@ public class EditorUtils
             {
                 var cell = row.GetCell(j);
                 if (cell == null) continue;
+                if (j >= propertyInfos.Count) continue;
                 string value;
                 if (cell.CellType == CellType.Formula)
                 {
@@ -162,11 +163,10 @@ public class EditorUtils
                     // 直接读取值
                     value = cell.ToString();
                 }
-                if (string.IsNullOrEmpty(value))
-                {
-                    // 不允许中间有空列的，遇到空列认为后边就没数据了
-                    break;
-                }
+                // if (string.IsNullOrEmpty(value))
+                // {
+                //     break;
+                // }
 
                 if (propertyInfos[j].Type.Contains("[]"))
                 {
@@ -187,7 +187,10 @@ public class EditorUtils
 
             var type = Type.GetType($"{configName}Config, Assembly-CSharp");
 
-            var config = JsonConvert.DeserializeObject(sb.ToString(), type) as BaseConfig;
+            var config = JsonConvert.DeserializeObject(sb.ToString(), type,  new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+            }) as BaseConfig;
 
             // 为0说明这一行的数据有问题，直接跳过
             if (config == null || config.id == 0)
