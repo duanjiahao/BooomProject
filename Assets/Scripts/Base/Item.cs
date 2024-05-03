@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item
 {
-    public ItemSO itemSO;
+    public ItemConfig config;
 
+    public int num;
 }

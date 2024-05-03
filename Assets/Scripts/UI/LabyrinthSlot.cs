@@ -32,12 +32,20 @@ public class LabyrinthSlot : MonoBehaviour
     public Image Down;
 
     public GameObject IconRoot;
+    
+    public GameObject IconRoot_selected;
 
     public Image Boss;
 
     public Image Battle;
 
     public Image Event;
+    
+    public Image Boss_selected;
+
+    public Image Battle_selected;
+
+    public Image Event_selected;
 
     public Image ExploredSlot;
 
@@ -82,21 +90,30 @@ public class LabyrinthSlot : MonoBehaviour
         Boss.gameObject.SetActive(false);
         Battle.gameObject.SetActive(false);
         Event.gameObject.SetActive(false);
+        Boss_selected.gameObject.SetActive(false);
+        Battle_selected.gameObject.SetActive(false);
+        Event_selected.gameObject.SetActive(false);
         switch (type)
         {
             case SlotType.Battle:
                 Battle.gameObject.SetActive(true);
+                Battle_selected.gameObject.SetActive(true);
                 break;
             case SlotType.Event:
                 Event.gameObject.SetActive(true);
+                Event_selected.gameObject.SetActive(true);
                 break;
             case SlotType.Boss:
                 Boss.gameObject.SetActive(true);
+                Boss_selected.gameObject.SetActive(true);
                 break;
         }
 
         NewSlot.gameObject.SetActive(true);
         ExploredSlot.gameObject.SetActive(false);
+        
+        IconRoot.gameObject.SetActive(true);
+        IconRoot_selected.gameObject.SetActive(false);
     }
 
     public void SetExplored() 
@@ -105,6 +122,9 @@ public class LabyrinthSlot : MonoBehaviour
 
         NewSlot.gameObject.SetActive(false);
         ExploredSlot.gameObject.SetActive(true);
+        
+        IconRoot.gameObject.SetActive(false);
+        IconRoot_selected.gameObject.SetActive(true);
     }
 
     public void AddConnection(SlotDirection dir) 

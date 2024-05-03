@@ -1,0 +1,29 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[BaseConfig, Assembly-CSharp]], mscorlib",
+  "80001": {
+    "$type": "BossConfig, Assembly-CSharp",
+    "enemyName": "Boss1",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyCoin": [
+      20,
+      30
+    ],
+    "enemyFloor": 1,
+    "enemyHP": 100,
+    "enemySTR": 30,
+    "enemyCON": 30,
+    "enemyAGI": 30,
+    "enemyDEX": 30,
+    "enemyAI": 2,
+    "headAmror": 20005,
+    "bodyAmror": 20006,
+    "wristAmror": [
+      20007,
+      20007
+    ],
+    "legAmror": 2008,
+    "weapon": 3001,
+    "id": 80001
+  }
+}

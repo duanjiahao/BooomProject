@@ -7,6 +7,14 @@ public class Notification : Singleton<Notification>
     public const string PlayerDataEquipmentChanged = "PlayerDataEquipmentChanged";
 
     public const string PlayerDataAttributeChanged = "PlayerDataAttributeChanged";
+    
+    public const string PlayerItemOverflow = "PlayerItemOverflow";
+    
+    public const string BattleActionPointsChanged = "BattleActionPointsChanged";
+    
+    public const string BattleAfterHeroPerform = "BattleAfterHeroPerform";
+    
+    public const string BattleAfterMonsterPerform = "BattleAfterMonsterPerform";
 
     public delegate void NotificationHandler(object data = null);
 

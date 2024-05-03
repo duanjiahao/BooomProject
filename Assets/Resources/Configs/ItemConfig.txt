@@ -4,6 +4,7 @@
     "$type": "ItemConfig, Assembly-CSharp",
     "itemName": "金币",
     "itemIcon": null,
+    "itemPos": 1,
     "itemDesc": "多多益善不是吗！",
     "itemPrice": 1,
     "itemAbilityValue": 0.0,
@@ -13,6 +14,7 @@
     "$type": "ItemConfig, Assembly-CSharp",
     "itemName": "回复药",
     "itemIcon": null,
+    "itemPos": 2,
     "itemDesc": "能够恢复生命值",
     "itemPrice": 10,
     "itemAbilityValue": 10.0,
@@ -20,11 +22,142 @@
   },
   "10003": {
     "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "回复药+",
+    "itemIcon": null,
+    "itemPos": 2,
+    "itemDesc": "能够恢复更多生命值",
+    "itemPrice": 16,
+    "itemAbilityValue": 20.0,
+    "id": 10003
+  },
+  "10004": {
+    "$type": "ItemConfig, Assembly-CSharp",
     "itemName": "修理工具",
     "itemIcon": null,
+    "itemPos": 2,
     "itemDesc": "能够恢复耐久",
     "itemPrice": 10,
     "itemAbilityValue": 15.0,
-    "id": 10003
+    "id": 10004
+  },
+  "10005": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "爆炸药水",
+    "itemIcon": null,
+    "itemPos": 4,
+    "itemDesc": "对敌人造成伤害",
+    "itemPrice": 15,
+    "itemAbilityValue": 10.0,
+    "id": 10005
+  },
+  "10006": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "运气药水",
+    "itemIcon": null,
+    "itemPos": 2,
+    "itemDesc": "在本层中，获得+1幸运",
+    "itemPrice": 20,
+    "itemAbilityValue": 1.0,
+    "id": 10006
+  },
+  "10007": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "力量药水",
+    "itemIcon": null,
+    "itemPos": 2,
+    "itemDesc": "在本层中，获得+1力量",
+    "itemPrice": 15,
+    "itemAbilityValue": 1.0,
+    "id": 10007
+  },
+  "10008": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "体质药水",
+    "itemIcon": null,
+    "itemPos": 2,
+    "itemDesc": "在本层中，获得+1体质",
+    "itemPrice": 15,
+    "itemAbilityValue": 1.0,
+    "id": 10008
+  },
+  "10009": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "敏捷药水",
+    "itemIcon": null,
+    "itemPos": 2,
+    "itemDesc": "在本层中，获得+1敏捷",
+    "itemPrice": 15,
+    "itemAbilityValue": 1.0,
+    "id": 10009
+  },
+  "10010": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "灵巧药水",
+    "itemIcon": null,
+    "itemPos": 2,
+    "itemDesc": "在本层中，获得+1灵巧",
+    "itemPrice": 15,
+    "itemAbilityValue": 1.0,
+    "id": 10010
+  },
+  "10011": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "窃贼药水",
+    "itemIcon": null,
+    "itemPos": 2,
+    "itemDesc": "在本层中，通过战斗获得的金币增加",
+    "itemPrice": 15,
+    "itemAbilityValue": 10.0,
+    "id": 10011
+  },
+  "10012": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "活力药水",
+    "itemIcon": null,
+    "itemPos": 4,
+    "itemDesc": "在本回合中，获得+1行动点",
+    "itemPrice": 10,
+    "itemAbilityValue": 1.0,
+    "id": 10012
+  },
+  "10013": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "烟雾弹",
+    "itemIcon": null,
+    "itemPos": 4,
+    "itemDesc": "立即逃离本场战斗并回到上一个房间",
+    "itemPrice": 10,
+    "itemAbilityValue": 0.0,
+    "id": 10013
+  },
+  "10014": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "血滴子",
+    "itemIcon": null,
+    "itemPos": 4,
+    "itemDesc": "对敌人造成伤害并获得1层【流血】",
+    "itemPrice": 5,
+    "itemAbilityValue": 5.0,
+    "id": 10014
+  },
+  "10015": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "毒飞刀",
+    "itemIcon": null,
+    "itemPos": 4,
+    "itemDesc": "对敌人造成伤害并获得1层【中毒】",
+    "itemPrice": 5,
+    "itemAbilityValue": 5.0,
+    "id": 10015
+  },
+  "10016": {
+    "$type": "ItemConfig, Assembly-CSharp",
+    "itemName": "溶解剂",
+    "itemIcon": null,
+    "itemPos": 4,
+    "itemDesc": "降低敌人一个部位的耐久",
+    "itemPrice": 5,
+    "itemAbilityValue": 5.0,
+    "id": 10016
   }
 }

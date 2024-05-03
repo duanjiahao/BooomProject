@@ -79,7 +79,7 @@ public class LabyrinthWindow : MonoBehaviour
 
     private Dictionary<SlotPosition, LabyrinthSlot> _slotDic;
 
-    private const float INTERVAL = 165f;
+    private const float INTERVAL = 124f;
 
     private SlotPosition _currentPosition;
 
@@ -320,6 +320,10 @@ public class LabyrinthWindow : MonoBehaviour
             OnSlotClicked(pos);
         });
         slotComp.Init(dir, type);
+        if (type == SlotType.Born)
+        {
+            slotComp.SetExplored();
+        }
 
         if (dir != SlotDirection.None) 
         {
@@ -377,6 +381,8 @@ public class LabyrinthWindow : MonoBehaviour
                     DoBoss();
                     break;
             }
+            
+            currentSlot.SetExplored();
         });
     }
 
@@ -395,6 +401,7 @@ public class LabyrinthWindow : MonoBehaviour
     private void DoBattle()
     {
         BattleManager.Instance.StartABattle(false);
+        UIManager.Instance.BeginBattleUI();
     }
 
     // Update is called once per frame

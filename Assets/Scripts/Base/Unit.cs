@@ -29,8 +29,6 @@ public abstract class Unit
 
     protected GameObject Root;
 
-    protected GameObject RootUI;
-
     // 生成对应的显示层
     public virtual void GenerateGameObject(int id)
     {

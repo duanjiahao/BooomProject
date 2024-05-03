@@ -3,7 +3,9 @@
   "100010": {
     "$type": "EventConfig, Assembly-CSharp",
     "eventLevel": [
-      1
+      1,
+      2,
+      3
     ],
     "eventName": "陷阱",
     "eventImgPath": null,
@@ -22,7 +24,9 @@
   "100011": {
     "$type": "EventConfig, Assembly-CSharp",
     "eventLevel": [
-      1
+      1,
+      2,
+      3
     ],
     "eventName": "陷阱——结果",
     "eventImgPath": null,
@@ -41,7 +45,9 @@
   "100012": {
     "$type": "EventConfig, Assembly-CSharp",
     "eventLevel": [
-      1
+      1,
+      2,
+      3
     ],
     "eventName": "陷阱——结果",
     "eventImgPath": null,
@@ -60,14 +66,16 @@
   "100013": {
     "$type": "EventConfig, Assembly-CSharp",
     "eventLevel": [
-      1
+      1,
+      2,
+      3
     ],
     "eventName": "陷阱——结果",
     "eventImgPath": null,
     "eventDesc": "拔出武器，精确格挡！",
     "option1": "好险！",
     "option1Eff": 9,
-    "option1EffValue": 5,
+    "option1EffValue": -5,
     "option2": null,
     "option2Eff": 0,
     "option2EffValue": 0,
@@ -108,7 +116,7 @@
     "eventImgPath": null,
     "eventDesc": "意外的...好喝？",
     "option1": "好耶",
-    "option1Eff": 17,
+    "option1Eff": 10,
     "option1EffValue": 9999,
     "option2": null,
     "option2Eff": 0,
@@ -120,7 +128,11 @@
   },
   "100031": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "宝箱？",
     "eventImgPath": null,
     "eventDesc": "房间空荡荡的，正中间放着一个宝箱",
@@ -137,7 +149,11 @@
   },
   "100032": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "宝箱？——结果",
     "eventImgPath": null,
     "eventDesc": "一阵猛击，宝箱连同内容物都被破坏了",
@@ -154,7 +170,11 @@
   },
   "100033": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "宝箱？——结果",
     "eventImgPath": null,
     "eventDesc": "打开宝箱的瞬间，脑海里响起了“金色传说！”",
@@ -171,7 +191,11 @@
   },
   "100041": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "宝箱？",
     "eventImgPath": null,
     "eventDesc": "房间空荡荡的，正中间放着一个宝箱",
@@ -188,7 +212,11 @@
   },
   "100042": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "宝箱？——结果",
     "eventImgPath": null,
     "eventDesc": "一阵猛击后，宝箱怪被突如其来的攻击干掉了",
@@ -205,13 +233,17 @@
   },
   "100043": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "宝箱？——结果",
     "eventImgPath": null,
     "eventDesc": "靠近宝箱的瞬间，宝箱怪突然向你吐了一口酸性浓痰",
     "option1": "果然！真晦气！",
-    "option1Eff": 8,
-    "option1EffValue": 5,
+    "option1Eff": 16,
+    "option1EffValue": -5,
     "option2": null,
     "option2Eff": 0,
     "option2EffValue": 0,
@@ -222,16 +254,20 @@
   },
   "100051": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "奇怪的按钮",
     "eventImgPath": null,
     "eventDesc": "房间中间的台子上有两个奇怪的按钮",
     "option1": "按左边的！",
-    "option1Eff": 0,
-    "option1EffValue": 0,
+    "option1Eff": 1,
+    "option1EffValue": 100053,
     "option2": "按右边的！",
-    "option2Eff": 0,
-    "option2EffValue": 0,
+    "option2Eff": 1,
+    "option2EffValue": 100052,
     "option3": "还是算了吧......",
     "option3Eff": 0,
     "option3EffValue": 0,
@@ -239,12 +275,16 @@
   },
   "100052": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "奇怪的按钮——结果",
     "eventImgPath": null,
     "eventDesc": "你感受到一阵电流穿过你的身体",
     "option1": "这感觉真糟糕",
-    "option1Eff": 20,
+    "option1Eff": 19,
     "option1EffValue": 3,
     "option2": null,
     "option2Eff": 0,
@@ -256,12 +296,16 @@
   },
   "100053": {
     "$type": "EventConfig, Assembly-CSharp",
-    "eventLevel": null,
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
     "eventName": "奇怪的按钮——结果",
     "eventImgPath": null,
     "eventDesc": "感受到身体开始发烫......",
     "option1": "这感觉真糟糕",
-    "option1Eff": 19,
+    "option1Eff": 18,
     "option1EffValue": 3,
     "option2": null,
     "option2Eff": 0,
@@ -270,5 +314,215 @@
     "option3Eff": 0,
     "option3EffValue": 0,
     "id": 100053
+  },
+  "100061": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "可疑的药水商",
+    "eventImgPath": null,
+    "eventDesc": "面前出现了一个可疑的人，嘴里在反复念叨“来吧，喝一杯…”",
+    "option1": "就…喝一杯？",
+    "option1Eff": 1,
+    "option1EffValue": 100062,
+    "option2": "来杯猛的！",
+    "option2Eff": 1,
+    "option2EffValue": 100063,
+    "option3": "还是算了吧......",
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100061
+  },
+  "100062": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "可疑的药水商——结果",
+    "eventImgPath": null,
+    "eventDesc": "你感到食道出现一阵灼烧感，但好在并不太糟",
+    "option1": "好像变强了一些",
+    "option1Eff": 19,
+    "option1EffValue": 3,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100062
+  },
+  "100063": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "可疑的药水商——结果",
+    "eventImgPath": null,
+    "eventDesc": "你感到食道出现剧烈灼烧感，这糟糕极了",
+    "option1": "太贪心了！",
+    "option1Eff": 10,
+    "option1EffValue": -5,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100063
+  },
+  "100071": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "面包圣骑士？！",
+    "eventImgPath": null,
+    "eventDesc": null,
+    "option1": null,
+    "option1Eff": 0,
+    "option1EffValue": 0,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100071
+  },
+  "100072": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "面包圣骑士？！——结果",
+    "eventImgPath": null,
+    "eventDesc": null,
+    "option1": null,
+    "option1Eff": 0,
+    "option1EffValue": 0,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100072
+  },
+  "100073": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "面包圣骑士？！——结果",
+    "eventImgPath": null,
+    "eventDesc": null,
+    "option1": null,
+    "option1Eff": 0,
+    "option1EffValue": 0,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100073
+  },
+  "100081": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "达比的赌桌",
+    "eventImgPath": null,
+    "eventDesc": null,
+    "option1": null,
+    "option1Eff": 0,
+    "option1EffValue": 0,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100081
+  },
+  "100082": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "达比的赌桌——结果",
+    "eventImgPath": null,
+    "eventDesc": null,
+    "option1": null,
+    "option1Eff": 0,
+    "option1EffValue": 0,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100082
+  },
+  "100083": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "达比的赌桌——结果",
+    "eventImgPath": null,
+    "eventDesc": null,
+    "option1": null,
+    "option1Eff": 0,
+    "option1EffValue": 0,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100083
+  },
+  "100084": {
+    "$type": "EventConfig, Assembly-CSharp",
+    "eventLevel": [
+      1,
+      2,
+      3
+    ],
+    "eventName": "达比的赌桌——结果",
+    "eventImgPath": null,
+    "eventDesc": null,
+    "option1": null,
+    "option1Eff": 0,
+    "option1EffValue": 0,
+    "option2": null,
+    "option2Eff": 0,
+    "option2EffValue": 0,
+    "option3": null,
+    "option3Eff": 0,
+    "option3EffValue": 0,
+    "id": 100084
   }
 }

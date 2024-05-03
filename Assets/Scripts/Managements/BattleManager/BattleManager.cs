@@ -31,6 +31,24 @@ public class BattleManager : SingleMono<BattleManager>
 
     private int _leftHeroTurns;
 
+    public int LeftHeroTurns
+    {
+        get
+        {
+            return _leftHeroTurns;
+        }
+
+        private set
+        {
+            if (_leftHeroTurns != value)
+            {
+                _leftHeroTurns = value;
+                Notification.Instance.Notify(Notification.BattleActionPointsChanged);
+            }
+
+        }
+    }
+
     private Intension _playerIntension;
 
     public override void Init()
@@ -92,6 +110,7 @@ public class BattleManager : SingleMono<BattleManager>
         _currentMonster = null;
 
         _currentBattleStage = BattleStage.NoBattle;
+        UIManager.Instance.ReturnOutside();
     }
 
     private void DoPlayerTurning(int delta)
@@ -169,7 +188,7 @@ public class BattleManager : SingleMono<BattleManager>
             return;
         }
 
-        _leftHeroTurns--;
+        LeftHeroTurns--;
 
         if (_leftHeroTurns <= 0)
         {
@@ -179,6 +198,8 @@ public class BattleManager : SingleMono<BattleManager>
         {
             _currentBattleStage = BattleStage.PlayerTurning;
         }
+        
+        Notification.Instance.Notify(Notification.BattleAfterHeroPerform);
     }
 
     private void DoMonsterTuring(int delta)
@@ -198,6 +219,8 @@ public class BattleManager : SingleMono<BattleManager>
 
         _currentBattleStage = BattleStage.PlayerTurning;
         _leftHeroTurns = _currentHero.Turns;
+        
+        Notification.Instance.Notify(Notification.BattleAfterMonsterPerform);
     }
 
     private void DecideMonsterAction()
@@ -240,10 +263,5 @@ public class BattleManager : SingleMono<BattleManager>
     public Unit GetCurrentMonster()
     {
         return _currentMonster;
-    }
-
-    public int GetCurrentTurns() 
-    {
-        return _leftHeroTurns;
     }
 }

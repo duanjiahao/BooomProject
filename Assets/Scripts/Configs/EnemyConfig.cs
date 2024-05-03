@@ -4,6 +4,7 @@ public class EnemyConfig : BaseConfig
     public string enemyDesc;
     public string enemyImg;
     public int enemyFloor;
+    public int[] enemyCoin;
     public int enemyHP;
     public int enemySTR;
     public int enemyCON;

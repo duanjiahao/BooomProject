@@ -1,4 +1,6 @@
 ﻿// 装备类型 (与策划的Armor表的armorType字段定义对应)
+
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public enum EquipmentType 
@@ -16,7 +18,18 @@ public class Equipment
     public ArmorConfig config;
 
     public EquipmentType equipmentType;
-    public float Hp { get; set; } // 装备耐久
+
+    private float _hp;
+    public float Hp {
+        get
+        {
+            return _hp;
+        }
+        set
+        {
+            _hp = Mathf.Max(value, 0);
+        }
+    } // 装备耐久
     public float maxHp { get; set; }//装备最大耐久
 
     public Equipment(int id) 

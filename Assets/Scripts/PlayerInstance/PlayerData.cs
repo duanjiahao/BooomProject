@@ -200,6 +200,42 @@ public class PlayerData : SingleMono<PlayerData>
 
     public EquipmentSystem equipmentSystem;
 
+    public const int ItemCapacity = 3;
+    
+    public List<Item> ItemList = new List<Item>(ItemCapacity) {null, null, null};
+
+    public void AddItem(Item item)
+    {
+        bool hasAdd = false;
+        for (int i = 0; i < ItemCapacity; i++)
+        {
+            var bagItem = ItemList[i];
+            if (bagItem == null)
+            {
+                ItemList[i] = item;
+                hasAdd = true;
+                break;
+            }
+
+            if (bagItem.config.id == item.config.id)
+            {
+                bagItem.num += item.num;
+                hasAdd = true;
+                break;
+            }
+        }
+
+        if (!hasAdd)
+        {
+            Notification.Instance.Notify(Notification.PlayerItemOverflow, item);
+        }
+    }
+
+    public void RemoveItem(int index)
+    {
+        ItemList[index] = null;
+    }
+
     public override void Init()
     {
         var initProperty = ConfigManager.Instance.GetConfig<PropertyConfig>(1);
@@ -214,7 +250,7 @@ public class PlayerData : SingleMono<PlayerData>
 
         Luck = initProperty.luck;
 
-        equipmentSystem = new EquipmentSystem(initProperty.playerHead, initProperty.playerLeft, initProperty.playerRight, initProperty.playerBody, initProperty.playerLeg, initProperty.playerweapon);
+        equipmentSystem = new EquipmentSystem(initProperty.playerHead, initProperty.playerLeft, initProperty.playerRight, initProperty.playerBody, initProperty.playerLeg, initProperty.playerWeapon);
     }
 
     public void ChangePlayerEquipment(EquipmentLocation location, Equipment equipment, Weapon weapon) 

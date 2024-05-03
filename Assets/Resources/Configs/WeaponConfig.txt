@@ -3,7 +3,7 @@
   "30001": {
     "$type": "WeaponConfig, Assembly-CSharp",
     "weapomName": "破旧的剑",
-    "weapomIcon": null,
+    "weapomIcon": "破旧的剑",
     "weapomRarity": 1,
     "weapomType": 1,
     "actionPoint": 3,
@@ -22,7 +22,7 @@
   "30002": {
     "$type": "WeaponConfig, Assembly-CSharp",
     "weapomName": "破旧的重锤",
-    "weapomIcon": null,
+    "weapomIcon": "破旧的重锤",
     "weapomRarity": 1,
     "weapomType": 2,
     "actionPoint": 2,
@@ -41,7 +41,7 @@
   "30003": {
     "$type": "WeaponConfig, Assembly-CSharp",
     "weapomName": "破旧的匕首",
-    "weapomIcon": null,
+    "weapomIcon": "破旧的匕首",
     "weapomRarity": 1,
     "weapomType": 3,
     "actionPoint": 4,
@@ -56,5 +56,195 @@
       1
     ],
     "id": 30003
+  },
+  "30004": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "普通的剑",
+    "weapomIcon": "普通的剑",
+    "weapomRarity": 2,
+    "weapomType": 1,
+    "actionPoint": 3,
+    "weapomDesc": "普通的铁剑",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      13,
+      16
+    ],
+    "weapomDurable": 100,
+    "weapomAbility": [
+      13
+    ],
+    "id": 30004
+  },
+  "30005": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "普通的重锤",
+    "weapomIcon": "普通的重锤",
+    "weapomRarity": 2,
+    "weapomType": 2,
+    "actionPoint": 2,
+    "weapomDesc": "普通的重锤",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      20,
+      23
+    ],
+    "weapomDurable": 100,
+    "weapomAbility": [
+      9
+    ],
+    "id": 30005
+  },
+  "30006": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "普通的匕首",
+    "weapomIcon": "普通的匕首",
+    "weapomRarity": 2,
+    "weapomType": 3,
+    "actionPoint": 4,
+    "weapomDesc": "普通的匕首",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      9,
+      12
+    ],
+    "weapomDurable": 100,
+    "weapomAbility": [
+      1
+    ],
+    "id": 30006
+  },
+  "30007": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "稀有的剑",
+    "weapomIcon": "稀有的剑",
+    "weapomRarity": 3,
+    "weapomType": 1,
+    "actionPoint": 3,
+    "weapomDesc": "稀有的剑",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      19,
+      22
+    ],
+    "weapomDurable": 130,
+    "weapomAbility": [
+      13
+    ],
+    "id": 30007
+  },
+  "30008": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "稀有的重锤",
+    "weapomIcon": "稀有的重锤",
+    "weapomRarity": 3,
+    "weapomType": 2,
+    "actionPoint": 2,
+    "weapomDesc": "稀有的重锤",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      28,
+      31
+    ],
+    "weapomDurable": 130,
+    "weapomAbility": [
+      9
+    ],
+    "id": 30008
+  },
+  "30009": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "稀有的匕首",
+    "weapomIcon": "稀有的匕首",
+    "weapomRarity": 3,
+    "weapomType": 3,
+    "actionPoint": 4,
+    "weapomDesc": "稀有的匕首",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      13,
+      16
+    ],
+    "weapomDurable": 130,
+    "weapomAbility": [
+      1
+    ],
+    "id": 30009
+  },
+  "30010": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "传说的剑",
+    "weapomIcon": "传说的剑",
+    "weapomRarity": 4,
+    "weapomType": 1,
+    "actionPoint": 3,
+    "weapomDesc": "传说中罗格使用过的剑",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      23,
+      26
+    ],
+    "weapomDurable": 170,
+    "weapomAbility": [
+      13
+    ],
+    "id": 30010
+  },
+  "30011": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "传说的重锤",
+    "weapomIcon": "传说的重锤",
+    "weapomRarity": 4,
+    "weapomType": 2,
+    "actionPoint": 2,
+    "weapomDesc": "传说的罗格使用过重锤",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      32,
+      35
+    ],
+    "weapomDurable": 170,
+    "weapomAbility": [
+      9
+    ],
+    "id": 30011
+  },
+  "30012": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "传说的匕首",
+    "weapomIcon": "传说的匕首",
+    "weapomRarity": 4,
+    "weapomType": 3,
+    "actionPoint": 4,
+    "weapomDesc": "传说的罗格使用过匕首",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      17,
+      20
+    ],
+    "weapomDurable": 170,
+    "weapomAbility": [
+      1
+    ],
+    "id": 30012
+  },
+  "30013": {
+    "$type": "WeaponConfig, Assembly-CSharp",
+    "weapomName": "法棍重锤",
+    "weapomIcon": "法棍重锤",
+    "weapomRarity": 3,
+    "weapomType": 2,
+    "actionPoint": 2,
+    "weapomDesc": "奇怪材质制成的重锤,好像有点香？",
+    "weapomPrice": 0,
+    "weapomAttack": [
+      26,
+      29
+    ],
+    "weapomDurable": 100,
+    "weapomAbility": [
+      18
+    ],
+    "id": 30013
   }
 }

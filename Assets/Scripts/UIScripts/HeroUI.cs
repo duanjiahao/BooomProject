@@ -28,8 +28,8 @@ public class HeroUI : UnitUI
         //调用父类的update，且自己的
         base.Update();
         //更新ui
-        ActionPointBG_Image.fillAmount = (float)BattleManager.Instance.GetCurrentTurns() / (heroSO.Weapon?.Turns ?? 1);
-        ActionPoint_Text.text = BattleManager.Instance.GetCurrentTurns().ToString();
+        ActionPointBG_Image.fillAmount = (float)BattleManager.Instance.LeftHeroTurns / (heroSO.Weapon?.Turns ?? 1);
+        ActionPoint_Text.text = BattleManager.Instance.LeftHeroTurns.ToString();
         MaxActionPoint_Text.text = (heroSO.Weapon?.Turns ?? 1).ToString();
     }
 }

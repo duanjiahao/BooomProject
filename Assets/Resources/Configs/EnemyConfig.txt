@@ -6,6 +6,10 @@
     "enemyDesc": null,
     "enemyImg": null,
     "enemyFloor": 1,
+    "enemyCoin": [
+      7,
+      15
+    ],
     "enemyHP": 30,
     "enemySTR": 10,
     "enemyCON": 10,
@@ -24,6 +28,10 @@
     "enemyDesc": null,
     "enemyImg": null,
     "enemyFloor": 1,
+    "enemyCoin": [
+      7,
+      15
+    ],
     "enemyHP": 10,
     "enemySTR": 20,
     "enemyCON": 5,
@@ -42,6 +50,10 @@
     "enemyDesc": null,
     "enemyImg": null,
     "enemyFloor": 1,
+    "enemyCoin": [
+      7,
+      15
+    ],
     "enemyHP": 50,
     "enemySTR": 10,
     "enemyCON": 5,
@@ -53,23 +65,5 @@
     "Weight3": 1,
     "Weight4": 0,
     "id": 60003
-  },
-  "60004": {
-    "$type": "EnemyConfig, Assembly-CSharp",
-    "enemyName": "Boss1",
-    "enemyDesc": null,
-    "enemyImg": null,
-    "enemyFloor": 1,
-    "enemyHP": 33,
-    "enemySTR": 0,
-    "enemyCON": 0,
-    "enemyAGI": 0,
-    "enemyDEX": 0,
-    "enemyAI": 4,
-    "Weight1": 10,
-    "Weight2": 4,
-    "Weight3": 1,
-    "Weight4": 0,
-    "id": 60004
   }
 }
