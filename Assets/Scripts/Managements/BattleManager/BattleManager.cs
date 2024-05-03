@@ -102,7 +102,9 @@ public class BattleManager : SingleMono<BattleManager>
     private void DoEndBattle(int delta)
     {
         // 结算
-
+        PlayerData.Instance.ChangePlayerAttribute(PlayerAttributeType.CurrentHp, _currentHero.Hp);
+        PlayerData.Instance.equipmentSystem = new EquipmentSystem(_currentHero.equipmentSystem);
+        
         _currentHero.Dispose();
         _currentHero = null;
 

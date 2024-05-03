@@ -14,6 +14,8 @@ public class EquipmentUI : MonoBehaviour
 
     public bool IsPlayer = true;
 
+    public bool IsBattle = false;
+
     private void OnEnable()
     {
         RefreshUI(null);
@@ -30,7 +32,7 @@ public class EquipmentUI : MonoBehaviour
 
     public void RefreshUI(object data)
     {
-        var equipSystem = IsPlayer ? PlayerData.Instance.equipmentSystem : BattleManager.Instance.GetCurrentMonster().equipmentSystem;
+        var equipSystem = IsPlayer ? (IsBattle ? BattleManager.Instance.GetCurrentHero().equipmentSystem : PlayerData.Instance.equipmentSystem)  : BattleManager.Instance.GetCurrentMonster().equipmentSystem;
         if (Location == EquipmentLocation.Weapon)
         {
             var weapon = equipSystem.Weapon;

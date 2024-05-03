@@ -29,7 +29,7 @@ public class EquipmentSystem
 {
     private Weapon _weapon;
 
-    public Weapon Weapon { get { return _weapon; } private set { if (value.config == null) return; _weapon = value; } }       //武器数据
+    public Weapon Weapon { get { return _weapon; } private set { if (value?.config == null) return; _weapon = value; } }       //武器数据
     public Equipment Head                            //头部装备数据
     {
         get
@@ -38,7 +38,7 @@ public class EquipmentSystem
         }
         private set
         {
-            if (value.config == null) 
+            if (value?.config == null) 
             {
                 return;
             }
@@ -53,7 +53,7 @@ public class EquipmentSystem
         }
         private set
         {
-            if (value.config == null)
+            if (value?.config == null)
             {
                 return;
             }
@@ -68,7 +68,7 @@ public class EquipmentSystem
         }
         private set
         {
-            if (value.config == null)
+            if (value?.config == null)
             {
                 return;
             }
@@ -83,7 +83,7 @@ public class EquipmentSystem
         }
         private set
         {
-            if (value.config == null)
+            if (value?.config == null)
             {
                 return;
             }
@@ -98,7 +98,7 @@ public class EquipmentSystem
         }
         private set
         {
-            if (value.config == null)
+            if (value?.config == null)
             {
                 return;
             }

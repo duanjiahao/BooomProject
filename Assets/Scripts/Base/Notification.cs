@@ -46,7 +46,7 @@ public class Notification : Singleton<Notification>
     {
         if (handlerDic.TryGetValue(notificationName, out var notificationHandler)) 
         {
-            notificationHandler.Invoke(data);
+            notificationHandler?.Invoke(data);
         }
     }
 }

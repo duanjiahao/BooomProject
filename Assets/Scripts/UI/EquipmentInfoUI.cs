@@ -32,11 +32,11 @@ public class EquipmentInfoUI : MonoBehaviour
             {
                 if (equipmentUI.Location == EquipmentLocation.Weapon)
                 {
-                    RefreshUI(null, equipmentUI.IsPlayer ? PlayerData.Instance.equipmentSystem.Weapon : BattleManager.Instance.GetCurrentMonster().equipmentSystem.Weapon);
+                    RefreshUI(null, equipmentUI.IsPlayer ? (equipmentUI.IsBattle ? BattleManager.Instance.GetCurrentHero().equipmentSystem.Weapon : PlayerData.Instance.equipmentSystem.Weapon) : BattleManager.Instance.GetCurrentMonster().equipmentSystem.Weapon);
                 }
                 else
                 {
-                    RefreshUI(equipmentUI.IsPlayer ? PlayerData.Instance.equipmentSystem.GetEquipmentByLocation(equipmentUI.Location) : BattleManager.Instance.GetCurrentMonster().equipmentSystem.GetEquipmentByLocation(equipmentUI.Location), null);
+                    RefreshUI(equipmentUI.IsPlayer ? (equipmentUI.IsBattle ? BattleManager.Instance.GetCurrentHero().equipmentSystem.GetEquipmentByLocation(equipmentUI.Location) : PlayerData.Instance.equipmentSystem.GetEquipmentByLocation(equipmentUI.Location)) : BattleManager.Instance.GetCurrentMonster().equipmentSystem.GetEquipmentByLocation(equipmentUI.Location), null);
                 }
             }
         }
