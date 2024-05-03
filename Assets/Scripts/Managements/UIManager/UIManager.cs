@@ -8,6 +8,8 @@ public class UIManager : SingleMono<UIManager>
 
     public BattleUI BattleUI;
 
+    public EventUI EventUI;
+
     public void BeginBattleUI()
     {
         BattleUI.gameObject.SetActive(true);
@@ -17,6 +19,13 @@ public class UIManager : SingleMono<UIManager>
     public void ReturnOutside()
     {
         BattleUI.gameObject.SetActive(false);
+        EventUI.gameObject.SetActive(false);
         outsideUI.gameObject.SetActive(true);
+    }
+
+    public void BeginEventUI()
+    {
+        EventUI.gameObject.SetActive(true);
+        BattleUI.gameObject.SetActive(false);
     }
 }

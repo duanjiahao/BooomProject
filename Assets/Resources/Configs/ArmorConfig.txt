@@ -10,7 +10,7 @@
     "armorPrice": 8,
     "armorValue": 0.6,
     "armorDurable": 7,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20001
   },
   "20002": {
@@ -23,7 +23,7 @@
     "armorPrice": 10,
     "armorValue": 0.6,
     "armorDurable": 10,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20002
   },
   "20003": {
@@ -36,7 +36,7 @@
     "armorPrice": 7,
     "armorValue": 0.6,
     "armorDurable": 5,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20003
   },
   "20004": {
@@ -64,7 +64,7 @@
     "armorPrice": 12,
     "armorValue": 0.6,
     "armorDurable": 11,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20005
   },
   "20006": {
@@ -77,7 +77,7 @@
     "armorPrice": 15,
     "armorValue": 0.6,
     "armorDurable": 15,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20006
   },
   "20007": {
@@ -90,7 +90,7 @@
     "armorPrice": 10,
     "armorValue": 0.6,
     "armorDurable": 8,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20007
   },
   "20008": {
@@ -118,7 +118,7 @@
     "armorPrice": 20,
     "armorValue": 0.65,
     "armorDurable": 19,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20009
   },
   "20010": {
@@ -131,7 +131,7 @@
     "armorPrice": 30,
     "armorValue": 0.65,
     "armorDurable": 26,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20010
   },
   "20011": {
@@ -144,7 +144,7 @@
     "armorPrice": 18,
     "armorValue": 0.65,
     "armorDurable": 14,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20011
   },
   "20012": {
@@ -172,7 +172,7 @@
     "armorPrice": 35,
     "armorValue": 0.7,
     "armorDurable": 38,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20013
   },
   "20014": {
@@ -185,7 +185,7 @@
     "armorPrice": 65,
     "armorValue": 1.7,
     "armorDurable": 52,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20014
   },
   "20015": {
@@ -198,7 +198,7 @@
     "armorPrice": 30,
     "armorValue": 2.7,
     "armorDurable": 28,
-    "armorAbility": null,
+    "armorAbility": [],
     "id": 20015
   },
   "20016": {
