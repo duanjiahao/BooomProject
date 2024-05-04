@@ -44,7 +44,7 @@ public class Monster : Unit
             {
                 var weaponConfigList = ConfigManager.Instance.GetConfigListWithFilter<WeaponConfig>((config) =>
                 {
-                    return config.weapomRarity == rarityList[i] + 1;
+                    return config.weaponRarity == rarityList[i] + 1;
                 });
 
                 if (weaponConfigList == null || weaponConfigList.Count == 0)

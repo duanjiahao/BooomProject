@@ -9,11 +9,11 @@
     "luck": 10,
     "hp": 60,
     "gold": 10,
-    "playerHead": 20001,
-    "playerBody": 20002,
-    "playerLeft": 20003,
-    "playerRight": 20003,
-    "playerLeg": 20004,
+    "playerHead": 20005,
+    "playerBody": 20006,
+    "playerLeft": 20007,
+    "playerRight": 20007,
+    "playerLeg": 20008,
     "playerWeapon": 30001,
     "id": 1
   }

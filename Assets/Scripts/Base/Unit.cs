@@ -74,7 +74,7 @@ public abstract class Unit
         // 播放受击动画
 
         // 计算血量减少，对应护甲耐久减少
-        var damage = Random.Range(attacker.equipmentSystem.Weapon?.config.weapomAttack[0] ?? 1f, attacker.equipmentSystem.Weapon?.config.weapomAttack[1] ?? 1f) * (isBreaking ? 1.5f : 1f);
+        var damage = Random.Range(attacker.equipmentSystem.Weapon?.config.weaponAttack[0] ?? 1f, attacker.equipmentSystem.Weapon?.config.weaponAttack[1] ?? 1f) * (isBreaking ? 1.5f : 1f);
 
         // 假如正好防住了
         if (isDefending && defendingLocation == location)
