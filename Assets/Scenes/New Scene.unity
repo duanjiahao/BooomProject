@@ -333,7 +333,7 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1001 &1750268382
+--- !u!1001 &1748009158
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -341,70 +341,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 318276568358033913, guid: 96dafb980589a644c98a73c47e01a6f4,
-        type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
-      objectReference: {fileID: 0}
-    - target: {fileID: 519811502964733662, guid: 96dafb980589a644c98a73c47e01a6f4,
-        type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
-      objectReference: {fileID: 0}
     - target: {fileID: 1184687466629258366, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
-    - target: {fileID: 2013874180798479763, guid: 96dafb980589a644c98a73c47e01a6f4,
+    - target: {fileID: 2984026659017338769, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
+      propertyPath: m_LocalRotation.w
+      value: 0.99936366
       objectReference: {fileID: 0}
-    - target: {fileID: 2477228707892914333, guid: 96dafb980589a644c98a73c47e01a6f4,
+    - target: {fileID: 2984026659017338769, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
+      propertyPath: m_LocalRotation.z
+      value: -0.03567111
       objectReference: {fileID: 0}
-    - target: {fileID: 2852180437525736865, guid: 96dafb980589a644c98a73c47e01a6f4,
+    - target: {fileID: 4701572023999738421, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
-      propertyPath: m_labelHash
-      value: 1.2079726e-29
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3900573382040269758, guid: 96dafb980589a644c98a73c47e01a6f4,
+    - target: {fileID: 4701572023999738421, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
+      propertyPath: m_LocalRotation.z
+      value: -0.00000020116565
       objectReference: {fileID: 0}
-    - target: {fileID: 5704622330130963882, guid: 96dafb980589a644c98a73c47e01a6f4,
+    - target: {fileID: 6375076804714052011, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5902130167841644424, guid: 96dafb980589a644c98a73c47e01a6f4,
+    - target: {fileID: 6375076804714052011, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148659159264813754, guid: 96dafb980589a644c98a73c47e01a6f4,
-        type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376660437558455946, guid: 96dafb980589a644c98a73c47e01a6f4,
-        type: 3}
-      propertyPath: m_labelHash
-      value: 1.2079726e-29
+      propertyPath: m_LocalRotation.z
+      value: 0.0000021457672
       objectReference: {fileID: 0}
     - target: {fileID: 6425996709083459166, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.1845083
+      value: 1.1850778
       objectReference: {fileID: 0}
     - target: {fileID: 6425996709083459166, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.48884928
+      value: 3.71
       objectReference: {fileID: 0}
     - target: {fileID: 6425996709083459166, guid: 96dafb980589a644c98a73c47e01a6f4,
         type: 3}
@@ -446,11 +426,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9144140934754432685, guid: 96dafb980589a644c98a73c47e01a6f4,
-        type: 3}
-      propertyPath: m_labelHash
-      value: 1.2985474e-36
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -462,4 +437,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 838747892}
   - {fileID: 1371841138}
-  - {fileID: 1750268382}
+  - {fileID: 1748009158}
