@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class ReplaceEquipmentSystem : MonoBehaviour
+public class ReplaceEquipmentSystem
 {
     /// <summary>
     /// 根据给定的物体返回他身上的reslovers
