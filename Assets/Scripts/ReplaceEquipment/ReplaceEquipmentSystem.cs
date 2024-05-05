@@ -33,48 +33,48 @@ public class ReplaceEquipmentSystem
             switch (item.GetCategory())
             {
                 case "Head"://头
-                    item.SetCategoryAndLabel("Head", system.Head.config.armorIcon);
+                    item.SetCategoryAndLabel("Head", system.Head?.config.armorIcon ?? "null");
                     break;
 
                 case "Body"://身体
-                    item.SetCategoryAndLabel("Body", system.Breast.config.armorIcon);
+                    item.SetCategoryAndLabel("Body", system.Breast?.config.armorIcon ?? "null");
                     break;
                 case "R_Shoulder"://右肩
-                    item.SetCategoryAndLabel("R_Shoulder", system.Breast.config.armorIcon);
+                    item.SetCategoryAndLabel("R_Shoulder", system.Breast?.config.armorIcon ?? "null");
                     break;
                 case "L_Shoulder"://左肩
-                    item.SetCategoryAndLabel("L_Shoulder", system.Breast.config.armorIcon);
+                    item.SetCategoryAndLabel("L_Shoulder", system.Breast?.config.armorIcon ?? "null");
                     break;
                 case "L_Arm_1"://左大臂
-                    item.SetCategoryAndLabel("L_Arm_1", system.Breast.config.armorIcon);
+                    item.SetCategoryAndLabel("L_Arm_1", system.Breast?.config.armorIcon ?? "null");
                     break;
                 case "R_Arm_1"://右大臂
-                    item.SetCategoryAndLabel("R_Arm_1", system.Breast.config.armorIcon);
+                    item.SetCategoryAndLabel("R_Arm_1", system.Breast?.config.armorIcon ?? "null");
                     break;
 
                 case "L_Arm_2"://左小臂
-                    item.SetCategoryAndLabel("L_Arm_2", system.LeftHand.config.armorIcon);
+                    item.SetCategoryAndLabel("L_Arm_2", system.LeftHand?.config.armorIcon ?? "null");
                     break;
 
                 case "R_Arm_2"://右小臂
-                    item.SetCategoryAndLabel("R_Arm_2", system.RightHand.config.armorIcon);
+                    item.SetCategoryAndLabel("R_Arm_2", system.RightHand?.config.armorIcon ?? "null");
                     break;
 
                 case "Weapen"://武器
-                    item.SetCategoryAndLabel("Weapen", system.Weapon.config.weaponIcon);
+                    item.SetCategoryAndLabel("Weapen", system.Weapon?.config.weapomIcon ?? "null");
                     break;
 
                 case "L_Leg_2"://左小腿
-                    item.SetCategoryAndLabel("L_Leg_2", system.Leg.config.armorIcon);
+                    item.SetCategoryAndLabel("L_Leg_2", system.Leg?.config.armorIcon ?? "null");
                     break;
                 case "L_Foot"://左脚
-                    item.SetCategoryAndLabel("L_Foot", system.Leg.config.armorIcon);
+                    item.SetCategoryAndLabel("L_Foot", system.Leg?.config.armorIcon ?? "null");
                     break;
                 case "R_Leg_2"://右小腿
-                    item.SetCategoryAndLabel("R_Leg_2", system.Leg.config.armorIcon);
+                    item.SetCategoryAndLabel("R_Leg_2", system.Leg?.config.armorIcon ?? "null");
                     break;
                 case "R_Foot"://右脚
-                    item.SetCategoryAndLabel("R_Foot", system.Leg.config.armorIcon);
+                    item.SetCategoryAndLabel("R_Foot", system.Leg?.config.armorIcon ?? "null");
                     break;
 
                 default:
