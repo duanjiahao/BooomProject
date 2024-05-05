@@ -44,5 +44,7 @@ public class Hero : Unit
         //HeroBreastUI.GetComponent<EquipmentUI>().equipmentSO = Breast.SO;
         ////UI实例化
         //RootUI = GameObject.Instantiate(Resources.Load<GameObject>("HeroUI_Canvas"),GameObject.Find("CombatUI").transform);
+        
+        ReplaceEquipmentSystem.RefleshSomeoneEquipment(equipmentSystem, ReplaceEquipmentSystem.ReturnSpriteResolvers(Root));
     }
 }
