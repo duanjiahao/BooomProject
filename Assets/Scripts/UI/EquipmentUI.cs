@@ -39,8 +39,8 @@ public class EquipmentUI : MonoBehaviour
 
             if (weapon != null)
             {
-                hp.fillAmount = Mathf.Clamp01(weapon.Hp / weapon.config.weaponDurable);
-                hpTxt.text = $"{(int)weapon.Hp}/{weapon.config.weaponDurable}";
+                hp.fillAmount = Mathf.Clamp01(weapon.Hp / weapon.config.weapomDurable);
+                hpTxt.text = $"{(int)weapon.Hp}/{weapon.config.weapomDurable}";
             }
             else
             {

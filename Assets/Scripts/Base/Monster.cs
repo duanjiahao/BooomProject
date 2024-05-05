@@ -17,17 +17,24 @@ public class Monster : Unit
     public virtual BaseConfig config { get; protected set; }
     // 怪物当前的意图
     public Intension CurrentIntension { get; set; }
-
+    
+    private GameObject breakGO;
     public override void GenerateGameObject(int id)
     {
         Root = GameObject.Instantiate(Resources.Load<GameObject>("Monster"));
         base.GenerateGameObject(id);
 
+        breakGO = Root.transform.Find("break").gameObject;
+        breakGO.SetActive(false);
+        
         config = ConfigManager.Instance.GetConfig<EnemyConfig>(id);
 
         var enemyConfig = config as EnemyConfig;
-
         MaxHp = Hp = enemyConfig.enemyHP;
+        Strength = enemyConfig.enemySTR;
+        Ductility = enemyConfig.enemyCON;
+        Dexterity = enemyConfig.enemyDEX;
+        Agility = enemyConfig.enemyAGI;
 
         List<int> weights = new List<int>();
         weights.Add(enemyConfig.Weight1);
@@ -44,7 +51,7 @@ public class Monster : Unit
             {
                 var weaponConfigList = ConfigManager.Instance.GetConfigListWithFilter<WeaponConfig>((config) =>
                 {
-                    return config.weaponRarity == rarityList[i] + 1;
+                    return config.weapomRarity == rarityList[i] + 1;
                 });
 
                 if (weaponConfigList == null || weaponConfigList.Count == 0)
@@ -74,8 +81,10 @@ public class Monster : Unit
             }
         }
 
-        Root.transform.position = new Vector3(5f, 0f, 0f);
+        Root.transform.position = new Vector3(4f, -1f, 0f);
         Root.transform.localScale = new Vector3(-1, 1, 1);
+        
+        _animator = Root.GetComponentInChildren<Animator>();
 
         //GameObject MonstereLegsUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("MonsterEquipmentDurability_Panel").transform);
         //MonstereLegsUI.GetComponent<EquipmentUI>().equipmentSO = Legs.SO;
@@ -95,5 +104,17 @@ public class Monster : Unit
             AttackOrDefence = 1,
             location = (EquipmentLocation)Random.Range(0, 5),
         };
+    }
+
+    public override void SetBreaking()
+    {
+        base.SetBreaking();
+        breakGO.SetActive(true);
+    }
+
+    public override void StopBreaking()
+    {
+        base.StopBreaking();
+        breakGO.SetActive(false);
     }
 }

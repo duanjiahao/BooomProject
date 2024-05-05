@@ -62,13 +62,13 @@ public class EquipmentInfoUI : MonoBehaviour
         }
         else
         {
-            nameTxt.text = weapon.config.weaponName;
-            icon.sprite = Resources.Load<Sprite>(weapon.config.weaponIcon);
-            attack.text = $"攻击：{weapon.config.weaponAttack[0]}-{weapon.config.weaponAttack[1]}";
+            nameTxt.text = weapon.config.weapomName;
+            icon.sprite = Resources.Load<Sprite>(weapon.config.weapomIcon);
+            attack.text = $"攻击：{weapon.config.weapomAttack[0]}-{weapon.config.weapomAttack[1]}";
             hp.text = $"耐久：{weapon.Hp}";
-            price.text = $"价格：{weapon.config.weaponPrice}";
+            price.text = $"价格：{weapon.config.weapomPrice}";
             consume.text = $"消耗：{weapon.config.actionPoint}";
-            effect.text = $"{weapon.config.weaponDesc}";
+            effect.text = $"{weapon.config.weapomDesc}";
         }
     }
 }

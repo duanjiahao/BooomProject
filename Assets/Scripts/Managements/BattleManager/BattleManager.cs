@@ -61,13 +61,27 @@ public class BattleManager : SingleMono<BattleManager>
         _currentHero = new Hero();
         _currentHero.GenerateGameObject(0);
 
-        var monsterConfigList = ConfigManager.Instance.GetConfigListWithFilter<EnemyConfig>((config)=> 
+        if (isBoos)
         {
-            return config.enemyFloor == 1;
-        });
+            var bossConfigList = ConfigManager.Instance.GetConfigListWithFilter<BossConfig>((config)=> 
+            {
+                return config.enemyFloor == 1;
+            });
+            
+            _currentMonster = new Monster();
+            _currentMonster.GenerateGameObject(bossConfigList[UnityEngine.Random.Range(0, bossConfigList.Count)].id);
+        }
+        else
+        {
+            var monsterConfigList = ConfigManager.Instance.GetConfigListWithFilter<EnemyConfig>((config)=> 
+            {
+                return config.enemyFloor == 1;
+            });
 
-        _currentMonster = new Monster();
-        _currentMonster.GenerateGameObject(monsterConfigList[UnityEngine.Random.Range(0, monsterConfigList.Count)].id);
+            _currentMonster = new Monster();
+            _currentMonster.GenerateGameObject(monsterConfigList[UnityEngine.Random.Range(0, monsterConfigList.Count)].id);
+        }
+   
 
         _currentBattleStage = BattleStage.PlayerTurning;
         _leftHeroTurns = _currentHero.Turns;
@@ -88,7 +102,7 @@ public class BattleManager : SingleMono<BattleManager>
                 DoPlayerTurning(delta);
                 return;
             case BattleStage.PlayerPerforming:
-                DoPlayerPerforming(delta);
+                 DoPlayerPerforming(delta);
                 return;
             case BattleStage.MonsterTuring:
                 DoMonsterTuring(delta);
@@ -130,56 +144,60 @@ public class BattleManager : SingleMono<BattleManager>
 
     private bool CheckPlayerSelection()
     {
-        if (Input.GetMouseButtonDown(0))
+        // 获取鼠标位置并转换为世界坐标
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // 进行射线投射
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        
+        _currentHero.SetAllLocationColor(Color.white);
+        _currentMonster.SetAllLocationColor(Color.white);
+        
+        // 检查射线是否碰到了碰撞体
+        if (hit.collider != null)
         {
-            // 获取鼠标位置并转换为世界坐标
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            // 进行射线投射
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-
-            // 检查射线是否碰到了碰撞体
-            if (hit.collider != null)
+            var location = CommonUtils.GetLocationByTag(hit.collider.tag);
+            var isMonsterLocation = _currentMonster.IsFromThisGO(hit.collider.gameObject);
+            
+            if (isMonsterLocation)
+            {
+                _currentMonster.SetLocationColor(location, Color.red);
+            }
+            else
+            {
+                _currentHero.SetLocationColor(location, Color.red);
+            }
+            
+            if (Input.GetMouseButtonDown(0))
             {
                 _playerIntension = new Intension()
                 {
-                    AttackOrDefence = _currentMonster.IsFromThisGO(hit.collider.gameObject) ? 1 : 0
+                    AttackOrDefence = isMonsterLocation ? 1 : 0
                 };
-                switch (hit.collider.tag)
-                {
-                    case "leftHand":
-                        _playerIntension.location = EquipmentLocation.LeftHand;
-                        return true;
-                    case "rightHand":
-                        _playerIntension.location = EquipmentLocation.RightHand;
-                        return true;
-                    case "legs":
-                        _playerIntension.location = EquipmentLocation.Leg;
-                        return true;
-                    case "head":
-                        _playerIntension.location = EquipmentLocation.Head;
-                        return true;
-                    case "breast":
-                        _playerIntension.location = EquipmentLocation.Breast;
-                        return true;
-                }
+                _playerIntension.location = location;
+                return true;
             }
         }
+
         return false;
     }
 
     private void DoPlayerPerforming(int delta)
     {
-        Debug.Log($"玩家当前意图 {_playerIntension.AttackOrDefence} {_playerIntension.location}");
-
         // 执行对应操作
         if (_playerIntension.AttackOrDefence == 1)
         {
-            _currentHero.Attack(_currentMonster, _playerIntension.location);
+            if (!_currentHero.Attack(_currentMonster, _playerIntension.location))
+            {
+                return;
+            }
         }
         else
         {
-            _currentHero.Defend(_playerIntension.location);
+            if (!_currentHero.Defend(_playerIntension.location))
+            {
+                return;
+            }
         }
 
         if (_currentMonster.Hp <= 0)
@@ -210,7 +228,10 @@ public class BattleManager : SingleMono<BattleManager>
         _currentMonster.StopBreaking();
 
         // 怪物根据AI执行对应动作并更新意图
-        DecideMonsterAction();
+        if (!DecideMonsterAction())
+        {
+            return;
+        }
 
         if (_currentHero.Hp <= 0)
         {
@@ -225,16 +246,22 @@ public class BattleManager : SingleMono<BattleManager>
         Notification.Instance.Notify(Notification.BattleAfterMonsterPerform);
     }
 
-    private void DecideMonsterAction()
+    private bool DecideMonsterAction()
     {
         var intension = _currentMonster.CurrentIntension;
         if (intension.AttackOrDefence == 1)
         {
-            _currentMonster.Attack(_currentHero, intension.location);
+            if (!_currentMonster.Attack(_currentHero, intension.location))
+            {
+                return false;
+            }
         }
         else
         {
-            _currentMonster.Defend(intension.location);
+            if (!_currentMonster.Defend(intension.location))
+            {
+                return false;
+            }
         }
 
         // 更新意图
@@ -255,6 +282,8 @@ public class BattleManager : SingleMono<BattleManager>
                 location = (EquipmentLocation)UnityEngine.Random.Range(0, 5),
             };
         }
+
+        return true;
     }
 
     public Unit GetCurrentHero()

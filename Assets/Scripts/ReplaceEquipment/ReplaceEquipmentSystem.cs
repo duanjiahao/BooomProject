@@ -17,7 +17,7 @@ public class ReplaceEquipmentSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Ë¢ĞÂÈ«Éí×°±¸
+    /// åˆ·æ–°å…¨èº«è£…å¤‡
     /// </summary>
     public void RefleshEquipment()
     {
@@ -26,48 +26,48 @@ public class ReplaceEquipmentSystem : MonoBehaviour
         {
             switch (item.GetCategory())
             {
-                case "Head"://Í·
+                case "Head"://å¤´
                     item.SetCategoryAndLabel("Head",playerData.equipmentSystem.Head.config.armorIcon);
                     break;
 
-                case "Body"://ÉíÌå
+                case "Body"://èº«ä½“
                     item.SetCategoryAndLabel("Body", playerData.equipmentSystem.Breast.config.armorIcon);
                     break;
-                case "R_Shoulder"://ÓÒ¼ç
+                case "R_Shoulder"://å³è‚©
                     item.SetCategoryAndLabel("R_Shoulder", playerData.equipmentSystem.Breast.config.armorIcon);
                     break;
-                case "L_Shoulder"://×ó¼ç
+                case "L_Shoulder"://å·¦è‚©
                     item.SetCategoryAndLabel("L_Shoulder", playerData.equipmentSystem.Breast.config.armorIcon);
                     break;
-                case "L_Arm_1"://×ó´ó±Û
+                case "L_Arm_1"://å·¦å¤§è‡‚
                     item.SetCategoryAndLabel("L_Arm_1", playerData.equipmentSystem.Breast.config.armorIcon);
                     break;
-                case "R_Arm_1"://ÓÒ´ó±Û
+                case "R_Arm_1"://å³å¤§è‡‚
                     item.SetCategoryAndLabel("R_Arm_1", playerData.equipmentSystem.Breast.config.armorIcon);
                     break;
 
-                case "L_Arm_2"://×óĞ¡±Û
+                case "L_Arm_2"://å·¦å°è‡‚
                     item.SetCategoryAndLabel("L_Arm_2", playerData.equipmentSystem.LeftHand.config.armorIcon);
                     break;
 
-                case "R_Arm_2"://ÓÒĞ¡±Û
+                case "R_Arm_2"://å³å°è‡‚
                     item.SetCategoryAndLabel("R_Arm_2", playerData.equipmentSystem.RightHand.config.armorIcon);
                     break;
 
-                case "Weapen"://ÎäÆ÷
-                    item.SetCategoryAndLabel("Weapen", playerData.equipmentSystem.Weapon.config.weaponIcon);
+                case "Weapen"://æ­¦å™¨
+                    item.SetCategoryAndLabel("Weapen", playerData.equipmentSystem.Weapon.config.weapomIcon);
                     break;
 
-                case "L_Leg_2"://×óĞ¡ÍÈ
+                case "L_Leg_2"://å·¦å°è…¿
                     item.SetCategoryAndLabel("L_Leg_2", playerData.equipmentSystem.Leg.config.armorIcon);
                     break;
-                case "L_Foot"://×ó½Å
+                case "L_Foot"://å·¦è„š
                     item.SetCategoryAndLabel("L_Foot", playerData.equipmentSystem.Leg.config.armorIcon);
                     break;
-                case "R_Leg_2"://ÓÒĞ¡ÍÈ
+                case "R_Leg_2"://å³å°è…¿
                     item.SetCategoryAndLabel("R_Leg_2", playerData.equipmentSystem.Leg.config.armorIcon);
                     break;
-                case "R_Foot"://ÓÒ½Å
+                case "R_Foot"://å³è„š
                     item.SetCategoryAndLabel("R_Foot", playerData.equipmentSystem.Leg.config.armorIcon);
                     break;
 
