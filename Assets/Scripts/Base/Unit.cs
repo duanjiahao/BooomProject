@@ -133,6 +133,7 @@ public abstract class Unit
         if (CommonUtils.Roll(Agility))
         {
             // 闪避
+            Debug.Log($"当前Unit：{this.GetType().Name} 闪避了！");
             return true;
         }
         
@@ -194,7 +195,7 @@ public abstract class Unit
         var damage = weaponAttack * (isBreaking ? 1.5f : 1f) * criticalRate * strengthRate;
 
         var equiptment = GetEquipmentByLocation(location);
-        var def = equiptment?.config.armorValue ?? 0f;
+        var def = equiptment?.config.armorValue ?? 1f;
 
         var armDamage = damage * Mathf.Clamp01(1 - def);
         var hpDamage = (damage - armDamage) * (1 - Ductility / 100f);
@@ -208,6 +209,7 @@ public abstract class Unit
             if (equiptment.Hp <= 0)
             {
                 SetUnitEquipment(location, null, null);
+                ReplaceEquipmentSystem.RefleshSomeoneEquipment(equipmentSystem, ReplaceEquipmentSystem.ReturnSpriteResolvers(Root));
 
                 // 设置破甲状态
                 SetBreaking();
@@ -217,10 +219,10 @@ public abstract class Unit
         }
         else
         {
-            Hp -= armDamage;
+            Hp -= hpDamage;
         }
-
-        Hp -= hpDamage;
+        
+        Debug.Log($"当前Unit：{this.GetType().Name} 收到Hp伤害：{hpDamage} 装甲伤害:{armDamage}");
 
         Debug.Log($"当前Unit：{this.GetType().Name} 当前血量：{this.Hp} 受损装备:{location} 装备剩余耐久:{equiptment?.Hp ?? 0f}");
         return true;

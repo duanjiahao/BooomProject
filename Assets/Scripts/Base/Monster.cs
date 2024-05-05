@@ -104,6 +104,8 @@ public class Monster : Unit
             AttackOrDefence = 1,
             location = (EquipmentLocation)Random.Range(0, 5),
         };
+        
+        ReplaceEquipmentSystem.RefleshSomeoneEquipment(equipmentSystem, ReplaceEquipmentSystem.ReturnSpriteResolvers(Root));
     }
 
     public override void SetBreaking()
