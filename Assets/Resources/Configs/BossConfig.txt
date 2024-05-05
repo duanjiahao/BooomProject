@@ -6,24 +6,76 @@
     "enemyDesc": null,
     "enemyImg": null,
     "enemyCoin": [
-      20,
-      30
+      30,
+      40
     ],
     "enemyFloor": 1,
-    "enemyHP": 100,
+    "enemyHP": 75,
     "enemySTR": 30,
     "enemyCON": 30,
     "enemyAGI": 30,
     "enemyDEX": 30,
-    "enemyAI": 2,
+    "enemyAI": 4,
     "headAmror": 20005,
     "bodyAmror": 20006,
     "wristAmror": [
       20007,
       20007
     ],
-    "legAmror": 2008,
-    "weapon": 3001,
+    "legAmror": 20008,
+    "weapon": 30004,
     "id": 80001
+  },
+  "80002": {
+    "$type": "BossConfig, Assembly-CSharp",
+    "enemyName": "Boss2",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyCoin": [
+      40,
+      50
+    ],
+    "enemyFloor": 2,
+    "enemyHP": 90,
+    "enemySTR": 40,
+    "enemyCON": 35,
+    "enemyAGI": 35,
+    "enemyDEX": 40,
+    "enemyAI": 4,
+    "headAmror": 20009,
+    "bodyAmror": 20010,
+    "wristAmror": [
+      20011,
+      20011
+    ],
+    "legAmror": 20012,
+    "weapon": 30008,
+    "id": 80002
+  },
+  "80003": {
+    "$type": "BossConfig, Assembly-CSharp",
+    "enemyName": "Boss3",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyCoin": [
+      50,
+      60
+    ],
+    "enemyFloor": 3,
+    "enemyHP": 120,
+    "enemySTR": 50,
+    "enemyCON": 40,
+    "enemyAGI": 40,
+    "enemyDEX": 45,
+    "enemyAI": 4,
+    "headAmror": 20013,
+    "bodyAmror": 20014,
+    "wristAmror": [
+      20015,
+      20015
+    ],
+    "legAmror": 20016,
+    "weapon": 30012,
+    "id": 80003
   }
 }

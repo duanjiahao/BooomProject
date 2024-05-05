@@ -16,10 +16,13 @@ public class BattleUI : MonoBehaviour
 
     public Text monsterHpTxt;
 
+    public Image battleBg;
+
     public List<Image> actionPoints;
 
     private void OnEnable()
     {
+        battleBg.gameObject.SetActive(true);
         RefreshUI(null);
         Notification.Instance.Register(Notification.BattleAfterHeroPerform, RefreshUI);
         Notification.Instance.Register(Notification.BattleAfterMonsterPerform, RefreshUI);
@@ -27,6 +30,7 @@ public class BattleUI : MonoBehaviour
 
     private void OnDisable()
     {
+        battleBg.gameObject.SetActive(false);
         Notification.Instance.Unregister(Notification.BattleAfterHeroPerform, RefreshUI);
         Notification.Instance.Unregister(Notification.BattleAfterMonsterPerform, RefreshUI);
     }

@@ -21,7 +21,7 @@ public class Weapon
     public Weapon(int id) 
     {
         config = ConfigManager.Instance.GetConfig<WeaponConfig>(id);
-        weaponType = (WeaponType)config.weaponType;
-        Hp = config.weaponDurable;
+        weaponType = (WeaponType)config.weapomType;
+        Hp = config.weapomDurable;
     }
 }

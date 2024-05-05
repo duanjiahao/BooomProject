@@ -369,10 +369,10 @@ public class LabyrinthWindow : MonoBehaviour
             switch (currentSlot.SlotType)
             {
                 case SlotType.Battle:
-                    DoBattle();
+                    DoBattle(pos);
                     break;
                 case SlotType.Event:
-                    DoEvent();
+                    DoEvent(pos);
                     break;
                 case SlotType.Shop:
                     DoShop();
@@ -388,21 +388,39 @@ public class LabyrinthWindow : MonoBehaviour
 
     private void DoBoss()
     {
+        BattleManager.Instance.StartABattle(true);
+        UIManager.Instance.BeginBattleUI();
     }
 
     private void DoShop()
     {
     }
 
-    private void DoEvent()
+    private void DoEvent(SlotPosition position)
     {
-        UIManager.Instance.BeginEventUI();
+        var slot = _slotDic[position];
+        if (slot.Explored)
+        {
+            
+        }
+        else
+        {
+            UIManager.Instance.BeginEventUI();
+        }
     }
 
-    private void DoBattle()
+    private void DoBattle(SlotPosition position)
     {
-        BattleManager.Instance.StartABattle(false);
-        UIManager.Instance.BeginBattleUI();
+        var slot = _slotDic[position];
+        if (slot.Explored)
+        {
+            
+        }
+        else
+        {
+            BattleManager.Instance.StartABattle(false);
+            UIManager.Instance.BeginBattleUI();
+        }
     }
 
     // Update is called once per frame

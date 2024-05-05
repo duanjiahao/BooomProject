@@ -1,13 +1,13 @@
 public class WeaponConfig : BaseConfig
 {
-    public string weaponName;
-    public string weaponIcon;
-    public int weaponRarity;
-    public int weaponType;
+    public string weapomName;
+    public string weapomIcon;
+    public int weapomRarity;
+    public int weapomType;
     public int actionPoint;
-    public string weaponDesc;
-    public int weaponPrice;
-    public int[] weaponAttack;
-    public int weaponDurable;
-    public int[] weaponAbility;
+    public string weapomDesc;
+    public int weapomPrice;
+    public int[] weapomAttack;
+    public int weapomDurable;
+    public int[] weapomAbility;
 }

@@ -41,11 +41,15 @@ public class LabyrinthSlot : MonoBehaviour
 
     public Image Event;
     
+    public Image Shop;
+    
     public Image Boss_selected;
 
     public Image Battle_selected;
 
     public Image Event_selected;
+    
+    public Image Shop_selected;
 
     public Image ExploredSlot;
 
@@ -93,6 +97,8 @@ public class LabyrinthSlot : MonoBehaviour
         Boss_selected.gameObject.SetActive(false);
         Battle_selected.gameObject.SetActive(false);
         Event_selected.gameObject.SetActive(false);
+        Shop.gameObject.SetActive(false);
+        Shop_selected.gameObject.SetActive(false);
         switch (type)
         {
             case SlotType.Battle:
@@ -102,6 +108,10 @@ public class LabyrinthSlot : MonoBehaviour
             case SlotType.Event:
                 Event.gameObject.SetActive(true);
                 Event_selected.gameObject.SetActive(true);
+                break;
+            case SlotType.Shop:
+                Shop.gameObject.SetActive(true);
+                Shop_selected.gameObject.SetActive(true);
                 break;
             case SlotType.Boss:
                 Boss.gameObject.SetActive(true);

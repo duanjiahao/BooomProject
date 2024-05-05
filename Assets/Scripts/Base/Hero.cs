@@ -15,14 +15,20 @@ public class Hero : Unit
         Root = GameObject.Instantiate(Resources.Load<GameObject>("Hero"));
         base.GenerateGameObject(id);
 
-        Root.transform.position = new Vector3(-5f, 0f, 0f);
+        Root.transform.position = new Vector3(-4f, -1f, 0f);
         Root.transform.localScale = Vector3.one;
 
         MaxHp = PlayerData.Instance.MaxHP;
-
         Hp = PlayerData.Instance.CurrentHP;
 
+        Strength = PlayerData.Instance.Strength;
+        Agility = PlayerData.Instance.Agility;
+        Dexterity = PlayerData.Instance.Dexterity;
+        Ductility = PlayerData.Instance.Ductility;
+
         equipmentSystem = new EquipmentSystem(PlayerData.Instance.equipmentSystem);
+
+        _animator = Root.GetComponentInChildren<Animator>();
 
         //GameObject HeroWeaponUI = GameObject.Instantiate(Resources.Load<GameObject>("Equipment_Canvas"), GameObject.Find("EquipmentDurability_Panel").transform);
         //HeroWeaponUI.GetComponent<EquipmentUI>().equipment = Weapon;

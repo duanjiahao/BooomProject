@@ -22,7 +22,8 @@ public enum PlayerAttributeType
     GlodNum,
     Strength,
     Ductility,
-    Luck,
+    Dexterity,
+    Agility,
 }
 
 public class EquipmentSystem
@@ -194,9 +195,11 @@ public class PlayerData : SingleMono<PlayerData>
 
     public int Strength { get; private set; }       //力量 
 
-    public float Ductility { get; private set; }       //韧性
+    public int Ductility { get; private set; }       //体质
 
-    public int Luck { get; private set; }           //运气
+    public int Agility { get; private set; }        // 敏捷
+
+    public int Dexterity { get; private set; }           //灵巧
 
     public EquipmentSystem equipmentSystem;
 
@@ -248,7 +251,7 @@ public class PlayerData : SingleMono<PlayerData>
 
         Ductility = initProperty.ductility;
 
-        Luck = initProperty.luck;
+        Dexterity = initProperty.dexterous;
 
         equipmentSystem = new EquipmentSystem(initProperty.playerHead, initProperty.playerLeft, initProperty.playerRight, initProperty.playerBody, initProperty.playerLeg, initProperty.playerWeapon);
     }
@@ -277,10 +280,13 @@ public class PlayerData : SingleMono<PlayerData>
                 Strength = (int)val;
                 break;
             case PlayerAttributeType.Ductility:
-                Ductility = val;
+                Ductility = (int)val;
                 break;
-            case PlayerAttributeType.Luck:
-                Luck = (int)val;
+            case PlayerAttributeType.Dexterity:
+                Dexterity = (int)val;
+                break;
+            case PlayerAttributeType.Agility:
+                Agility = (int)val;
                 break;
         }
 

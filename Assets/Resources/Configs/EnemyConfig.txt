@@ -7,7 +7,7 @@
     "enemyImg": null,
     "enemyFloor": 1,
     "enemyCoin": [
-      7,
+      8,
       15
     ],
     "enemyHP": 30,
@@ -29,15 +29,15 @@
     "enemyImg": null,
     "enemyFloor": 1,
     "enemyCoin": [
-      7,
-      15
+      10,
+      18
     ],
-    "enemyHP": 10,
+    "enemyHP": 20,
     "enemySTR": 20,
     "enemyCON": 5,
     "enemyAGI": 25,
     "enemyDEX": 25,
-    "enemyAI": 2,
+    "enemyAI": 3,
     "Weight1": 10,
     "Weight2": 4,
     "Weight3": 1,
@@ -59,11 +59,187 @@
     "enemyCON": 5,
     "enemyAGI": 0,
     "enemyDEX": 0,
-    "enemyAI": 3,
+    "enemyAI": 2,
     "Weight1": 10,
     "Weight2": 4,
     "Weight3": 1,
     "Weight4": 0,
     "id": 60003
+  },
+  "60004": {
+    "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "杂兵4",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 2,
+    "enemyCoin": [
+      10,
+      20
+    ],
+    "enemyHP": 40,
+    "enemySTR": 20,
+    "enemyCON": 15,
+    "enemyAGI": 15,
+    "enemyDEX": 20,
+    "enemyAI": 1,
+    "Weight1": 6,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 1,
+    "id": 60004
+  },
+  "60005": {
+    "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "杂兵5",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 2,
+    "enemyCoin": [
+      15,
+      25
+    ],
+    "enemyHP": 25,
+    "enemySTR": 25,
+    "enemyCON": 10,
+    "enemyAGI": 30,
+    "enemyDEX": 35,
+    "enemyAI": 3,
+    "Weight1": 6,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 1,
+    "id": 60005
+  },
+  "60006": {
+    "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "杂兵6",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 2,
+    "enemyCoin": [
+      10,
+      20
+    ],
+    "enemyHP": 65,
+    "enemySTR": 15,
+    "enemyCON": 10,
+    "enemyAGI": 10,
+    "enemyDEX": 10,
+    "enemyAI": 2,
+    "Weight1": 6,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 1,
+    "id": 60006
+  },
+  "60007": {
+    "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "杂兵8",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 3,
+    "enemyCoin": [
+      15,
+      30
+    ],
+    "enemyHP": 50,
+    "enemySTR": 30,
+    "enemyCON": 30,
+    "enemyAGI": 30,
+    "enemyDEX": 30,
+    "enemyAI": 1,
+    "Weight1": 4,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 3,
+    "id": 60007
+  },
+  "60008": {
+    "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "杂兵9",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 3,
+    "enemyCoin": [
+      20,
+      35
+    ],
+    "enemyHP": 35,
+    "enemySTR": 40,
+    "enemyCON": 15,
+    "enemyAGI": 35,
+    "enemyDEX": 35,
+    "enemyAI": 3,
+    "Weight1": 4,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 3,
+    "id": 60008
+  },
+  "60009": {
+    "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "杂兵10",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 3,
+    "enemyCoin": [
+      17,
+      30
+    ],
+    "enemyHP": 75,
+    "enemySTR": 25,
+    "enemyCON": 20,
+    "enemyAGI": 20,
+    "enemyDEX": 25,
+    "enemyAI": 2,
+    "Weight1": 4,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 3,
+    "id": 60009
+  },
+  "60010": {
+    "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "精英2",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 3,
+    "enemyCoin": [
+      25,
+      40
+    ],
+    "enemyHP": 80,
+    "enemySTR": 30,
+    "enemyCON": 25,
+    "enemyAGI": 30,
+    "enemyDEX": 30,
+    "enemyAI": 4,
+    "Weight1": 4,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 3,
+    "id": 60010
+  },
+  "60011": {
+    "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "精英3",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 3,
+    "enemyCoin": [
+      25,
+      40
+    ],
+    "enemyHP": 40,
+    "enemySTR": 45,
+    "enemyCON": 25,
+    "enemyAGI": 40,
+    "enemyDEX": 40,
+    "enemyAI": 3,
+    "Weight1": 4,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 3,
+    "id": 60011
   }
 }

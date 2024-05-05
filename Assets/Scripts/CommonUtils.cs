@@ -108,4 +108,68 @@ public static class CommonUtils
                (equipmentType == EquipmentType.Breast && location == EquipmentLocation.Breast) ||
                (equipmentType == EquipmentType.Leg && location == EquipmentLocation.Leg);
     }
+    
+    // 递归函数，用于查找所有带有特定标签的子对象
+    public static List<GameObject> FindChildrenWithTag(GameObject parent, string tag)
+    {
+        List<GameObject> taggedChildren = new List<GameObject>();
+
+        if (string.IsNullOrEmpty(tag))
+        {
+            return taggedChildren;
+        }
+
+        // 遍历所有子对象
+        foreach (Transform child in parent.transform)
+        {
+            // 如果子对象的标签匹配，添加到结果列表
+            if (!string.IsNullOrEmpty(child.tag) && child.CompareTag(tag))
+            {
+                taggedChildren.Add(child.gameObject);
+            }
+            
+            // 递归查找更深层的子对象
+            taggedChildren.AddRange(FindChildrenWithTag(child.gameObject, tag));
+        }
+        
+        return taggedChildren;
+    }
+
+    public static EquipmentLocation GetLocationByTag(string tag)
+    {
+        switch (tag)
+        {
+            case "leftHand":
+                return EquipmentLocation.LeftHand;
+            case "rightHand":
+                return EquipmentLocation.RightHand;
+            case "legs":
+                return EquipmentLocation.Leg;
+            case "head":
+                return EquipmentLocation.Head;
+            case "breast":
+                return EquipmentLocation.Breast;
+        }
+
+        return EquipmentLocation.NULL;
+    }
+    
+    public static string GetTagByLocation(EquipmentLocation tag)
+    {
+        switch (tag)
+        {
+            case EquipmentLocation.LeftHand:
+                return "leftHand";
+            case EquipmentLocation.RightHand:
+                return "rightHand";
+            case EquipmentLocation.Leg:
+                return "legs";
+            case EquipmentLocation.Head:
+                return "head";
+            case EquipmentLocation.Breast:
+                return "breast";
+        }
+
+        return string.Empty;
+    }
 }
