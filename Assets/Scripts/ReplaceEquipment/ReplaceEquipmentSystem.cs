@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class ReplaceEquipmentSystem : MonoBehaviour
+public class ReplaceEquipmentSystem
 {
     /// <summary>
     /// 根据给定的物体返回他身上的reslovers
     /// </summary>
     /// <param name="unit"></param>
     /// <returns></returns>
-    public List<SpriteResolver> ReturnSpriteResolvers(GameObject unit)
+    public static List<SpriteResolver> ReturnSpriteResolvers(GameObject unit)
     {
         List<SpriteResolver> spriteResolvers = new List<SpriteResolver>();
         foreach (var spriteResolver in unit.transform.GetChild(0).GetComponentsInChildren<SpriteResolver>())
@@ -26,7 +26,7 @@ public class ReplaceEquipmentSystem : MonoBehaviour
     /// <summary>
     /// 刷新全身装备
     /// </summary>
-    public void RefleshSomeoneEquipment(EquipmentSystem system, List<SpriteResolver> spriteResolvers)
+    public static void RefleshSomeoneEquipment(EquipmentSystem system, List<SpriteResolver> spriteResolvers)
     {
         foreach (var item in spriteResolvers)
         {
