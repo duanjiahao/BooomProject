@@ -15,6 +15,8 @@ public class AudioManager : SingleMono<AudioManager>
     public AudioSource UIClickSource;
     [Tooltip("战斗音效播放器")]
     public AudioSource BattleEffectSource;
+    [Tooltip("事件音效播放器")]
+    public AudioSource EventEffectSource;
 
     private void Start()
     {

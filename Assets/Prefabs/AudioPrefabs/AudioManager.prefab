@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8192189634604258407}
   - component: {fileID: 8192189634604258408}
   - component: {fileID: 8192189634604258409}
+  - component: {fileID: 4837566704025799164}
   - component: {fileID: 8192189634604258404}
   - component: {fileID: 8192189634604258405}
   m_Layer: 0
@@ -28,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8192189634604258410}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &8192189634604258407
 AudioSource:
@@ -324,6 +325,102 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &4837566704025799164
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192189634604258410}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8192189634604258404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,9 +433,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228e8a30ecebc094f90098e429d8f06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  library: {fileID: 8192189634604258405}
   BGMSource: {fileID: 8192189634604258407}
   UIClickSource: {fileID: 8192189634604258408}
   BattleEffectSource: {fileID: 8192189634604258409}
+  EventEffectSource: {fileID: 4837566704025799164}
 --- !u!114 &8192189634604258405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,9 +450,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc35b7dbe23742b4d88ac9cbb1947786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGM1: {fileID: 0}
-  BGM2: {fileID: 0}
-  click1: {fileID: 0}
-  click2: {fileID: 0}
-  effect1: {fileID: 0}
-  effect2: {fileID: 0}
+  BGM1: {fileID: 8300000, guid: 18749bbc7218b644c9f76aa6ca2148b1, type: 3}
+  BGM2: {fileID: 8300000, guid: 248549c5191e2c84384a9566fe4619e5, type: 3}
+  BGM3: {fileID: 8300000, guid: c180bddd0e24ee74ca80fb50d9daa116, type: 3}
+  BGM4: {fileID: 8300000, guid: 2e4350761944b3b4ea49a76cd6c389d5, type: 3}
+  click1: {fileID: 8300000, guid: d52f799e5c14b9a4faebf37543a2041e, type: 3}
+  click2: {fileID: 8300000, guid: e6f77a97362b3c84f8db9e703434451d, type: 3}
+  click3: {fileID: 8300000, guid: 03457c96e6510a1438e6fa555a98da3f, type: 3}
+  click4: {fileID: 8300000, guid: ee2453caee50f914e8a3e59a174a900a, type: 3}
+  effect1: {fileID: 8300000, guid: 4a7fcc2ca6c4df9408a0bc9219597ea5, type: 3}
+  effect2: {fileID: 8300000, guid: 3827691baea279842a7836cc6833a52b, type: 3}
+  effect3: {fileID: 8300000, guid: d530452ba4ffef14eb230675112b3ce9, type: 3}
+  eventEffect: {fileID: 8300000, guid: a7bb8635b5149454db50861dc3e654b5, type: 3}
