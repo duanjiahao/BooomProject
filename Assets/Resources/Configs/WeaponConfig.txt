@@ -8,7 +8,7 @@
     "weapomType": 1,
     "actionPoint": 3,
     "weapomDesc": "锈迹斑斑的铁剑",
-    "weapomPrice": 0,
+    "weapomPrice": 3,
     "weapomAttack": [
       8,
       10
@@ -27,7 +27,7 @@
     "weapomType": 2,
     "actionPoint": 2,
     "weapomDesc": "难以挥动的重锤",
-    "weapomPrice": 0,
+    "weapomPrice": 5,
     "weapomAttack": [
       12,
       15
@@ -46,7 +46,7 @@
     "weapomType": 3,
     "actionPoint": 4,
     "weapomDesc": "看上去已经不锋利的匕首",
-    "weapomPrice": 0,
+    "weapomPrice": 4,
     "weapomAttack": [
       5,
       8
@@ -65,7 +65,7 @@
     "weapomType": 1,
     "actionPoint": 3,
     "weapomDesc": "普通的铁剑",
-    "weapomPrice": 0,
+    "weapomPrice": 12,
     "weapomAttack": [
       13,
       16
@@ -84,7 +84,7 @@
     "weapomType": 2,
     "actionPoint": 2,
     "weapomDesc": "普通的重锤",
-    "weapomPrice": 0,
+    "weapomPrice": 16,
     "weapomAttack": [
       20,
       23
@@ -103,7 +103,7 @@
     "weapomType": 3,
     "actionPoint": 4,
     "weapomDesc": "普通的匕首",
-    "weapomPrice": 0,
+    "weapomPrice": 12,
     "weapomAttack": [
       9,
       12
@@ -122,7 +122,7 @@
     "weapomType": 1,
     "actionPoint": 3,
     "weapomDesc": "稀有的剑",
-    "weapomPrice": 0,
+    "weapomPrice": 50,
     "weapomAttack": [
       19,
       22
@@ -141,7 +141,7 @@
     "weapomType": 2,
     "actionPoint": 2,
     "weapomDesc": "稀有的重锤",
-    "weapomPrice": 0,
+    "weapomPrice": 80,
     "weapomAttack": [
       28,
       31
@@ -160,7 +160,7 @@
     "weapomType": 3,
     "actionPoint": 4,
     "weapomDesc": "稀有的匕首",
-    "weapomPrice": 0,
+    "weapomPrice": 56,
     "weapomAttack": [
       13,
       16
@@ -179,7 +179,7 @@
     "weapomType": 1,
     "actionPoint": 3,
     "weapomDesc": "传说中罗格使用过的剑",
-    "weapomPrice": 0,
+    "weapomPrice": 100,
     "weapomAttack": [
       23,
       26
@@ -198,7 +198,7 @@
     "weapomType": 2,
     "actionPoint": 2,
     "weapomDesc": "传说的罗格使用过重锤",
-    "weapomPrice": 0,
+    "weapomPrice": 120,
     "weapomAttack": [
       32,
       35
@@ -217,7 +217,7 @@
     "weapomType": 3,
     "actionPoint": 4,
     "weapomDesc": "传说的罗格使用过匕首",
-    "weapomPrice": 0,
+    "weapomPrice": 105,
     "weapomAttack": [
       17,
       20
@@ -236,7 +236,7 @@
     "weapomType": 2,
     "actionPoint": 2,
     "weapomDesc": "奇怪材质制成的重锤,好像有点香？",
-    "weapomPrice": 0,
+    "weapomPrice": 80,
     "weapomAttack": [
       26,
       29

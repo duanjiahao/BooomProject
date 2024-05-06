@@ -28,10 +28,10 @@ public class ConfigManager : SingleMono<ConfigManager>
     public T GetConfig<T>(int id) where T : BaseConfig
     {
         var configName = typeof(T).Name;
-        if (ConfigDatas.ContainsKey(configName)) 
+        if (ConfigDatas.ContainsKey(configName))
         {
             var data = ConfigDatas[configName];
-            if (data.ContainsKey(id)) 
+            if (data.ContainsKey(id))
             {
                 return data[id] as T;
             }
@@ -56,12 +56,17 @@ public class ConfigManager : SingleMono<ConfigManager>
             {
                 var value = kv.Value as T;
                 if (configFilter == null || configFilter(value))
-                configList.Add(value);
+                    configList.Add(value);
             }
 
             return configList;
         }
 
         return null;
+    }
+
+    public int GetConfigNum<T>() where T : BaseConfig
+    {
+        return GetConfigListWithFilter<T>().Count;
     }
 }

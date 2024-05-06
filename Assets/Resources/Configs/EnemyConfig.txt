@@ -134,6 +134,28 @@
   },
   "60007": {
     "$type": "EnemyConfig, Assembly-CSharp",
+    "enemyName": "精英1",
+    "enemyDesc": null,
+    "enemyImg": null,
+    "enemyFloor": 2,
+    "enemyCoin": [
+      15,
+      30
+    ],
+    "enemyHP": 35,
+    "enemySTR": 20,
+    "enemyCON": 20,
+    "enemyAGI": 25,
+    "enemyDEX": 20,
+    "enemyAI": 4,
+    "Weight1": 6,
+    "Weight2": 5,
+    "Weight3": 3,
+    "Weight4": 1,
+    "id": 60007
+  },
+  "60008": {
+    "$type": "EnemyConfig, Assembly-CSharp",
     "enemyName": "杂兵8",
     "enemyDesc": null,
     "enemyImg": null,
@@ -152,9 +174,9 @@
     "Weight2": 5,
     "Weight3": 3,
     "Weight4": 3,
-    "id": 60007
+    "id": 60008
   },
-  "60008": {
+  "60009": {
     "$type": "EnemyConfig, Assembly-CSharp",
     "enemyName": "杂兵9",
     "enemyDesc": null,
@@ -174,9 +196,9 @@
     "Weight2": 5,
     "Weight3": 3,
     "Weight4": 3,
-    "id": 60008
+    "id": 60009
   },
-  "60009": {
+  "60010": {
     "$type": "EnemyConfig, Assembly-CSharp",
     "enemyName": "杂兵10",
     "enemyDesc": null,
@@ -196,9 +218,9 @@
     "Weight2": 5,
     "Weight3": 3,
     "Weight4": 3,
-    "id": 60009
+    "id": 60010
   },
-  "60010": {
+  "60011": {
     "$type": "EnemyConfig, Assembly-CSharp",
     "enemyName": "精英2",
     "enemyDesc": null,
@@ -218,9 +240,9 @@
     "Weight2": 5,
     "Weight3": 3,
     "Weight4": 3,
-    "id": 60010
+    "id": 60011
   },
-  "60011": {
+  "60012": {
     "$type": "EnemyConfig, Assembly-CSharp",
     "enemyName": "精英3",
     "enemyDesc": null,
@@ -240,6 +262,6 @@
     "Weight2": 5,
     "Weight3": 3,
     "Weight4": 3,
-    "id": 60011
+    "id": 60012
   }
 }
